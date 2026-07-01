@@ -576,6 +576,6 @@ Data Science | AI/ML Engineer
 
 Gmail: nikhilatopalle@gmail.com
 
-LinkedIn: https://www.linkedin.com/in/mr-uday-kiran-42803a2b3/
+
 
 ---
