@@ -570,11 +570,11 @@ Through ROI-based validation and event-driven processing, the system significant
 
 # 👨‍💻 Author
 
-**Yerra Naga Uday Kiran**
+Topalle Nikhila
 
 Data Science | AI/ML Engineer
 
-Gmail: udaykiranyerranaga@gmail.com
+Gmail: nikhilatopalle@gmail.com
 
 LinkedIn: https://www.linkedin.com/in/mr-uday-kiran-42803a2b3/
 
