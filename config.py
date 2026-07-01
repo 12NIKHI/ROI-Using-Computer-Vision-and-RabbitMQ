@@ -1,0 +1,3561 @@
+<!DOCTYPE html>
+<!-- saved from url=(0115)https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-roi-based-intelligent-video-analytics-system -->
+<html lang="en" data-color-mode="auto" data-light-theme="light" data-dark-theme="dark" data-a11y-animated-images="system" data-a11y-link-underlines="true" data-turbo-loaded="" class="js-focus-visible" data-js-focus-visible=""><plasmo-csui><template shadowrootmode="open"><div id="plasmo-shadow-container" style="z-index: 2147483647; position: relative;"><div id="plasmo-overlay-0" class="plasmo-csui-container" style="display: flex; position: absolute; top: -3.05e-05px; left: 0px;"><div style="position: fixed; top: 0px; left: 0px; width: 100%; height: 100%; pointer-events: none; z-index: 999999;"></div></div></div></template></plasmo-csui><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css">.turbo-progress-bar {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: #0076ff;
+  z-index: 2147483647;
+  transition:
+    width 300ms ease-out,
+    opacity 150ms 150ms ease-in;
+  transform: translate3d(0, 0, 0);
+}
+</style><style>
+:root {
+  --fontStack-monospace: "Monaspace Neon", ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, Liberation Mono, monospace !important;
+}
+</style>
+
+
+
+
+  
+    
+  <link rel="dns-prefetch" href="https://github.githubassets.com/">
+  <link rel="dns-prefetch" href="https://avatars.githubusercontent.com/">
+  <link rel="dns-prefetch" href="https://github-cloud.s3.amazonaws.com/">
+  <link rel="dns-prefetch" href="https://user-images.githubusercontent.com/">
+  <link rel="preconnect" href="https://github.githubassets.com/" crossorigin="">
+  <link rel="preconnect" href="https://avatars.githubusercontent.com/">
+
+  
+
+
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/light-4fded0090af0ad58.css"><link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/dark-06381ff23d863842.css"><link data-color-theme="light_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_high_contrast-cf8e26bc17e62ebc.css"><link data-color-theme="light_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind-3a437477a570cc40.css"><link data-color-theme="light_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_colorblind_high_contrast-39b6c209db5491c9.css"><link data-color-theme="light_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia-3822234d6c03b00b.css"><link data-color-theme="light_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/light_tritanopia_high_contrast-33857254a8064bf7.css"><link data-color-theme="dark_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_high_contrast-9023e6605402defb.css"><link data-color-theme="dark_colorblind" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind-37023bf69d8e0e34.css"><link data-color-theme="dark_colorblind_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_colorblind_high_contrast-486bd43e01a2c0ec.css"><link data-color-theme="dark_tritanopia" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia-838ba2a5070c5b09.css"><link data-color-theme="dark_tritanopia_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_tritanopia_high_contrast-2aa7245dc545d61f.css"><link data-color-theme="dark_dimmed" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed-29ef2eb185e7de1c.css"><link data-color-theme="dark_dimmed_high_contrast" crossorigin="anonymous" media="all" rel="stylesheet" data-href="https://github.githubassets.com/assets/dark_dimmed_high_contrast-8eed6b212f10f1b9.css">
+
+  <style type="text/css">
+    :root {
+      --tab-size-preference: 4;
+    }
+
+    pre, code {
+      tab-size: var(--tab-size-preference);
+    }
+  </style>
+
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-primitives-b39ad27f3538ace3.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-tailwind-compatible-922f4e76aead6d80.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/global-eff6b778655b1531.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/github-eab9c5888b163e42.css">
+    <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/tailwind-ee832f465450400b.css">
+  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/repository-5c3491d57145b94f.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/code-ac30cd42c7dec7cf.css">
+
+  
+
+  <script type="application/json" id="client-env">{"locale":"en","featureFlags":["actions_custom_images_storage_billing_ui_visibility","actions_enable_background_steps","actions_image_version_event","actions_workflow_language_service_allow_case_function","actions_workflow_language_service_allow_concurrency_queue","agent_author_search_expansion","agent_author_search_expansion_ui_pulls","agent_conflict_resolution","alternate_user_config_repo","artifact_ui_v2","billing_billable_licenses_cost_center_bucket_fix","billing_cost_center_user_level_budgets","billing_discount_threshold_notification","billing_ui_budget_pagination_enabled","billing_user_level_budgets","billing_user_level_budgets_manage","ccr_implement_suggestion_refresh","code_scanning_dfa_degraded_experience_notice","code_view_checks_live_updates","code_view_raf_sticky_lines","codemirror_inp_optimizations","codespaces_prebuild_region_target_update","codeview_sidebar_combined_payload","coding_agent_model_selection","coding_agent_model_selection_all_skus","coding_agent_third_party_model_ui","comment_viewer_copy_raw_markdown","contentful_primer_code_blocks","copilot_agent_snippy","copilot_api_agentic_issue_marshal_yaml","copilot_ask_mode_dropdown","copilot_automation_suggest_tools_enabled","copilot_automations_pagination","copilot_automations_suggested_automations","copilot_chat_attach_multiple_images","copilot_chat_auto_mode_picker_paid","copilot_chat_category_rate_limit_messages","copilot_chat_clear_model_selection_for_default_change","copilot_chat_contextual_suggestions_updated","copilot_chat_disable_model_picker_while_streaming","copilot_chat_docked_panel","copilot_chat_enable_tool_call_logs","copilot_chat_increase_token_padding","copilot_chat_input_commands","copilot_chat_interspersed_tool_calls","copilot_chat_max_upsell","copilot_chat_model_picker_info_popover","copilot_chat_models_browser_cache","copilot_chat_opening_thread_switch","copilot_chat_prettify_pasted_code","copilot_chat_reduce_quota_checks","copilot_chat_vision_dotcom_chat_ga_gate","copilot_chat_vision_in_claude","copilot_chat_vision_preview_gate","copilot_cli_install_cta_max_plan","copilot_cloud_agent_always_categorize_models_in_model_picker","copilot_custom_copilots","copilot_custom_copilots_feature_preview","copilot_diff_explain_conversation_intent","copilot_diff_reference_context","copilot_duplicate_thread","copilot_extensions_removal_on_marketplace","copilot_file_block_ref_matching","copilot_fix_blank_side_panel","copilot_fix_failed_workflows","copilot_fix_failed_workflows_all_skus","copilot_ftp_hyperspace_upgrade_prompt","copilot_hide_hovercard","copilot_immersive_code_block_transition_wrap","copilot_immersive_embedded_deferred_payload","copilot_immersive_embedded_draggable","copilot_immersive_embedded_header_button","copilot_immersive_embedded_implicit_references","copilot_immersive_embedded_skip_copilot_api_token_for_dotcom_context","copilot_immersive_file_block_transition_open","copilot_immersive_file_preview_keep_mounted","copilot_immersive_hide_column_right_without_thread","copilot_immersive_job_result_preview","copilot_immersive_suggestion_pills","copilot_immersive_task_hyperlinking","copilot_immersive_task_within_chat_thread","copilot_issue_list_show_more","copilot_mc_cli_resume_any_users_task","copilot_mc_nudges","copilot_mission_control_agent_filtering","copilot_mission_control_always_send_integration_id","copilot_mission_control_environment_list_icons","copilot_mission_control_initial_data_spinner","copilot_mission_control_needs_attention","copilot_mission_control_sandbox_remote_bypass","copilot_mission_control_session_events_ui","copilot_mission_control_session_filters","copilot_mission_control_task_alive_updates","copilot_mission_control_task_sharing","copilot_org_policy_page_focus_mode","copilot_plans_signups_enabled","copilot_pr_chat_enhancements","copilot_premium_request_quotas","copilot_prominent_upgrade_button","copilot_quota_banner_pr_files_changed","copilot_redirect_header_button_to_agents","copilot_resource_panel","copilot_share_active_subthread","copilot_spaces_ga","copilot_spaces_individual_policies_ga","copilot_spark_empty_state","copilot_spark_handle_nil_friendly_name","copilot_swe_agent_authorization_status_ui","copilot_swe_agent_hide_model_picker_if_only_auto","copilot_swe_agent_pr_comment_model_picker","copilot_swe_agent_pull_request_merged_trigger","copilot_swe_agent_pull_request_opened_trigger","copilot_swe_agent_pull_request_synchronize_trigger","copilot_swe_agent_use_subagents","copilot_task_api_github_rest_style","copilot_token_based_billing","copilot_unconfigured_is_inherited","copilot_user_can_upgrade_plan_field","copilot_workbench_ubb","custom_properties_core_reusable_property_value_field","dashboard_indexeddb_caching","dashboard_lists_max_age_filter","dashboard_surface_needs_action_ci_running","dashboard_universe_2025","dashboard_universe_2025_feedback_dialog","fgpat_permissions_selector_redesign","flex_cta_groups_mvp","flex_suite_overview","ga_enterprise_teams_ui","github_models_scheduled_hydro_events","global_nav_react","global_nav_responsive_create_menu","hide_groups_list_for_few_groups","hyperspace_2025_logged_out_batch_1","hyperspace_2025_logged_out_batch_2","hyperspace_2025_logged_out_batch_3","in_product_messaging_datadog_monitoring","ipm_budget_deep_linking","ipm_global_transactional_message_agents","ipm_global_transactional_message_copilot","ipm_global_transactional_message_issues","ipm_global_transactional_message_prs","ipm_global_transactional_message_repos","ipm_global_transactional_message_spaces","issue_cca_modal_open","issue_cca_multi_assign_modal","issue_cca_visualization","issue_fields_global_search","issue_fields_index_pills","issue_inline_avatars","issue_pinned_views","issue_pinned_views_index_page","issue_pinned_views_preheat_sidebar_links","issue_pinned_views_projects_react","issue_relative_time_micro","issues_expanded_file_types","issues_lazy_load_comment_box_suggestions","issues_react_chrome_container_query_fix","issues_react_include_bots_in_pickers","issues_react_ui_feedback","issues_search_type_gql","landing_pages_ninetailed","landing_pages_web_vitals_tracking","lifecycle_label_name_updates","low_quality_classifier","marketing_pages_search_explore_provider","memex_default_issue_create_repository","memex_live_update_hovercard","memex_mwl_filter_field_delimiter","memex_remove_deprecated_type_issue","memex_roadmap_drag_style","merge_status_header_feedback","oauth_authorize_clickjacking_protection","octocaptcha_origin_optimization","pr_sfv_new_diff_fetch","primer_react_css_anchor_positioning","property_definition_empty_state_suggestions","prs_css_anchor_positioning","prs_live_updates_issue_comments","prs_load_all_alerts","prx_files","pull_request_commit_checks_dialog","pull_request_files_virtualization","pull_request_inbox_customize_sections","pull_request_inbox_section_query_popover","pull_request_overview_panel_edit_description","pull_request_virtualization_image_estimate","pull_request_virtualization_scroll_compensation","pulls_dashboard_jk_nav","react_blob_isolate_code_lines","react_blob_overlay","react_data_router_tanstack_allowed","react_editor_actions_sidebar","react_editor_devcontainer_sidebar","react_sandbox_future_tanstack","repos_contributors_limited_default_range","repository_suggester_elastic_search","rules_insights_filter_bar_created","sample_network_conn_type","secret_scanning_pattern_alerts_link","security_center_artifact_filters_popover","semantic_similarity_duplicate_issue_detection","session_logs_ungroup_reasoning_text","site_banner_desktop_copilot_app","site_github_app_ga_page","site_global_nav_spark_models_removed","spark_prompt_secret_scanning","spark_server_connection_status","suppress_automated_browser_vitals","swp_forms_disable_octocaptcha","team_review_requested_by_user_filter","track_notifications_settings_usage","turbo_progress_bar_transform","viewscreen_sandbox","warn_inaccessible_attachments","webp_support","workbench_store_readonly"],"login":"12NIKHI","copilotApiOverrideUrl":"https://api.individual.githubcopilot.com","cmcApiUrl":"https://api.github.com/cmc_internal/api"}</script>
+<script crossorigin="anonymous" type="module" src="./config_files/wp-runtime-5647a61ccb6ee6ed.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/fetch-utilities-203b3fe451178bee.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/78205-490cbc32cb03f2c4.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/85924-fb319ed7734a3255.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/34646-fd025d89aebf481f.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/environment-206299963839690a.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/runtime-helpers-1ab84bfcdfd252a7.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/296-dd7acbc3c57bc2df.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/57131-96925ee146d82566.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/816-267fa8a626344744.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/78121-700198d991c19201.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/81683-3566d15213106a0d.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/64458-988347c24883c3dc.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/46740-245323eebf4a2bd5.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/3650-2d2c2aa6afec76de.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/17127-d486438dd582dbb8.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/github-elements-908aaaa22fbfa2a1.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/element-registry-6d4b89e230dbb7e9.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/react-core-096c3abcfb253b21.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/react-lib-57bed375ade723a7.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/63143-7622d55d24560a56.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/79039-3efc4ce0c2830d00.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/88475-734f67255a069671.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/2887-6bb5fc2f7d7910bf.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/62220-0c9944955b4e2cbb.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/26533-c0816c13ac9e6327.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/7088-4eaf1fbdb5e0697b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/9506-5679f156315d844a.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/53320-0a81d3275826594e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/46287-50b124258ef9c356.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/23548-06460d6ad6134b8e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/89627-d6568840e3302a2b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/55682-4f9c532916993730.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/49029-7ca2ead5f497f031.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/99328-0f824473476788e3.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/behaviors-5d83773da9c1079f.js.download" defer="defer"></script>
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/react-core.c5565f91317d019c.module.css">
+<script crossorigin="anonymous" type="module" src="./config_files/61272-f2158b5d00e77e7b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/notifications-global-af6906205a03177b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/57639-c11f2fce6b8a5462.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/81276-145830a72e9e51c9.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/19930-c2749e0e22d03aed.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/codespaces-91d92fa1ee037235.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/98304-e396ebf96aff23e2.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/22511-5019be5cf2f2ee7f.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/99291-403f46a5e087d3f2.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/repositories-503541abbb66307e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/49810-e52c2ee97a6effdf.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/code-menu-4f4e2278287583c6.js.download" defer="defer"></script>
+  
+  <script crossorigin="anonymous" type="module" src="./config_files/primer-react-3b91719938c41514.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/octicons-react-6d4b073f11eb4456.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/97458-4c244b6be0b3304c.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/68751-ed2de1f8d1b6cf6e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/68033-6297462e005d658b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/437-a847efc3619ac5cc.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/41328-eda62e0f5a40da8e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/7463-01c37b66747b726b.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/27600-16d492cfe3f2daa8.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/40294-10bbc157d3d8657d.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/58246-1a0c28ba9704d247.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/55539-e21c0816973ee092.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/94562-4b986a75a6b575f5.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/68735-090bea2cedf32faa.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/83912-3a41dfbe485768d9.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/68469-f17edd3dd842cef2.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/32459-94e9fd388440d6fa.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/40828-506ed5d504a99bf1.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/63000-26b4566c2dff846a.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/30914-aec9d3f9ffacec2e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/33684-b5fb50e53d222306.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/2204-7d7c8c4b2a0b14ff.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/18222-96d101a36355a138.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/66231-9edae82bedef9e8c.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/79407-bdbb17fc41721ff5.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/50288-1de65962d8b34196.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/88609-c49714a92e028d10.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/14872-dc4efce78d3cc012.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/68212-3c67a22cebdeb0a9.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/75577-62e44f54da4cb0ab.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/76987-bb1ea54dc579a31d.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/53275-57ffc9666337073c.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/9094-a0f41f8097561274.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/47358-6b113435873ad9e1.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/27883-15abfd0edcc22512.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/86539-24c91379106b72a4.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/50110-6738dab2949218b7.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/98451-f6090a80d7d6db5e.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/33897-281850c35cbfa532.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/62392-1da446bf7bf057f2.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/59222-8ebfff860151b26a.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/32020-6b8c54eb70f88334.js.download" defer="defer"></script>
+<script crossorigin="anonymous" type="module" src="./config_files/code-view-30a14ab51108db7a.js.download" defer="defer"></script>
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-react-css.89ed847d1a8f127f.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/14872.00ecb03785f60cdd.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/27883.c4c4e224fcb49b91.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/code-view.e8abda29ecdf6160.module.css">
+
+
+  <title>YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ</title>
+
+
+
+  <meta name="route-pattern" content="/:user_id/:repository" data-turbo-transient="">
+  <meta name="route-controller" content="files" data-turbo-transient="">
+  <meta name="route-action" content="disambiguate" data-turbo-transient="">
+  <meta name="fetch-nonce" content="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568">
+
+    
+  <meta name="current-catalog-service-hash" content="f3abb0cc802f3d7b95fc8762b94bdcb13bf39634c40c357301c4aa1d67a256fb">
+
+
+  <meta name="request-id" content="5539:351787:15B0EB0:184E95B:6A44F1C3" data-turbo-transient="true"><meta name="html-safe-nonce" content="5d88d748988eadc65d4ecb43a5a3ba934f3dab3b5d9379a863c161673b35023c" data-turbo-transient="true"><meta name="visitor-payload" content="eyJyZWZlcnJlciI6Imh0dHBzOi8vZ2l0aHViLmNvbS9ZTlVEQVlLSVJBTi9ST0ktVXNpbmctQ29tcHV0ZXItVmlzaW9uLWFuZC1SYWJiaXRNUS9ibG9iL21haW4vUkVBRE1FLm1kIiwicmVxdWVzdF9pZCI6IjU1Mzk6MzUxNzg3OjE1QjBFQjA6MTg0RTk1Qjo2QTQ0RjFDMyIsInZpc2l0b3JfaWQiOiIyMjM1OTE2NzYwMTE2OTczNTI5IiwicmVnaW9uX2VkZ2UiOiJjZW50cmFsaW5kaWEiLCJyZWdpb25fcmVuZGVyIjoiaWFkIn0=" data-turbo-transient="true"><meta name="visitor-hmac" content="f9d36c005efc1af430fe218cdf8108ef5de5e32a837ce82590b519976fc09e8b" data-turbo-transient="true">
+
+
+    <meta name="hovercard-subject-tag" content="repository:1282728933" data-turbo-transient="">
+
+
+  <meta name="github-keyboard-shortcuts" content="repository,copilot" data-turbo-transient="true">
+  
+
+  <meta name="selected-link" value="repo_source" data-turbo-transient="">
+  <link rel="assets" href="https://github.githubassets.com/">
+
+    <meta name="google-site-verification" content="Apib7-x98H0j5cPqHWwSMm6dNU4GmODRoqxLiDzdx9I">
+
+<meta name="octolytics-url" content="https://collector.github.com/github/collect"><meta name="octolytics-actor-id" content="224766043"><meta name="octolytics-actor-login" content="12NIKHI"><meta name="octolytics-actor-hash" content="f5b05e0752a6ed064329a9e22f77d6cf944cce2fb01c1e6a14eb03bccd43cde0">
+
+
+
+
+
+  <meta name="analytics-location" content="/&lt;user-name&gt;/&lt;repo-name&gt;" data-turbo-transient="true">
+
+  
+
+
+
+
+    <meta name="user-login" content="12NIKHI">
+
+  <link rel="sudo-modal" href="https://github.com/sessions/sudo_modal">
+
+    <meta name="viewport" content="width=device-width">
+
+    
+
+      <meta name="description" content="Contribute to YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ development by creating an account on GitHub.">
+
+      <link rel="search" type="application/opensearchdescription+xml" href="https://github.com/opensearch.xml" title="GitHub">
+
+    <link rel="fluid-icon" href="https://github.com/fluidicon.png" title="GitHub">
+    <meta property="fb:app_id" content="1401488693436528">
+    <meta name="apple-itunes-app" content="app-id=1477376905, app-argument=https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">
+
+      <meta name="twitter:image" content="https://opengraph.githubassets.com/c76b9ef68fe490a60fdf15f3fb28c388cbb445fcbcc9cad57c642560f00c7ed1/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta name="twitter:site" content="@github"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta name="twitter:description" content="Contribute to YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ development by creating an account on GitHub.">
+  <meta property="og:image" content="https://opengraph.githubassets.com/c76b9ef68fe490a60fdf15f3fb28c388cbb445fcbcc9cad57c642560f00c7ed1/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta property="og:image:alt" content="Contribute to YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ development by creating an account on GitHub."><meta property="og:image:width" content="1200"><meta property="og:image:height" content="600"><meta property="og:site_name" content="GitHub"><meta property="og:type" content="object"><meta property="og:title" content="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta property="og:url" content="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta property="og:description" content="Contribute to YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ development by creating an account on GitHub.">
+  
+
+
+      <link rel="shared-web-socket" href="wss://alive.github.com/_sockets/u/224766043/ws?session=eyJ2IjoiVjMiLCJ1IjoyMjQ3NjYwNDMsInMiOjIxNzE4NzQ5MjIsImMiOjE0MzAzNTc0NTUsInQiOjE3ODI5MDMyNDN9--5fb58796f5c5a811b5e290650b984b8644e8c90ab8ce400eadcbc57c97535b12" data-refresh-url="/_alive" data-session-id="bfcca2b143d5c96cc2933f1e0158d263bfe9399090bb84b54d6322e9fcdd1ec0">
+      <link rel="shared-web-socket-src" href="https://github.com/assets-cdn/worker/socket-worker-278b39a73cbffbc0.js">
+
+      <link rel="service-worker-src" href="https://github.com/assets-cdn/worker/service-worker-cc8232664d0b15cf.js?current_user=12NIKHI&amp;errors_url=https%3A%2F%2Fapi.github.com%2F_private%2Fbrowser%2Ferrors&amp;release=6251f5947109a292e860b849a3887ab358256c70&amp;actor_id=224766043&amp;is_staff=false&amp;analytics_collector_url=https%3A%2F%2Fcollector.github.com%2Fgithub%2Fcollect">
+
+      <meta name="hostname" content="github.com">
+
+
+      <meta name="keyboard-shortcuts-preference" content="all">
+      <meta name="hovercards-preference" content="true">
+      <meta name="announcement-preference-hovercard" content="true">
+
+        <meta name="expected-hostname" content="github.com">
+
+
+  <meta http-equiv="x-pjax-version" content="85d2b3cb0659b0a791f574e137052b1915c2bec3a25b1662754d8357a20c78ef" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-csp-version" content="cb4cffb7c023f774818cf728eb860debf1fc8ecf88a20487b238da276df1eb7d" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-css-version" content="e467789bdc58a2f1dbf2e3078cfdbec15e9b01957ea170c2bd4e33a7065cb040" data-turbo-track="reload">
+  <meta http-equiv="x-pjax-js-version" content="b35ebc59c0fb02c2210b71c251a0894afe181fe7b14c0c156ba1cedcaddc6fe4" data-turbo-track="reload">
+
+  <meta name="turbo-cache-control" content="no-preview" data-turbo-transient="">
+
+      <meta name="turbo-cache-control" content="no-cache" data-turbo-transient="">
+
+    <meta data-hydrostats="publish">
+
+  <meta name="go-import" content="github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ git https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ.git">
+
+  <meta name="octolytics-dimension-user_id" content="148639806"><meta name="octolytics-dimension-user_login" content="YNUDAYKIRAN"><meta name="octolytics-dimension-repository_id" content="1282728933"><meta name="octolytics-dimension-repository_nwo" content="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"><meta name="octolytics-dimension-repository_public" content="true"><meta name="octolytics-dimension-repository_is_fork" content="false"><meta name="octolytics-dimension-repository_network_root_id" content="1282728933"><meta name="octolytics-dimension-repository_network_root_nwo" content="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">
+  <meta name="current-repo-nwo" content="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">
+
+
+
+    
+
+    <meta name="turbo-body-classes" content="logged-in env-production page-responsive">
+  <meta name="disable-turbo" content="false">
+
+
+  <meta name="browser-stats-url" content="https://api.github.com/_private/browser/stats">
+
+  <meta name="browser-errors-url" content="https://api.github.com/_private/browser/errors">
+
+    <meta name="release" content="6251f5947109a292e860b849a3887ab358256c70" data-turbo-track="reload">
+  <meta name="ui-target" content="full">
+
+  <link rel="mask-icon" href="https://github.githubassets.com/assets/pinned-octocat-093da3e6fa40.svg" color="#000000">
+  <link rel="alternate icon" class="js-site-favicon" type="image/png" href="https://github.githubassets.com/favicons/favicon.png">
+  <link rel="icon" class="js-site-favicon" type="image/svg+xml" href="https://github.githubassets.com/favicons/favicon.svg" data-base-href="https://github.githubassets.com/favicons/favicon">
+
+<meta name="theme-color" content="#1e2327">
+<meta name="color-scheme" content="light dark">
+
+  <meta name="msapplication-TileImage" content="/windows-tile.png">
+  <meta name="msapplication-TileColor" content="#ffffff">
+
+  <link rel="manifest" href="https://github.com/manifest.json" crossorigin="use-credentials">
+
+  <link rel="stylesheet" type="text/css" href="./config_files/81758.fdaf9f6daf87dafe.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/38963.8add87f5d74d588c.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/7872.f5dd78edd836c21a.module.css" crossorigin="anonymous"><style id="ms-consent-banner-main-styles">.w8hcgFksdo30C8w-bygqu{color:#000}.ydkKdaztSS0AeHWIeIHsQ a{color:#0067B8}.erL690_8JwUW-R4bJRcfl{background-color:#EBEBEB;border:none;color:#000}.erL690_8JwUW-R4bJRcfl:enabled:hover{color:#000;background-color:#DBDBDB;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:none}.erL690_8JwUW-R4bJRcfl:enabled:focus{background-color:#DBDBDB;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:2px solid #000}.erL690_8JwUW-R4bJRcfl:disabled{opacity:1;color:rgba(0,0,0,0.2);background-color:rgba(0,0,0,0.2);border:none}._1zNQOqxpBFSokeCLGi_hGr{border:none;background-color:#0067B8;color:#fff}._1zNQOqxpBFSokeCLGi_hGr:enabled:hover{color:#fff;background-color:#0067B8;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:none}._1zNQOqxpBFSokeCLGi_hGr:enabled:focus{background-color:#0067B8;box-shadow:0px 4px 10px rgba(0,0,0,0.25);border:2px solid #000}._1zNQOqxpBFSokeCLGi_hGr:disabled{opacity:1;color:rgba(0,0,0,0.2);background-color:rgba(0,120,215,0.2);border:none}._23tra1HsiiP6cT-Cka-ycB{position:relative;display:flex;z-index:9999;width:100%;background-color:#F2F2F2;justify-content:space-between;text-align:left}div[dir="rtl"]._23tra1HsiiP6cT-Cka-ycB{text-align:right}._1Upc2NjY8AlDn177YoVj0y{margin:0;padding-left:5%;padding-top:8px;padding-bottom:8px}div[dir="rtl"] ._1Upc2NjY8AlDn177YoVj0y{margin:0;padding:8px 5% 8px 0;float:none}._23tra1HsiiP6cT-Cka-ycB svg{fill:none;max-width:none;max-height:none}._1V_hlU-7jdtPiooHMu89BB{display:table-cell;padding:12px;width:24px;height:24px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:24px;line-height:0}.f6QKJD7fhSbnJLarTL-W-{display:table-cell;vertical-align:middle;padding:0;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:13px;line-height:16px}.f6QKJD7fhSbnJLarTL-W- a{text-decoration:underline}._2j0fmugLb1FgYz6KPuB91w{display:inline-block;margin-left:5%;margin-right:5%;min-width:40%;min-width:calc((150px + 3 * 4px) * 2 + 150px);min-width:-webkit-fit-content;min-width:-moz-fit-content;min-width:fit-content;align-self:center;position:relative}._1XuCi2WhiqeWRUVp3pnFG3{margin:4px;padding:5px;min-width:150px;min-height:36px;vertical-align:top;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._1XuCi2WhiqeWRUVp3pnFG3:focus{box-sizing:border-box}._1XuCi2WhiqeWRUVp3pnFG3:disabled{cursor:not-allowed}._2bvsb3ubApyZ0UGoQA9O9T{display:block;position:fixed;z-index:10000;top:0;left:0;width:100%;height:100%;background-color:rgba(255,255,255,0.6);overflow:auto;text-align:left}div[dir="rtl"]._2bvsb3ubApyZ0UGoQA9O9T{text-align:right}div[dir="rtl"] ._2bvsb3ubApyZ0UGoQA9O9T{left:auto;right:0}.AFsJE948muYyzCMktdzuk{position:relative;top:8%;margin-bottom:40px;margin-left:auto;margin-right:auto;box-sizing:border-box;width:640px;background-color:#fff;border:1px solid #0067B8}._3kWyBRbW_dgnMiEyx06Fu4{float:right;z-index:1;margin:2px;padding:12px;border:none;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:13px;line-height:13px;display:flex;align-items:center;text-align:center;color:#666;background-color:#fff}div[dir="rtl"] ._3kWyBRbW_dgnMiEyx06Fu4{margin:2px;padding:12px;float:left}.uCYvKvHXrhjNgflv1VqdD{position:static;margin-top:36px;margin-left:36px;margin-right:36px}._17pX1m9O_W--iZbDt3Ta5r{margin-top:0;margin-bottom:12px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:20px;line-height:24px;text-transform:none}._1kBkHQ1V1wu3kl-YcLgUr6{height:446px;overflow:auto}._20_nXDf6uFs9Q6wxRXG-I-{margin-top:0;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px}._20_nXDf6uFs9Q6wxRXG-I- a{text-decoration:underline}dl._2a0NH_GDQEQe5Ynfo7suVH{margin-top:36px;margin-bottom:0;padding:0;list-style:none;text-transform:none}dt._3j_LCPv7fyXv3A8FIXVwZ4{margin-top:20px;float:none;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:18px;line-height:24px;list-style:none}.k-vxTGFbdq1aOZB2HHpjh{margin:0;padding:0;border:none}._2Bucyy75c_ogoU1g-liB5R{margin:0;padding:0;border-bottom:none;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:600;font-size:18px;line-height:24px;text-transform:none}._63gwfzV8dclrsl2cfd90r{display:inline-block;margin-top:0;margin-bottom:13px;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px}._1l8wM_4mRYGz3Iu7l3BZR7{display:block}._2UE03QS02aZGkslegN_F-i{display:inline-block;position:relative;left:5px;margin-bottom:13px;margin-right:34px;padding:3px}div[dir="rtl"] ._2UE03QS02aZGkslegN_F-i{margin:0 0 13px 34px;padding:3px;float:none}div[dir="rtl"] ._2UE03QS02aZGkslegN_F-i{left:auto;right:5px}._23tra1HsiiP6cT-Cka-ycB *::before,._2bvsb3ubApyZ0UGoQA9O9T *::before,._23tra1HsiiP6cT-Cka-ycB *::after,._2bvsb3ubApyZ0UGoQA9O9T *::after{box-sizing:inherit}._1HSFn0HzGo6w4ADApV8-c4{outline:2px solid rgba(0,0,0,0.8)}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2{display:inline-block;position:relative;margin-top:0;margin-left:0;margin-right:0;height:0;width:0;border-radius:0;cursor:pointer;outline:none;box-sizing:border-box;-webkit-appearance:none;-moz-appearance:none;appearance:none}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2+label::before{display:block;position:absolute;top:5px;left:3px;height:19px;width:19px;content:"";border-radius:50%;border:1px solid #000;background-color:#fff}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2+label::before{left:auto;right:3px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::before{border:1px solid #0067B8}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:rgba(0,0,0,0.8)}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:hover::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::before{border:1px solid #0067B8}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:#000}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:not(:disabled)+label:focus::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked+label::after{display:block;position:absolute;top:10px;left:8px;height:9px;width:9px;content:"";border-radius:50%;background-color:#000}div[dir="rtl"] input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked+label::after{left:auto;right:8px}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled+label{cursor:not-allowed}input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled+label::before{border:1px solid rgba(0,0,0,0.2);background-color:rgba(0,0,0,0.2)}._3RJzeL3l9Rl_lAQEm6VwdX{display:block;position:static;float:right;margin-top:0;margin-bottom:0;margin-left:19px;margin-right:0;padding-top:0;padding-bottom:0;padding-left:8px;padding-right:0;width:80%;width:calc(100% - 19px);font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-transform:none;cursor:pointer;box-sizing:border-box}div[dir="rtl"] ._3RJzeL3l9Rl_lAQEm6VwdX{margin:0 19px 0 0;padding:0 8px 0 0;float:left}.nohp3sIG12ZBhzcMnPala{margin-top:20px;margin-bottom:48px}._2uhaEsmeotZ3P-M0AXo2kF{padding:0;width:278px;height:36px;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._2uhaEsmeotZ3P-M0AXo2kF:focus{box-sizing:border-box}._2uhaEsmeotZ3P-M0AXo2kF:disabled{cursor:not-allowed}._3tOu1FJ59c_xz_PmI1lKV5{float:right;padding:0;width:278px;height:36px;cursor:pointer;font-family:Segoe UI, SegoeUI, Arial, sans-serif;font-style:normal;font-weight:normal;font-size:15px;line-height:20px;text-align:center}._3tOu1FJ59c_xz_PmI1lKV5:focus{box-sizing:border-box}._3tOu1FJ59c_xz_PmI1lKV5:disabled{cursor:not-allowed}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0;padding:0;float:left}@media only screen and (max-width: 768px){._2j0fmugLb1FgYz6KPuB91w,._1Upc2NjY8AlDn177YoVj0y{padding-top:8px;padding-bottom:12px;padding-left:3.75%;padding-right:3.75%;margin:0;width:92.5%}._23tra1HsiiP6cT-Cka-ycB{display:block}._1XuCi2WhiqeWRUVp3pnFG3{margin-bottom:8px;margin-left:0;margin-right:0;width:100%}._2bvsb3ubApyZ0UGoQA9O9T{overflow:hidden}.AFsJE948muYyzCMktdzuk{top:1.8%;width:93.33%;height:96.4%;overflow:hidden}.uCYvKvHXrhjNgflv1VqdD{margin-top:24px;margin-left:24px;margin-right:24px;height:100%}._1kBkHQ1V1wu3kl-YcLgUr6{height:62%;height:calc(100% - 188px);min-height:50%}._2uhaEsmeotZ3P-M0AXo2kF{width:100%}._3tOu1FJ59c_xz_PmI1lKV5{margin-bottom:12px;margin-left:0;width:100%}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0 0 12px 0;padding:0;float:none}}@media only screen and (max-width: 768px) and (orientation: landscape), only screen and (max-height: 260px), only screen and (max-width: 340px){.AFsJE948muYyzCMktdzuk{overflow:auto}}@media only screen and (max-height: 260px), only screen and (max-width: 340px){._1XuCi2WhiqeWRUVp3pnFG3{min-width:0}._3kWyBRbW_dgnMiEyx06Fu4{padding:3%}.uCYvKvHXrhjNgflv1VqdD{margin-top:3%;margin-left:3%;margin-right:3%}._17pX1m9O_W--iZbDt3Ta5r{margin-bottom:3%}._1kBkHQ1V1wu3kl-YcLgUr6{height:calc(79% - 64px)}.nohp3sIG12ZBhzcMnPala{margin-top:5%;margin-bottom:10%}._3tOu1FJ59c_xz_PmI1lKV5{margin-bottom:3%}div[dir="rtl"] ._3tOu1FJ59c_xz_PmI1lKV5{margin:0 0 3% 0;padding:0;float:none}}
+</style><style type="text/css" id="ms-consent-banner-theme-styles">._23tra1HsiiP6cT-Cka-ycB {
+            background-color: #24292f !important;
+        }.w8hcgFksdo30C8w-bygqu {
+            color: #ffffff !important;
+        }.ydkKdaztSS0AeHWIeIHsQ a {
+            color: #d8b9ff !important;
+        }._2bvsb3ubApyZ0UGoQA9O9T {
+            background-color: rgba(23, 23, 23, 0.8) !important;
+        }.AFsJE948muYyzCMktdzuk {
+            background-color: #24292f !important;
+            border: 1px solid #d8b9ff !important;
+        }._3kWyBRbW_dgnMiEyx06Fu4 {
+            color: #d8b9ff !important;
+            background-color: #24292f !important;
+        }._1zNQOqxpBFSokeCLGi_hGr {
+            border: 1px solid #ffffff !important;
+            background-color: #ffffff !important;
+            color: #1f2328 !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:enabled:hover {
+            color: #1f2328 !important;
+            background-color: #d8b9ff !important;
+            box-shadow: none !important;
+            border: 1px solid transparent !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:enabled:focus {
+            background-color: #d8b9ff !important;
+            box-shadow: none !important;
+            border: 2px solid #ffffff !important;
+        }._1zNQOqxpBFSokeCLGi_hGr:disabled {
+            opacity: 0.5 !important;
+            color: #1f2328 !important;
+            background-color: #ffffff !important;
+            border: 1px solid transparent !important;
+        }.erL690_8JwUW-R4bJRcfl {
+            border: 1px solid #eaeef2 !important;
+            background-color: #32383f !important;
+            color: #ffffff !important;
+        }.erL690_8JwUW-R4bJRcfl:enabled:hover {
+            color: #ffffff !important;
+            background-color: #24292f !important;
+            box-shadow: none !important;
+            border: 1px solid #ffffff !important;
+        }.erL690_8JwUW-R4bJRcfl:enabled:focus {
+            background-color: #24292f !important;
+            box-shadow: none !important;
+            border: 2px solid #6e7781 !important;
+        }.erL690_8JwUW-R4bJRcfl:disabled {
+            opacity: 0.5 !important;
+            color: #ffffff !important;
+            background-color: #424a53 !important;
+            border: 1px solid #6e7781 !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label::before {
+            border: 1px solid #d8b9ff !important;
+            background-color: #24292f !important;
+        }._1HSFn0HzGo6w4ADApV8-c4 {
+            outline: 2px solid #ffffff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:checked + label::after {
+            background-color: #d8b9ff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:hover::before {
+            border: 1px solid #ffffff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:hover::after {
+            background-color: #ffffff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:focus::before {
+            border: 1px solid #ffffff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2 + label:focus::after {
+            background-color: #d8b9ff !important;
+        }input[type="radio"]._1dp8Vp5m3HwAqGx8qBmFV2:disabled + label::before {
+            border: 1px solid rgba(227, 227, 227, 0.2) !important;
+            background-color: rgba(227, 227, 227, 0.2) !important;
+        }</style><link rel="stylesheet" type="text/css" href="./config_files/99654.26ae892292ddfea9.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/53839.b5227026e330c7b7.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/5746.1bd27101f7a4e001.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/96037.a2ab76706d203e10.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/55132.8518ae9b987bb0b1.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/60728.dae76f07b6d0c553.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/78816.b1ac1250d6f21536.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/19065.0ce6a486eb151248.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/29842.505d10306fd3ac9d.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/33255.f583b26a4050dfac.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/30763.8c97cce1bc42f3ff.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/12377.433c4a71e4cd51a6.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/7346.fb1e166c23aa6cee.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/18573.f04a9c7722fb2368.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/33916.4c2753980c4c4313.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/43874.12e54dbd401b1699.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/2414.f44abb756e7943f0.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/11800.6821ff613c7e9e94.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/862.88027e7f57e51489.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/89668.4182790480796470.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/29690.97f4f26c26e19884.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/51249.188c86e3ff433dec.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/46403.dfa23033fb812c08.module.css" crossorigin="anonymous"><link rel="stylesheet" type="text/css" href="./config_files/90735.e0a813966421c9bf.module.css" crossorigin="anonymous"></head>
+
+  <body class="logged-in env-production page-responsive" style="word-wrap: break-word;">
+    <div data-turbo-body="" class="logged-in env-production page-responsive" style="word-wrap: break-word;">
+      <div id="__primerPortalRoot__" style="z-index: 1000; position: absolute; width: 100%;" data-turbo-permanent=""></div>
+      
+
+    <div class="position-relative header-wrapper js-header-wrapper ">
+      <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#start-of-content" data-skip-target-assigned="false" class="tmp-p-3 color-bg-accent-emphasis color-fg-on-emphasis show-on-focus js-skip-to-content">Skip to content</a>
+
+      <span data-view-component="true" class="progress-pjax-loader Progress position-fixed width-full">
+    <span style="width: 0%;" data-view-component="true" class="Progress-item progress-pjax-loader-bar left-0 top-0 color-bg-accent-emphasis"></span>
+</span>      
+      <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-react-css.89ed847d1a8f127f.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/keyboard-shortcuts-dialog.fceceb899f3dc6af.module.css">
+
+<react-partial partial-name="keyboard-shortcuts-dialog" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false" data-catalyst="" class="loaded">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"docsUrl":"https://docs.github.com/get-started/accessibility/keyboard-shortcuts"}}</script>
+  <div data-target="react-partial.reactRoot"><div class="d-none"></div></div>
+</react-partial>
+
+
+
+
+
+      
+
+          
+
+                  <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-react-css.89ed847d1a8f127f.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/14872.00ecb03785f60cdd.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/global-nav-bar.cce3adbf3f560161.module.css">
+
+<react-partial partial-name="global-nav-bar" data-ssr="true" data-attempted-ssr="true" data-react-profiling="false" data-catalyst="" class="loaded">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"contextRegion":{"crumbs":[{"crumb_type":"user","label":"YNUDAYKIRAN","is_root":false,"href":"/YNUDAYKIRAN"},{"crumb_type":"repository","label":"ROI-Using-Computer-Vision-and-RabbitMQ","is_root":false,"href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"}],"localNavigation":[{"id":"code","icon":"code","label":"Code","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","selectedLinks":["repo_source","repo_downloads","repo_commits","repo_releases","repo_tags","repo_branches","repo_packages","repo_deployments","repo_attestations"],"popoverTarget":false,"commandId":"repositories:go-to-code","reactNav":{"appTarget":"code-view","anchor":"code-view-repo-link"},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"issues","icon":"issue-opened","label":"Issues","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/issues","selectedLinks":["repo_issues","repo_labels","repo_milestones"],"count":0,"popoverTarget":false,"commandId":"repositories:go-to-issues","reactNav":{"appTarget":"issues-react","anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"pull-requests","icon":"git-pull-request","label":"Pull requests","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/pulls","selectedLinks":["repo_pulls","checks"],"count":0,"popoverTarget":false,"commandId":"repositories:go-to-pull-requests","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"agents","icon":"agent","label":"Agents","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/agents?author=12NIKHI","selectedLinks":["repo_agents","repo_agents_task"],"popoverTarget":false,"commandId":"repositories:go-to-agents","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"actions","icon":"play","label":"Actions","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/actions","selectedLinks":["repo_actions"],"popoverTarget":false,"commandId":"repositories:go-to-actions","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"projects","icon":"table","label":"Projects","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/projects","selectedLinks":["repo_projects","new_repo_project","repo_project"],"popoverTarget":false,"commandId":"repositories:go-to-projects","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"security-and-quality","icon":"shield","label":"Security and quality","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/security","selectedLinks":["security","overview","alerts","policy","token_scanning","code_scanning"],"count":0,"popoverTarget":false,"commandId":"repositories:go-to-security","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}},{"id":"insights","icon":"graph","label":"Insights","href":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/pulse","selectedLinks":["repo_graphs","repo_contributors","dependency_graph","dependabot_updates","pulse","people","community"],"popoverTarget":false,"commandId":"repositories:go-to-insights","reactNav":{"appTarget":null,"anchor":null},"turboNav":{"frame":"repo-content-turbo-frame"}}],"localNavigationUpdateChannel":"eyJjIjoicmVwbzoxMjgyNzI4OTMzOnVzZXI6MjI0NzY2MDQzOnNldHRpbmdzIiwidCI6MTc4MjkwMzI0Mn0=--1d2e3c5513aea5943c14219636e18a7fdd5a43f29cd564df2dc611353d5d7e71","selectedLink":null,"currentPath":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"},"userMenu":{"owner":{"login":"12NIKHI","name":"Topalle Nikhila","avatarUrl":"https://avatars.githubusercontent.com/u/224766043?v=4"}},"headerLogo":{"href":"/","aria-label":"Homepage "},"notifications":{"indicatorMode":"none","websocketChannel":"eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MjI0NzY2MDQzIiwidCI6MTc4MjkwMzI0Mn0=--d03d7958db3040da1a8587b44ccbdc4fa4130f3c9fdf34917a070110368c9929","fetchIndicatorSrc":"/notifications/indicator","fetchIndicatorEnabled":true},"issues":{"href":"/issues"},"pulls":{"href":"/pulls"},"contributedRepos":{"href":"/repos"},"copilot":{"show":true,"showAgentsButton":false,"copilotChatUrl":"/github-copilot/chat?skip_anchor=true","copilotApiUrl":"https://api.individual.githubcopilot.com"},"search":{"show":true,"showCommandPalette":false,"isSearchPage":false,"isJumpToSearch":false,"searchContext":{"scope":"repo:YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","current_repo_name":"ROI-Using-Computer-Vision-and-RabbitMQ","current_repo_nwo":"YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","user_id":"YNUDAYKIRAN"}},"enterpriseBanner":{"show":false},"globalTransactionalMessage":null,"payloadsUrl":"/_global-navigation/payloads.json?v=1"}}</script>
+  <div data-target="react-partial.reactRoot"><link rel="preload" as="image" href="./config_files/224766043"><header role="banner" aria-label="Global navigation menu" class="GlobalNav styles-module__appHeader__YzYWk prc-Stack-Stack-UQ9k6" data-gap="none" data-direction="vertical" data-align="stretch" data-wrap="nowrap" data-justify="start" data-padding="none"><div class="prc-Stack-Stack-UQ9k6" data-direction="horizontal" data-align="center" data-wrap="nowrap" data-justify="center" data-padding="none"><div data-testid="top-nav-left" class="styles-module__left__Fylw7 styles-module__withLocalNavigation__rjTJ_ prc-Stack-Stack-UQ9k6" data-gap="condensed" data-direction="horizontal" data-align="stretch" data-wrap="nowrap" data-justify="start" data-padding="normal"><div data-loading-wrapper="true"><button data-component="IconButton" type="button" aria-haspopup="dialog" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_apb_"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-three-bars" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M1 2.75A.75.75 0 0 1 1.75 2h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 2.75Zm0 5A.75.75 0 0 1 1.75 7h12.5a.75.75 0 0 1 0 1.5H1.75A.75.75 0 0 1 1 7.75ZM1.75 12h12.5a.75.75 0 0 1 0 1.5H1.75a.75.75 0 0 1 0-1.5Z"></path></svg></button></div><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_apb_" popover="auto">Open menu</span><div class="d-none"></div><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderHome__nkA_U prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_cpb_" href="https://github.com/" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-mark-github" viewBox="0 0 24 24" width="32" height="32" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" popover="auto"><span id="_R_cpb_">Homepage <span class="prc-src-InternalVisuallyHidden-2YaI6">(<!-- -->g then d<!-- -->)</span></span><span class="prc-TooltipV2-KeybindingHintContainer-Ymj-3 prc-TooltipV2-HasTextBefore-fdOXj" aria-hidden="true" data-component="Tooltip.KeybindingHintContainer"><kbd class="prc-KeybindingHint-KeybindingHint-qpYIs prc-Text-Text-9mHv3" data-testid="keybinding-hint" data-component="KeybindingHint"><span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">g</span><span aria-hidden="true">G</span></span><span class="prc-src-InternalVisuallyHidden-2YaI6">then</span> <span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">d</span><span aria-hidden="true">D</span></span></kbd></span></span><div class="d-none"></div></div><div data-testid="top-nav-center" class="styles-module__center__R3QRv styles-module__withLocalNavigation__rjTJ_ prc-Stack-Stack-UQ9k6" data-gap="condensed" data-direction="horizontal" data-align="stretch" data-wrap="nowrap" data-justify="start" data-padding="normal"><nav class="styles-module__contextRegion__VbSp2 prc-Breadcrumbs-BreadcrumbsBase-3Gb-B" aria-label="Breadcrumbs" data-overflow="menu" data-variant="normal" data-component="Breadcrumbs"><ol class="prc-Breadcrumbs-BreadcrumbsList-BKjpe"><li class="prc-Breadcrumbs-ItemWrapper-k0NLn"><a class="styles-module__contextCrumb__IzGIq prc-Breadcrumbs-Item-jcraJ" data-component="Breadcrumbs.Item" href="https://github.com/YNUDAYKIRAN" data-discover="true"><span class="">YNUDAYKIRAN</span></a></li><li class="prc-Breadcrumbs-ItemWrapper-k0NLn"><a class="styles-module__contextCrumb__IzGIq styles-module__contextCrumbLast__tI2e3 styles-module__repoPickerCrumb__dk81Q prc-Breadcrumbs-Item-jcraJ" data-component="Breadcrumbs.Item" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-discover="true">ROI-Using-Computer-Vision-and-RabbitMQ</a><div class="d-none"></div><button data-component="IconButton" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk styles-module__contextCrumb__IzGIq styles-module__repoPickerDropdownButton__WjHYX prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="small" data-variant="invisible" aria-labelledby="_R_rmj9b_" id="_R_3mj9b_" style="anchor-name: --anchored-overlay-anchor-_R_3mj9bH1_;"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" popover="auto"><span id="_R_rmj9b_">Switch repository<span class="prc-src-InternalVisuallyHidden-2YaI6">(<!-- -->alt shift r<!-- -->)</span></span><span class="prc-TooltipV2-KeybindingHintContainer-Ymj-3 prc-TooltipV2-HasTextBefore-fdOXj" aria-hidden="true" data-component="Tooltip.KeybindingHintContainer"><kbd class="prc-KeybindingHint-KeybindingHint-qpYIs prc-Text-Text-9mHv3" data-testid="keybinding-hint" data-component="KeybindingHint"><span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">alt</span><span aria-hidden="true">Alt</span> <span class="prc-src-InternalVisuallyHidden-2YaI6">shift</span><span aria-hidden="true">⇧</span> <span class="prc-src-InternalVisuallyHidden-2YaI6">r</span><span aria-hidden="true">R</span></span></kbd></span></span></li></ol></nav><div class="Search-module__searchButtonGroup__aetw5 prc-ButtonGroup-ButtonGroup-vFUrY" data-component="ButtonGroup"><div class="prc-ButtonGroup-Item-PqvDl"><button data-component="Button" type="button" aria-label="Search or jump to…" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ Search-module__searchButton__aiE0a" data-loading="false" data-size="medium" data-variant="invisible"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-search" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3"><span class="Search-module__placeholder__p9hbG Search-module__text__veSYi Search-module__value__TFoak">Type <kbd class="Search-module__kbd__WCskr">/</kbd> to search</span></span></span></button></div><div class="prc-ButtonGroup-Item-PqvDl"></div></div><button data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ Search-module__smallSearchButton___8Gvn prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_2l9b_"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-search" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" popover="auto"><span id="_R_2l9b_">Search or jump to…<span class="prc-src-InternalVisuallyHidden-2YaI6">(<!-- -->forward slash<!-- -->)</span></span><span class="prc-TooltipV2-KeybindingHintContainer-Ymj-3 prc-TooltipV2-HasTextBefore-fdOXj" aria-hidden="true" data-component="Tooltip.KeybindingHintContainer"><kbd class="prc-KeybindingHint-KeybindingHint-qpYIs prc-Text-Text-9mHv3" data-testid="keybinding-hint" data-component="KeybindingHint"><span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">forward slash</span><span aria-hidden="true">/</span></span></kbd></span></span><div class="d-none"></div><div class="d-none"><qbsearch-input class="search-input" data-scope="repo:YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="PysrqtjCVJtSvxy6xu-8Fnjl3WTXd_tQBE9BUS1LNP7umG6k3GH0pOJAhUVgjGJ6aSqvrY3005NYwNqKS3pVGQ" data-max-custom-scopes="10" data-header-redesign-enabled="true" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-current-org="" data-current-owner="YNUDAYKIRAN" data-logged-in="true" data-copilot-chat-enabled="true" data-nl-search-enabled="false" data-catalyst="">
+  <div class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center height-auto color-bg-transparent border-0 color-fg-subtle mx-0" data-action="click:qbsearch-input#searchInputContainerClicked">
+
+    <input type="hidden" name="type" class="js-site-search-type-field">
+
+    
+<div class="Overlay--hidden " data-modal-dialog-overlay="">
+  <modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" id="search-suggestions-dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true" class="Overlay Overlay--width-medium Overlay--height-auto">
+      <h1 id="search-suggestions-dialog-header" class="sr-only">Search code, repositories, users, issues, pull requests...</h1>
+    <div class="Overlay-body Overlay-body--paddingNone">
+      
+          <div data-view-component="true">        <div class="search-suggestions position-absolute width-full color-shadow-large border color-fg-default color-bg-default overflow-hidden d-flex flex-column query-builder-container" style="border-radius: 12px;" data-target="qbsearch-input.queryBuilderContainer" hidden="">
+          <!-- '"` --><!-- </textarea></xmp> --><form id="query-builder-test-form" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" accept-charset="UTF-8" method="get">
+  <query-builder data-target="qbsearch-input.queryBuilder" id="query-builder-query-builder-test" data-filter-key=":" data-view-component="true" class="QueryBuilder search-query-builder" data-min-width="300" data-catalyst="">
+    <div class="FormControl FormControl--fullWidth">
+      <label id="query-builder-test-label" for="query-builder-test" class="FormControl-label sr-only">
+        Search
+      </label>
+      <div class="QueryBuilder-StyledInput width-fit " data-target="query-builder.styledInput">
+          <span id="query-builder-test-leadingvisual-wrap" class="FormControl-input-leadingVisualWrap QueryBuilder-leadingVisualWrap">
+            <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search FormControl-input-leadingVisual">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+          </span>
+        <div data-target="query-builder.styledInputContainer" class="QueryBuilder-StyledInputContainer">
+          <div aria-hidden="true" class="QueryBuilder-StyledInputContent" data-target="query-builder.styledInputContent"></div>
+          <div class="QueryBuilder-InputWrapper">
+            <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"><span></span></div>
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-d44fd003-43ff-402e-8b84-994405d9386b" data-target="query-builder.input" data-action="
+          input:query-builder#inputChange
+          blur:query-builder#inputBlur
+          keydown:query-builder#inputKeydown
+          focus:query-builder#inputFocus
+        " data-view-component="true" class="FormControl-input QueryBuilder-Input FormControl-medium" aria-controls="query-builder-test-results" aria-autocomplete="list" aria-haspopup="listbox" style="width: 300px;">
+          </div>
+        </div>
+          <span data-target="query-builder.clearButton" hidden="">
+            <span class="sr-only" id="query-builder-test-clear">Clear</span>
+            <button role="button" id="query-builder-test-clear-button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-action="
+                  click:query-builder#clear
+                  focus:query-builder#clearButtonFocus
+                  blur:query-builder#clearButtonBlur
+                " variant="small" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium mr-1 tmp-mr-1 px-2 tmp-px-2 py-0 tmp-py-0 d-flex flex-items-center rounded-1 color-fg-muted">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill Button-visual">
+    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
+</svg>
+</button>
+
+          </span>
+      </div>
+      <template id="search-icon"></template>
+
+<template id="code-icon"></template>
+
+<template id="file-code-icon"></template>
+
+<template id="history-icon"></template>
+
+<template id="repo-icon"></template>
+
+<template id="bookmark-icon"></template>
+
+<template id="plus-circle-icon"></template>
+
+<template id="circle-icon"></template>
+
+<template id="trash-icon"></template>
+
+<template id="team-icon"></template>
+
+<template id="project-icon"></template>
+
+<template id="pencil-icon"></template>
+
+<template id="copilot-icon"></template>
+
+<template id="copilot-error-icon"></template>
+
+<template id="workflow-icon"></template>
+
+<template id="book-icon"></template>
+
+<template id="code-review-icon"></template>
+
+<template id="codespaces-icon"></template>
+
+<template id="comment-icon"></template>
+
+<template id="comment-discussion-icon"></template>
+
+<template id="organization-icon"></template>
+
+<template id="rocket-icon"></template>
+
+<template id="shield-check-icon"></template>
+
+<template id="heart-icon"></template>
+
+<template id="server-icon"></template>
+
+<template id="globe-icon"></template>
+
+<template id="issue-opened-icon"></template>
+
+<template id="device-mobile-icon"></template>
+
+<template id="package-icon"></template>
+
+<template id="credit-card-icon"></template>
+
+<template id="play-icon"></template>
+
+<template id="gift-icon"></template>
+
+<template id="code-square-icon"></template>
+
+<template id="device-desktop-icon"></template>
+
+        <div class="position-relative">
+                        <ul role="listbox" class="ActionListWrap QueryBuilder-ListWrap" aria-label="Suggestions" data-action="
+                combobox-commit:query-builder#comboboxCommit
+                mousedown:query-builder#resultsMousedown
+              " data-target="query-builder.resultsList" data-persist-list="false" id="query-builder-test-results" tabindex="-1"></ul>
+
+        </div>
+      <div class="FormControl-inlineValidation" id="validation-d44fd003-43ff-402e-8b84-994405d9386b" hidden="hidden">
+        <span class="FormControl-inlineValidation--visual">
+          <svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
+    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+</svg>
+        </span>
+        <span></span>
+</div>    </div>
+    <div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true" class="sr-only">0 suggestions.</div>
+</query-builder></form>
+          <div class="d-flex flex-row color-fg-muted tmp-px-3 text-small color-bg-default search-feedback-prompt">
+            <a target="_blank" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true" class="Link color-fg-accent text-normal ml-2 tmp-ml-2">Search syntax tips</a>            <div class="d-flex flex-1"></div>
+              <button data-action="click:qbsearch-input#showFeedbackDialog" type="button" data-view-component="true" class="Button--link Button--medium Button color-fg-accent text-normal ml-2 tmp-ml-2">  <span class="Button-content">
+    <span class="Button-label">Give feedback</span>
+  </span>
+</button>
+          </div>
+        </div>
+</div>
+
+    </div>
+</modal-dialog></div>
+  </div>
+  <div data-action="click:qbsearch-input#retract" class="dark-backdrop position-fixed" hidden="" data-target="qbsearch-input.darkBackdrop"></div>
+  <div class="color-fg-default">
+    
+<dialog-helper>
+  <dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="feedback-dialog" aria-modal="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade Overlay--disableScroll">
+    <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="feedback-dialog-title">
+        Provide feedback
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>
+      <scrollable-region data-labelled-by="feedback-dialog-title" data-catalyst="" style="overflow: auto;">
+        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --><form id="code-search-feedback-form" data-turbo="false" action="https://github.com/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="NtyYRSo6l5hg5PxQvuZLvSP4pfApjB_IJqNmuag4vrpZWcUDUfdB1DsmB1TQg4G6P7n4Ey_PPWOHjr-M3sXDNA">
+          <p>We read every piece of feedback, and take your input very seriously.</p>
+          <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
+          <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
+          <label for="include_email" style="font-weight: normal">Include my email address so I can be contacted</label>
+</form></div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">          <button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true" class="btn-primary btn">    Submit feedback
+</button>
+</div>
+</dialog></dialog-helper>
+
+    <custom-scopes data-target="qbsearch-input.customScopesManager" data-catalyst="">
+    
+<dialog-helper>
+  <dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="custom-scopes-dialog" aria-modal="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade Overlay--disableScroll">
+    <div data-view-component="true" class="Overlay-header Overlay-header--divided">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="custom-scopes-dialog-title">
+        Saved searches
+      </h1>
+        <h2 id="custom-scopes-dialog-description" class="Overlay-description">Use saved searches to filter your results more quickly</h2>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>
+      <scrollable-region data-labelled-by="custom-scopes-dialog-title" data-catalyst="" style="overflow: auto;">
+        <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+        <div hidden="" class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
+        <!-- '"` --><!-- </textarea></xmp> --><form id="custom-scopes-dialog-form" data-turbo="false" action="https://github.com/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="0huXJbYH7B25vR5tqi0hQbW45a0uif0RKCO6du_xzPvMBIFRAygryRiFymc-mQGe2k40N8kX1SX-PexAwPkblQ">
+          <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+          <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
+
+          <div class="form-group">
+            <label for="custom_scope_name">Name</label>
+            <auto-check src="/search/custom_scopes/check_name" required="">
+              <input type="text" name="custom_scope_name" id="custom_scope_name" data-target="custom-scopes.customScopesNameField" class="form-control" autocomplete="off" placeholder="github-ruby" required="" maxlength="50" spellcheck="false">
+              <input type="hidden" value="PONwpFr875YeYH7nA82OCI6kWHR3jD7iXSMnJJW4B_cTrVBhF8IlrXK3VFuirp0pUXjYIiMvjm1qhIKOoqwodw" data-csrf="true">
+            </auto-check>
+          </div>
+
+          <div class="form-group">
+            <label for="custom_scope_query">Query</label>
+            <input type="text" name="custom_scope_query" id="custom_scope_query" data-target="custom-scopes.customScopesQueryField" class="form-control" autocomplete="off" placeholder="(repo:mona/a OR repo:mona/b) AND lang:python" required="" maxlength="500">
+          </div>
+
+          <p class="text-small color-fg-muted">
+            To see all available qualifiers, see our <a class="Link--inTextBlock" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
+          </p>
+</form>        </div>
+
+        <div data-target="custom-scopes.manageCustomScopesForm">
+          <div data-target="custom-scopes.list"></div>
+        </div>
+
+</div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">          <button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true" class="btn-primary btn">    Create saved search
+</button>
+</div>
+</dialog></dialog-helper>
+    </custom-scopes>
+  </div>
+</qbsearch-input><input type="hidden" value="cUtZL1GQMA1FEIlenRV5hNSv7o_0HtZ4D5Hlabai2NZbkKBNh1aDglzJGEsM8Thyw-tSDe95VAieRt4nnj1yMA" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf"></div></div><div data-testid="top-nav-right" class="styles-module__right__mlBQg styles-module__withLocalNavigation__rjTJ_ styles-module__rightWithResponsiveCreateButton__SKn2W prc-Stack-Stack-UQ9k6" data-gap="condensed" data-direction="horizontal" data-align="center" data-wrap="nowrap" data-justify="start" data-padding="normal"><div data-testid="top-bar-actions" class="prc-Stack-Stack-UQ9k6" data-gap="condensed" data-direction="horizontal" data-align="center" data-wrap="nowrap" data-justify="start" data-padding="none"><div class="hide-sm hide-md"><div class="CopilotItems-module__Wrapper__BFG9q"><div class="prc-ButtonGroup-ButtonGroup-vFUrY" data-component="ButtonGroup"><div class="prc-ButtonGroup-Item-PqvDl"><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_akjpb_" href="https://github.com/copilot" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-copilot" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_akjpb_" popover="auto">Chat with Copilot</span></div><div class="prc-ButtonGroup-Item-PqvDl"><div class="d-none"></div><button data-component="ActionMenu.Button" type="button" aria-label="Open Copilot…" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ CopilotItems-module__CopilotMenu__DVdfE" data-loading="false" data-size="medium" data-variant="invisible" id="_R_kkjpb_" style="anchor-name: --anchored-overlay-anchor-_R_3kkjpbH1_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-copilot" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M7.998 15.035c-4.562 0-7.873-2.914-7.998-3.749V9.338c.085-.628.677-1.686 1.588-2.065.013-.07.024-.143.036-.218.029-.183.06-.384.126-.612-.201-.508-.254-1.084-.254-1.656 0-.87.128-1.769.693-2.484.579-.733 1.494-1.124 2.724-1.261 1.206-.134 2.262.034 2.944.765.05.053.096.108.139.165.044-.057.094-.112.143-.165.682-.731 1.738-.899 2.944-.765 1.23.137 2.145.528 2.724 1.261.566.715.693 1.614.693 2.484 0 .572-.053 1.148-.254 1.656.066.228.098.429.126.612.012.076.024.148.037.218.924.385 1.522 1.471 1.591 2.095v1.872c0 .766-3.351 3.795-8.002 3.795Zm0-1.485c2.28 0 4.584-1.11 5.002-1.433V7.862l-.023-.116c-.49.21-1.075.291-1.727.291-1.146 0-2.059-.327-2.71-.991A3.222 3.222 0 0 1 8 6.303a3.24 3.24 0 0 1-.544.743c-.65.664-1.563.991-2.71.991-.652 0-1.236-.081-1.727-.291l-.023.116v4.255c.419.323 2.722 1.433 5.002 1.433ZM6.762 2.83c-.193-.206-.637-.413-1.682-.297-1.019.113-1.479.404-1.713.7-.247.312-.369.789-.369 1.554 0 .793.129 1.171.308 1.371.162.181.519.379 1.442.379.853 0 1.339-.235 1.638-.54.315-.322.527-.827.617-1.553.117-.935-.037-1.395-.241-1.614Zm4.155-.297c-1.044-.116-1.488.091-1.681.297-.204.219-.359.679-.242 1.614.091.726.303 1.231.618 1.553.299.305.784.54 1.638.54.922 0 1.28-.198 1.442-.379.179-.2.308-.578.308-1.371 0-.765-.123-1.242-.37-1.554-.233-.296-.693-.587-1.713-.7Z"></path><path d="M6.25 9.037a.75.75 0 0 1 .75.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 .75-.75Zm4.25.75v1.501a.75.75 0 0 1-1.5 0V9.787a.75.75 0 0 1 1.5 0Z"></path></svg></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button></div></div></div><div class="CopilotImmersiveEmbedded-module__CopilotChatContainer__Hqz45" data-testid="copilot-immersive-embedded-header-button"></div></div><div class="styles-module__itemDivider__nunbs hide-sm hide-md"></div><button data-component="ActionMenu.Button" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk GlobalCreateMenu-module__actionMenuButton__Hj_iB GlobalCreateMenu-module__responsiveCreateMenu__zTmSP hide-sm" data-loading="false" data-size="medium" data-variant="invisible" aria-labelledby="global-create-menu-tooltip-_R_1jpb_" id="_R_5jpb_" style="anchor-name: --anchored-overlay-anchor-_R_2tjpbH1_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-plus" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="global-create-menu-tooltip-_R_1jpb_" popover="auto">Create new...</span><div class="hide-sm hide-md prc-Stack-Stack-UQ9k6" data-gap="condensed" data-direction="horizontal" data-align="center" data-wrap="nowrap" data-justify="start" data-padding="none"><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_m3pb_" href="https://github.com/issues" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-issue-opened" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_m3pb_" popover="auto">All issues</span><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_q3pb_" href="https://github.com/pulls" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-git-pull-request" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_q3pb_" popover="auto">All pull requests</span><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_u3pb_" href="https://github.com/repos" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-repo" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_u3pb_" popover="auto">All repositories</span><div class="d-none"></div></div></div><a data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk styles-module__appHeaderButton__axedQ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_lpb_" href="https://github.com/notifications" data-discover="true"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-inbox" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M2.8 2.06A1.75 1.75 0 0 1 4.41 1h7.18c.7 0 1.333.417 1.61 1.06l2.74 6.395c.04.093.06.194.06.295v4.5A1.75 1.75 0 0 1 14.25 15H1.75A1.75 1.75 0 0 1 0 13.25v-4.5c0-.101.02-.202.06-.295Zm1.61.44a.25.25 0 0 0-.23.152L1.887 8H4.75a.75.75 0 0 1 .6.3L6.625 10h2.75l1.275-1.7a.75.75 0 0 1 .6-.3h2.863L11.82 2.652a.25.25 0 0 0-.23-.152Zm10.09 7h-2.875l-1.275 1.7a.75.75 0 0 1-.6.3h-3.5a.75.75 0 0 1-.6-.3L4.375 9.5H1.5v3.75c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25Z"></path></svg></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" popover="auto"><span id="_R_lpb_">You have no unread notifications<span class="prc-src-InternalVisuallyHidden-2YaI6">(<!-- -->g then n<!-- -->)</span></span><span class="prc-TooltipV2-KeybindingHintContainer-Ymj-3 prc-TooltipV2-HasTextBefore-fdOXj" aria-hidden="true" data-component="Tooltip.KeybindingHintContainer"><kbd class="prc-KeybindingHint-KeybindingHint-qpYIs prc-Text-Text-9mHv3" data-testid="keybinding-hint" data-component="KeybindingHint"><span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">g</span><span aria-hidden="true">G</span></span><span class="prc-src-InternalVisuallyHidden-2YaI6">then</span> <span class="prc-components-Chord-DdhWN prc-components-ChordOnEmphasis-O-4BS prc-components-ChordSmall-c-P-x prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">n</span><span aria-hidden="true">N</span></span></kbd></span></span><div class="d-none"></div><div class="GlobalNavUserMenu-module__container__NaVIt"><button data-component="IconButton" type="button" aria-haspopup="menu" data-login="12NIKHI" class="prc-Button-ButtonBase-9n-Xk GlobalNavUserMenu-module__anchor__Dcej6 prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible" aria-labelledby="_R_2npb_"><img data-component="Avatar" class="prc-Avatar-Avatar-0xaUi" alt="Topalle Nikhila" width="32" height="32" style="--avatarSize-regular:32px" src="./config_files/224766043" data-testid="github-avatar"></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_R_2npb_" popover="auto">Open user navigation menu</span></div></div></div><h2 class="prc-src-InternalVisuallyHidden-2YaI6">Repository navigation</h2><nav class="prc-components-UnderlineWrapper-eT-Yj prc-UnderlineNav-UnderlineWrapper-GWONT LocalNavigation-module__LocalNavigation__b0Xc0" aria-label="Repository" data-variant="inset" data-overflow-mode="wrap"><ul class="prc-UnderlineNav-ItemsList-oj8gN prc-components-UnderlineItemList-xKlKC" role="list"><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-current="page" data-tab-item="code" data-react-nav="code-view" data-react-nav-anchor="code-view-repo-link" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-code" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path></svg></span><span data-component="text" data-content="Code">Code</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/issues" data-tab-item="issues" data-react-nav="issues-react" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-issue-opened" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg></span><span data-component="text" data-content="Issues">Issues</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/pulls" data-tab-item="pull-requests" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-git-pull-request" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M1.5 3.25a2.25 2.25 0 1 1 3 2.122v5.256a2.251 2.251 0 1 1-1.5 0V5.372A2.25 2.25 0 0 1 1.5 3.25Zm5.677-.177L9.573.677A.25.25 0 0 1 10 .854V2.5h1A2.5 2.5 0 0 1 13.5 5v5.628a2.251 2.251 0 1 1-1.5 0V5a1 1 0 0 0-1-1h-1v1.646a.25.25 0 0 1-.427.177L7.177 3.427a.25.25 0 0 1 0-.354ZM3.75 2.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm0 9.5a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Zm8.25.75a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Z"></path></svg></span><span data-component="text" data-content="Pull requests">Pull requests</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/agents?author=12NIKHI" data-tab-item="agents" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-agent" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M14.5 8.9v-.052A2.956 2.956 0 0 0 11.542 5.9a.815.815 0 0 1-.751-.501l-.145-.348A3.496 3.496 0 0 0 7.421 2.9h-.206a3.754 3.754 0 0 0-3.736 4.118l.011.121a.822.822 0 0 1-.619.879A1.81 1.81 0 0 0 1.5 9.773v.14c0 1.097.89 1.987 1.987 1.987H4.5a.75.75 0 0 1 0 1.5H3.487A3.487 3.487 0 0 1 0 9.913v-.14C0 8.449.785 7.274 1.963 6.75A5.253 5.253 0 0 1 7.215 1.4h.206a4.992 4.992 0 0 1 4.586 3.024A4.455 4.455 0 0 1 16 8.848V8.9a.75.75 0 0 1-1.5 0Z"></path><path d="m8.38 7.67 2.25 2.25a.749.749 0 0 1 0 1.061L8.38 13.23a.749.749 0 1 1-1.06-1.06l1.719-1.72L7.32 8.731A.75.75 0 0 1 8.38 7.67ZM15 13.45h-3a.75.75 0 0 1 0-1.5h3a.75.75 0 0 1 0 1.5Z"></path></svg></span><span data-component="text" data-content="Agents">Agents</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/actions" data-tab-item="actions" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-play" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm4.879-2.773 4.264 2.559a.25.25 0 0 1 0 .428l-4.264 2.559A.25.25 0 0 1 6 10.559V5.442a.25.25 0 0 1 .379-.215Z"></path></svg></span><span data-component="text" data-content="Actions">Actions</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/projects" data-tab-item="projects" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-table" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M0 1.75C0 .784.784 0 1.75 0h12.5C15.216 0 16 .784 16 1.75v12.5A1.75 1.75 0 0 1 14.25 16H1.75A1.75 1.75 0 0 1 0 14.25ZM6.5 6.5v8h7.75a.25.25 0 0 0 .25-.25V6.5Zm8-1.5V1.75a.25.25 0 0 0-.25-.25H6.5V5Zm-13 1.5v7.75c0 .138.112.25.25.25H5v-8ZM5 5V1.5H1.75a.25.25 0 0 0-.25.25V5Z"></path></svg></span><span data-component="text" data-content="Projects">Projects</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/security" data-tab-item="security-and-quality" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-shield" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M7.467.133a1.748 1.748 0 0 1 1.066 0l5.25 1.68A1.75 1.75 0 0 1 15 3.48V7c0 1.566-.32 3.182-1.303 4.682-.983 1.498-2.585 2.813-5.032 3.855a1.697 1.697 0 0 1-1.33 0c-2.447-1.042-4.049-2.357-5.032-3.855C1.32 10.182 1 8.566 1 7V3.48a1.75 1.75 0 0 1 1.217-1.667Zm.61 1.429a.25.25 0 0 0-.153 0l-5.25 1.68a.25.25 0 0 0-.174.238V7c0 1.358.275 2.666 1.057 3.86.784 1.194 2.121 2.34 4.366 3.297a.196.196 0 0 0 .154 0c2.245-.956 3.582-2.104 4.366-3.298C13.225 9.666 13.5 8.36 13.5 7V3.48a.251.251 0 0 0-.174-.237l-5.25-1.68ZM8.75 4.75v3a.75.75 0 0 1-1.5 0v-3a.75.75 0 0 1 1.5 0ZM9 10.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path></svg></span><span data-component="text" data-content="Security and quality">Security and quality</span></a></li><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/pulse" data-tab-item="insights" data-turbo-frame="repo-content-turbo-frame" class="prc-components-UnderlineItem-7fP-n" data-discover="true"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-graph" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg></span><span data-component="text" data-content="Insights">Insights</span></a></li></ul><div class="prc-UnderlineNav-MoreButtonContainer-Dnrq6"><div class="prc-UnderlineNav-MoreButtonDivider-dN0a-"></div><button data-component="overflow-menu-button" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk prc-UnderlineNav-MoreButton-Y8soj" data-loading="false" data-size="medium" data-variant="invisible" id="_R_ajtb_" style="anchor-name: --anchored-overlay-anchor-_R_1qjtbH1_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="text" class="prc-Button-Label-FWkx3"><span>More<span class="prc-src-InternalVisuallyHidden-2YaI6"> items</span></span></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align:text-bottom"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button></div></nav><div class="d-none"></div></header></div>
+</react-partial>
+
+
+      <div class="js-global-bar" style="display: none;">
+        
+
+
+<qbsearch-input class="search-input" data-scope="repo:YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-custom-scopes-path="/search/custom_scopes" data-delete-custom-scopes-csrf="PysrqtjCVJtSvxy6xu-8Fnjl3WTXd_tQBE9BUS1LNP7umG6k3GH0pOJAhUVgjGJ6aSqvrY3005NYwNqKS3pVGQ" data-max-custom-scopes="10" data-header-redesign-enabled="true" data-initial-value="" data-blackbird-suggestions-path="/search/suggestions" data-jump-to-suggestions-path="/_graphql/GetSuggestedNavigationDestinations" data-current-repository="YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-current-org="" data-current-owner="YNUDAYKIRAN" data-logged-in="true" data-copilot-chat-enabled="true" data-nl-search-enabled="false" data-catalyst="">
+  <div class="search-input-container search-with-dialog position-relative d-flex flex-row flex-items-center height-auto color-bg-transparent border-0 color-fg-subtle mx-0" data-action="click:qbsearch-input#searchInputContainerClicked">
+
+    <input type="hidden" name="type" class="js-site-search-type-field">
+
+    
+<div class="Overlay--hidden " data-modal-dialog-overlay="">
+  <modal-dialog data-action="close:qbsearch-input#handleClose cancel:qbsearch-input#handleClose" data-target="qbsearch-input.searchSuggestionsDialog" role="dialog" id="search-suggestions-dialog" aria-modal="true" aria-labelledby="search-suggestions-dialog-header" data-view-component="true" class="Overlay Overlay--width-medium Overlay--height-auto">
+      <h1 id="search-suggestions-dialog-header" class="sr-only">Search code, repositories, users, issues, pull requests...</h1>
+    <div class="Overlay-body Overlay-body--paddingNone">
+      
+          <div data-view-component="true">        <div class="search-suggestions position-absolute width-full color-shadow-large border color-fg-default color-bg-default overflow-hidden d-flex flex-column query-builder-container" style="border-radius: 12px;" data-target="qbsearch-input.queryBuilderContainer" hidden="">
+          <!-- '"` --><!-- </textarea></xmp> --><form id="query-builder-test-form" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" accept-charset="UTF-8" method="get">
+  <query-builder data-target="qbsearch-input.queryBuilder" id="query-builder-query-builder-test" data-filter-key=":" data-view-component="true" class="QueryBuilder search-query-builder" data-min-width="300" data-catalyst="">
+    <div class="FormControl FormControl--fullWidth">
+      <label id="query-builder-test-label" for="query-builder-test" class="FormControl-label sr-only">
+        Search
+      </label>
+      <div class="QueryBuilder-StyledInput width-fit " data-target="query-builder.styledInput">
+          <span id="query-builder-test-leadingvisual-wrap" class="FormControl-input-leadingVisualWrap QueryBuilder-leadingVisualWrap">
+            <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-search FormControl-input-leadingVisual">
+    <path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path>
+</svg>
+          </span>
+        <div data-target="query-builder.styledInputContainer" class="QueryBuilder-StyledInputContainer">
+          <div aria-hidden="true" class="QueryBuilder-StyledInputContent" data-target="query-builder.styledInputContent"></div>
+          <div class="QueryBuilder-InputWrapper">
+            <div aria-hidden="true" class="QueryBuilder-Sizer" data-target="query-builder.sizer"><span></span></div>
+            <input id="query-builder-test" name="query-builder-test" value="" autocomplete="off" type="text" role="combobox" spellcheck="false" aria-expanded="false" aria-describedby="validation-d44fd003-43ff-402e-8b84-994405d9386b" data-target="query-builder.input" data-action="
+          input:query-builder#inputChange
+          blur:query-builder#inputBlur
+          keydown:query-builder#inputKeydown
+          focus:query-builder#inputFocus
+        " data-view-component="true" class="FormControl-input QueryBuilder-Input FormControl-medium" aria-controls="query-builder-test-results" aria-autocomplete="list" aria-haspopup="listbox" style="width: 300px;">
+          </div>
+        </div>
+          <span data-target="query-builder.clearButton" hidden="">
+            <span class="sr-only" id="query-builder-test-clear">Clear</span>
+            <button role="button" id="query-builder-test-clear-button" aria-labelledby="query-builder-test-clear query-builder-test-label" data-action="
+                  click:query-builder#clear
+                  focus:query-builder#clearButtonFocus
+                  blur:query-builder#clearButtonBlur
+                " variant="small" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium mr-1 tmp-mr-1 px-2 tmp-px-2 py-0 tmp-py-0 d-flex flex-items-center rounded-1 color-fg-muted">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x-circle-fill Button-visual">
+    <path d="M2.343 13.657A8 8 0 1 1 13.658 2.343 8 8 0 0 1 2.343 13.657ZM6.03 4.97a.751.751 0 0 0-1.042.018.751.751 0 0 0-.018 1.042L6.94 8 4.97 9.97a.749.749 0 0 0 .326 1.275.749.749 0 0 0 .734-.215L8 9.06l1.97 1.97a.749.749 0 0 0 1.275-.326.749.749 0 0 0-.215-.734L9.06 8l1.97-1.97a.749.749 0 0 0-.326-1.275.749.749 0 0 0-.734.215L8 6.94Z"></path>
+</svg>
+</button>
+
+          </span>
+      </div>
+      <template id="search-icon"></template>
+
+<template id="code-icon"></template>
+
+<template id="file-code-icon"></template>
+
+<template id="history-icon"></template>
+
+<template id="repo-icon"></template>
+
+<template id="bookmark-icon"></template>
+
+<template id="plus-circle-icon"></template>
+
+<template id="circle-icon"></template>
+
+<template id="trash-icon"></template>
+
+<template id="team-icon"></template>
+
+<template id="project-icon"></template>
+
+<template id="pencil-icon"></template>
+
+<template id="copilot-icon"></template>
+
+<template id="copilot-error-icon"></template>
+
+<template id="workflow-icon"></template>
+
+<template id="book-icon"></template>
+
+<template id="code-review-icon"></template>
+
+<template id="codespaces-icon"></template>
+
+<template id="comment-icon"></template>
+
+<template id="comment-discussion-icon"></template>
+
+<template id="organization-icon"></template>
+
+<template id="rocket-icon"></template>
+
+<template id="shield-check-icon"></template>
+
+<template id="heart-icon"></template>
+
+<template id="server-icon"></template>
+
+<template id="globe-icon"></template>
+
+<template id="issue-opened-icon"></template>
+
+<template id="device-mobile-icon"></template>
+
+<template id="package-icon"></template>
+
+<template id="credit-card-icon"></template>
+
+<template id="play-icon"></template>
+
+<template id="gift-icon"></template>
+
+<template id="code-square-icon"></template>
+
+<template id="device-desktop-icon"></template>
+
+        <div class="position-relative">
+                        <ul role="listbox" class="ActionListWrap QueryBuilder-ListWrap" aria-label="Suggestions" data-action="
+                combobox-commit:query-builder#comboboxCommit
+                mousedown:query-builder#resultsMousedown
+              " data-target="query-builder.resultsList" data-persist-list="false" id="query-builder-test-results" tabindex="-1"></ul>
+
+        </div>
+      <div class="FormControl-inlineValidation" id="validation-d44fd003-43ff-402e-8b84-994405d9386b" hidden="hidden">
+        <span class="FormControl-inlineValidation--visual">
+          <svg aria-hidden="true" data-component="Octicon" height="12" viewBox="0 0 12 12" version="1.1" width="12" data-view-component="true" class="octicon octicon-alert-fill">
+    <path d="M4.855.708c.5-.896 1.79-.896 2.29 0l4.675 8.351a1.312 1.312 0 0 1-1.146 1.954H1.33A1.313 1.313 0 0 1 .183 9.058ZM7 7V3H5v4Zm-1 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"></path>
+</svg>
+        </span>
+        <span></span>
+</div>    </div>
+    <div data-target="query-builder.screenReaderFeedback" aria-live="polite" aria-atomic="true" class="sr-only">0 suggestions.</div>
+</query-builder></form>
+          <div class="d-flex flex-row color-fg-muted tmp-px-3 text-small color-bg-default search-feedback-prompt">
+            <a target="_blank" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax" data-view-component="true" class="Link color-fg-accent text-normal ml-2 tmp-ml-2">Search syntax tips</a>            <div class="d-flex flex-1"></div>
+              <button data-action="click:qbsearch-input#showFeedbackDialog" type="button" data-view-component="true" class="Button--link Button--medium Button color-fg-accent text-normal ml-2 tmp-ml-2">  <span class="Button-content">
+    <span class="Button-label">Give feedback</span>
+  </span>
+</button>
+          </div>
+        </div>
+</div>
+
+    </div>
+</modal-dialog></div>
+  </div>
+  <div data-action="click:qbsearch-input#retract" class="dark-backdrop position-fixed" hidden="" data-target="qbsearch-input.darkBackdrop"></div>
+  <div class="color-fg-default">
+    
+<dialog-helper>
+  <dialog data-target="qbsearch-input.feedbackDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="feedback-dialog" aria-modal="true" aria-labelledby="feedback-dialog-title" aria-describedby="feedback-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade Overlay--disableScroll">
+    <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="feedback-dialog-title">
+        Provide feedback
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="feedback-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>
+      <scrollable-region data-labelled-by="feedback-dialog-title" data-catalyst="" style="overflow: auto;">
+        <div data-view-component="true" class="Overlay-body">        <!-- '"` --><!-- </textarea></xmp> --><form id="code-search-feedback-form" data-turbo="false" action="https://github.com/search/feedback" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="NtyYRSo6l5hg5PxQvuZLvSP4pfApjB_IJqNmuag4vrpZWcUDUfdB1DsmB1TQg4G6P7n4Ey_PPWOHjr-M3sXDNA">
+          <p>We read every piece of feedback, and take your input very seriously.</p>
+          <textarea name="feedback" class="form-control width-full mb-2" style="height: 120px" id="feedback"></textarea>
+          <input name="include_email" id="include_email" aria-label="Include my email address so I can be contacted" class="form-control mr-2" type="checkbox">
+          <label for="include_email" style="font-weight: normal">Include my email address so I can be contacted</label>
+</form></div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">          <button data-close-dialog-id="feedback-dialog" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="code-search-feedback-form" data-action="click:qbsearch-input#submitFeedback" type="submit" data-view-component="true" class="btn-primary btn">    Submit feedback
+</button>
+</div>
+</dialog></dialog-helper>
+
+    <custom-scopes data-target="qbsearch-input.customScopesManager" data-catalyst="">
+    
+<dialog-helper>
+  <dialog data-target="custom-scopes.customScopesModalDialog" data-action="close:qbsearch-input#handleDialogClose cancel:qbsearch-input#handleDialogClose" id="custom-scopes-dialog" aria-modal="true" aria-labelledby="custom-scopes-dialog-title" aria-describedby="custom-scopes-dialog-description" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-medium Overlay--motion-scaleFade Overlay--disableScroll">
+    <div data-view-component="true" class="Overlay-header Overlay-header--divided">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="custom-scopes-dialog-title">
+        Saved searches
+      </h1>
+        <h2 id="custom-scopes-dialog-description" class="Overlay-description">Use saved searches to filter your results more quickly</h2>
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="custom-scopes-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>
+      <scrollable-region data-labelled-by="custom-scopes-dialog-title" data-catalyst="" style="overflow: auto;">
+        <div data-view-component="true" class="Overlay-body">        <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+        <div hidden="" class="create-custom-scope-form" data-target="custom-scopes.createCustomScopeForm">
+        <!-- '"` --><!-- </textarea></xmp> --><form id="custom-scopes-dialog-form" data-turbo="false" action="https://github.com/search/custom_scopes" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="0huXJbYH7B25vR5tqi0hQbW45a0uif0RKCO6du_xzPvMBIFRAygryRiFymc-mQGe2k40N8kX1SX-PexAwPkblQ">
+          <div data-target="custom-scopes.customScopesModalDialogFlash"></div>
+
+          <input type="hidden" id="custom_scope_id" name="custom_scope_id" data-target="custom-scopes.customScopesIdField">
+
+          <div class="form-group">
+            <label for="custom_scope_name">Name</label>
+            <auto-check src="/search/custom_scopes/check_name" required="">
+              <input type="text" name="custom_scope_name" id="custom_scope_name" data-target="custom-scopes.customScopesNameField" class="form-control" autocomplete="off" placeholder="github-ruby" required="" maxlength="50" spellcheck="false">
+              <input type="hidden" value="PONwpFr875YeYH7nA82OCI6kWHR3jD7iXSMnJJW4B_cTrVBhF8IlrXK3VFuirp0pUXjYIiMvjm1qhIKOoqwodw" data-csrf="true">
+            </auto-check>
+          </div>
+
+          <div class="form-group">
+            <label for="custom_scope_query">Query</label>
+            <input type="text" name="custom_scope_query" id="custom_scope_query" data-target="custom-scopes.customScopesQueryField" class="form-control" autocomplete="off" placeholder="(repo:mona/a OR repo:mona/b) AND lang:python" required="" maxlength="500">
+          </div>
+
+          <p class="text-small color-fg-muted">
+            To see all available qualifiers, see our <a class="Link--inTextBlock" href="https://docs.github.com/search-github/github-code-search/understanding-github-code-search-syntax">documentation</a>.
+          </p>
+</form>        </div>
+
+        <div data-target="custom-scopes.manageCustomScopesForm">
+          <div data-target="custom-scopes.list"></div>
+        </div>
+
+</div>
+      </scrollable-region>
+      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd Overlay-footer--divided">          <button data-action="click:custom-scopes#customScopesCancel" type="button" data-view-component="true" class="btn">    Cancel
+</button>
+          <button form="custom-scopes-dialog-form" data-action="click:custom-scopes#customScopesSubmit" data-target="custom-scopes.customScopesSubmitButton" type="submit" data-view-component="true" class="btn-primary btn">    Create saved search
+</button>
+</div>
+</dialog></dialog-helper>
+    </custom-scopes>
+  </div>
+</qbsearch-input>  <input type="hidden" value="cUtZL1GQMA1FEIlenRV5hNSv7o_0HtZ4D5Hlabai2NZbkKBNh1aDglzJGEsM8Thyw-tSDe95VAieRt4nnj1yMA" data-csrf="true" class="js-data-jump-to-suggestions-path-csrf">
+
+
+      </div>
+
+
+      <div hidden="hidden" data-view-component="true" class="js-stale-session-flash stale-session-flash flash flash-warn flash-full">
+  
+        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+        <span class="js-stale-session-flash-signed-in" hidden="">You signed in with another tab or window. <a class="Link--inTextBlock" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-signed-out" hidden="">You signed out in another tab or window. <a class="Link--inTextBlock" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">Reload</a> to refresh your session.</span>
+        <span class="js-stale-session-flash-switched" hidden="">You switched accounts on another tab or window. <a class="Link--inTextBlock" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">Reload</a> to refresh your session.</span>
+
+    <button id="icon-button-3f07fb1b-24f7-4c48-a82d-44fc6954b8ad" aria-labelledby="tooltip-152abb8a-dfe6-4192-9391-cfa58d394b7c" type="button" data-view-component="true" class="Button Button--iconOnly Button--invisible Button--medium flash-close js-flash-close">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x Button-visual">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+</button><tool-tip id="tooltip-152abb8a-dfe6-4192-9391-cfa58d394b7c" for="icon-button-3f07fb1b-24f7-4c48-a82d-44fc6954b8ad" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Dismiss alert</tool-tip>
+
+
+  
+</div>
+        
+        
+
+          
+    </div>
+
+  <div id="start-of-content" class="show-on-focus"></div>
+
+
+
+
+
+
+
+
+    <div id="js-flash-container" class="flash-container" data-turbo-replace="">
+
+
+
+
+  <template class="js-flash-template"></template>
+</div>
+
+
+    
+  <notification-shelf-watcher data-base-url="https://github.com/notifications/beta/shelf" data-channel="eyJjIjoibm90aWZpY2F0aW9uLWNoYW5nZWQ6MjI0NzY2MDQzIiwidCI6MTc4MjkwMzI0M30=--7aee9961a6b19c91aa3f1f1c4360c88d5571bdbb232f94fedd00f432ada0902c" data-view-component="true" class="js-socket-channel" data-refresh-delay="500" data-catalyst="" data-throttle-delay="5000"></notification-shelf-watcher>
+  <div hidden="" data-initial="" data-target="notification-shelf-watcher.placeholder"></div>
+
+
+
+
+
+
+  <div class="application-main " data-commit-hovercards-enabled="" data-discussion-hovercards-enabled="" data-issue-and-pr-hovercards-enabled="" data-project-hovercards-enabled="">
+        <div itemscope="" itemtype="http://schema.org/SoftwareSourceCode" class="">
+    <main id="js-repo-pjax-container">
+      
+      
+
+
+
+
+
+
+
+    
+  <div id="repository-container-header" data-turbo-replace="" hidden=""></div>
+
+
+
+<turbo-frame id="repo-content-turbo-frame" target="_top" data-turbo-action="advance" class="">
+    <div id="repo-content-pjax-container" class="repository-content ">
+      <a href="https://github.dev/" class="d-none js-github-dev-shortcut" data-hotkey=".,Mod+Alt+.">Open in github.dev</a>
+  <a href="https://github.dev/" class="d-none js-github-dev-new-tab-shortcut" data-hotkey="Shift+&gt;" target="_blank" rel="noopener noreferrer">Open in a new github.dev tab</a>
+    <a class="d-none" data-hotkey=",,Mod+Alt+," target="_blank" href="https://github.com/codespaces/new/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ?resume=1">Open in codespace</a>
+
+
+
+
+    
+      
+    
+
+
+
+
+
+
+
+
+<react-app app-name="code-view" initial-path="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" style="display: block; min-height: calc(100vh - 64px);" data-attempted-ssr="true" data-ssr="true" data-lazy="false" data-alternate="false" data-data-router-enabled="true" data-react-profiling="false" data-catalyst="" class="loaded">
+  
+  <script type="application/json" data-target="react-app.embeddedData">{"payload":{"codeViewRepoRoute":{"path":"/","refInfo":{"name":"main","listCacheKey":"v0:1782626733.0","canEdit":true,"refType":"branch","currentOid":"1eaac111f15029335a24551cff4d7e891a1ed439"},"tree":{"items":[{"name":"logs","path":"logs","contentType":"directory"},{"name":"README.md","path":"README.md","contentType":"file"},{"name":"camera.json","path":"camera.json","contentType":"file"},{"name":"camera_manager.py","path":"camera_manager.py","contentType":"file"},{"name":"camera_worker.py","path":"camera_worker.py","contentType":"file"},{"name":"config.py","path":"config.py","contentType":"file"},{"name":"detection_subscriber.py","path":"detection_subscriber.py","contentType":"file"},{"name":"logging_code.py","path":"logging_code.py","contentType":"file"},{"name":"mainn.py","path":"mainn.py","contentType":"file"},{"name":"processor_manager.py","path":"processor_manager.py","contentType":"file"},{"name":"redis_server.py","path":"redis_server.py","contentType":"file"},{"name":"requirements.txt","path":"requirements.txt","contentType":"file"},{"name":"roi.py","path":"roi.py","contentType":"file"},{"name":"segmentation_subscriber.py","path":"segmentation_subscriber.py","contentType":"file"}],"totalCount":14,"templateDirectorySuggestionUrl":null,"readme":null,"showBranchInfobar":false},"userNameDisplayConfiguration":null,"treeExpanded":false,"symbolsExpanded":false,"copilotSWEAgentEnabled":false,"isOverview":true,"overview":{"banners":{"shouldRecommendReadme":false,"isPersonalRepo":false,"showUseActionBanner":false,"actionSlug":null,"actionId":null,"showProtectBranchBanner":false,"transactionalMessageBanner":null,"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_repo","releasePath":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/releases/new?marketplace=true","showPublishActionBanner":false},"interactionLimitBanner":null,"showInvitationBanner":false,"inviterName":null,"actionsMigrationBannerInfo":{"releaseTags":[],"showImmutableActionsMigrationBanner":false,"initialMigrationStatus":null},"copilotSurveyBanner":null,"showSpammyBanner":false,"blockedContributorsBanner":null},"codeButton":{"contactPath":"/contact","isEnterprise":false,"local":{"protocolInfo":{"httpAvailable":true,"sshAvailable":true,"httpUrl":"https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ.git","showCloneWarning":true,"sshUrl":"git@github.com:YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ.git","sshCertificatesRequired":false,"sshCertificatesAvailable":null,"ghCliUrl":"gh repo clone YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","defaultProtocol":"http","newSshKeyUrl":"/settings/ssh/new","setProtocolPath":"/users/set_protocol?protocol_type=clone"},"platformInfo":{"cloneUrl":"https://desktop.github.com","showVisualStudioCloneButton":false,"visualStudioCloneUrl":"https://windows.github.com","showXcodeCloneButton":false,"xcodeCloneUrl":"xcode://clone?repo=https%3A%2F%2Fgithub.com%2FYNUDAYKIRAN%2FROI-Using-Computer-Vision-and-RabbitMQ","zipballUrl":"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/archive/refs/heads/main.zip"}},"repoPolicyInfo":{"allowed":true,"canBill":true,"changesWouldBeSafe":true,"disabledByBusiness":false,"disabledByOrganization":false,"hasIpAllowLists":false},"currentUserIsEnterpriseManaged":false,"enterpriseManagedBusinessName":null,"codespacesEnabled":true,"hasAccessToCodespaces":true},"popovers":{"rename":null,"renamedParentRepo":null},"commitCount":"6","overviewFiles":[{"displayName":"README.md","repoName":"ROI-Using-Computer-Vision-and-RabbitMQ","refName":"main","path":"README.md","preferredFileType":"readme","tabName":"README","richText":"\u003carticle class=\"markdown-body entry-content container-lg\" itemprop=\"text\"\u003e\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🚀 ROI-Based Intelligent Video Analytics System\u003c/h1\u003e\u003ca id=\"user-content--roi-based-intelligent-video-analytics-system\" class=\"anchor\" aria-label=\"Permalink: 🚀 ROI-Based Intelligent Video Analytics System\" href=\"#-roi-based-intelligent-video-analytics-system\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cblockquote\u003e\n\u003cp dir=\"auto\"\u003eA scalable real-time video analytics platform built using \u003cstrong\u003eYOLOv7\u003c/strong\u003e, \u003cstrong\u003eYOLOv7 Segmentation\u003c/strong\u003e, \u003cstrong\u003eRabbitMQ\u003c/strong\u003e, \u003cstrong\u003eRedis\u003c/strong\u003e, \u003cstrong\u003eOpenCV\u003c/strong\u003e, and \u003cstrong\u003ePython\u003c/strong\u003e for intelligent surveillance and safety monitoring.\u003c/p\u003e\n\u003c/blockquote\u003e\n\u003cp dir=\"auto\"\u003e\u003ca target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/530421a6185b633272b9db7dec226037bf4ff29108c7bbbbbedc4244c6b93b92/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e782d626c7565\"\u003e\u003cimg src=\"https://camo.githubusercontent.com/530421a6185b633272b9db7dec226037bf4ff29108c7bbbbbedc4244c6b93b92/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e782d626c7565\" alt=\"Python\" data-canonical-src=\"https://img.shields.io/badge/Python-3.x-blue\" style=\"max-width: 100%;\"\u003e\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/fe24677012890294fe5ae495ed8d3564e6663de86545f60bdaf0930533c40134/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f594f4c4f76372d446574656374696f6e2d677265656e\"\u003e\u003cimg src=\"https://camo.githubusercontent.com/fe24677012890294fe5ae495ed8d3564e6663de86545f60bdaf0930533c40134/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f594f4c4f76372d446574656374696f6e2d677265656e\" alt=\"YOLOv7\" data-canonical-src=\"https://img.shields.io/badge/YOLOv7-Detection-green\" style=\"max-width: 100%;\"\u003e\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/ac70c10c5a07f1c340f6337a04f43795e69ce78ef5a538495bffa7081e62618f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5261626269744d512d4d65737361676542726f6b65722d6f72616e6765\"\u003e\u003cimg src=\"https://camo.githubusercontent.com/ac70c10c5a07f1c340f6337a04f43795e69ce78ef5a538495bffa7081e62618f/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5261626269744d512d4d65737361676542726f6b65722d6f72616e6765\" alt=\"RabbitMQ\" data-canonical-src=\"https://img.shields.io/badge/RabbitMQ-MessageBroker-orange\" style=\"max-width: 100%;\"\u003e\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/d9e81d37a6d880513fe5c9486adfabc5e8f2df02ed00b20923e4730a8c97854c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656469732d43616368652d726564\"\u003e\u003cimg src=\"https://camo.githubusercontent.com/d9e81d37a6d880513fe5c9486adfabc5e8f2df02ed00b20923e4730a8c97854c/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656469732d43616368652d726564\" alt=\"Redis\" data-canonical-src=\"https://img.shields.io/badge/Redis-Cache-red\" style=\"max-width: 100%;\"\u003e\u003c/a\u003e\n\u003ca target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://camo.githubusercontent.com/88ee0066f3be1addd87e0f044610bf329266c77a316740d6b7273a182095ae63/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4f70656e43562d436f6d7075746572566973696f6e2d626c756576696f6c6574\"\u003e\u003cimg src=\"https://camo.githubusercontent.com/88ee0066f3be1addd87e0f044610bf329266c77a316740d6b7273a182095ae63/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4f70656e43562d436f6d7075746572566973696f6e2d626c756576696f6c6574\" alt=\"OpenCV\" data-canonical-src=\"https://img.shields.io/badge/OpenCV-ComputerVision-blueviolet\" style=\"max-width: 100%;\"\u003e\u003c/a\u003e\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e📖 Overview\u003c/h1\u003e\u003ca id=\"user-content--overview\" class=\"anchor\" aria-label=\"Permalink: 📖 Overview\" href=\"#-overview\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eThis project is a \u003cstrong\u003eRegion of Interest (ROI) Based Intelligent Video Analytics System\u003c/strong\u003e designed to process multiple surveillance camera streams in real-time.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThe system leverages \u003cstrong\u003eRabbitMQ\u003c/strong\u003e for distributed communication, \u003cstrong\u003eRedis\u003c/strong\u003e for configuration management and event storage, \u003cstrong\u003eYOLOv7 Detection\u003c/strong\u003e for object detection, and \u003cstrong\u003eYOLOv7 Segmentation\u003c/strong\u003e for person segmentation.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eInstead of processing every detected object, the system applies \u003cstrong\u003eROI validation\u003c/strong\u003e, ensuring that only detections occurring within predefined regions are considered valid and stored.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThis significantly reduces:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eFalse detections\u003c/li\u003e\n\u003cli\u003eStorage requirements\u003c/li\u003e\n\u003cli\u003eUnnecessary event processing\u003c/li\u003e\n\u003cli\u003eSystem overhead\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🎯 Problem Statement\u003c/h1\u003e\u003ca id=\"user-content--problem-statement\" class=\"anchor\" aria-label=\"Permalink: 🎯 Problem Statement\" href=\"#-problem-statement\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eTraditional surveillance systems process every detection regardless of its location.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThis often results in:\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e❌ High computational load\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e❌ Unnecessary event generation\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e❌ Increased storage usage\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e❌ False alarms\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eTo overcome these challenges, this project introduces an \u003cstrong\u003eROI-Based Detection Pipeline\u003c/strong\u003e where only objects detected within user-defined regions are processed and stored.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🎯 Objectives\u003c/h1\u003e\u003ca id=\"user-content--objectives\" class=\"anchor\" aria-label=\"Permalink: 🎯 Objectives\" href=\"#-objectives\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eProcess multiple camera streams simultaneously.\u003c/li\u003e\n\u003cli\u003eDetect objects using a custom-trained YOLOv7 model.\u003c/li\u003e\n\u003cli\u003ePerform person segmentation using YOLOv7 Segmentation.\u003c/li\u003e\n\u003cli\u003eApply ROI-based filtering.\u003c/li\u003e\n\u003cli\u003eStore only valid events.\u003c/li\u003e\n\u003cli\u003eBuild a scalable distributed architecture using RabbitMQ and Redis.\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🧠 Deep Learning Model Development\u003c/h1\u003e\u003ca id=\"user-content--deep-learning-model-development\" class=\"anchor\" aria-label=\"Permalink: 🧠 Deep Learning Model Development\" href=\"#-deep-learning-model-development\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eDataset Collection\u003c/h2\u003e\u003ca id=\"user-content-dataset-collection\" class=\"anchor\" aria-label=\"Permalink: Dataset Collection\" href=\"#dataset-collection\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eCollected and prepared a custom dataset containing:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003e🚶 Person\u003c/li\u003e\n\u003cli\u003e🚗 Car\u003c/li\u003e\n\u003cli\u003e🏍️ Bike\u003c/li\u003e\n\u003cli\u003e🦺 Helmet\u003c/li\u003e\n\u003cli\u003e👕 Jacket\u003c/li\u003e\n\u003cli\u003e🔥 Fire\u003c/li\u003e\n\u003cli\u003e🌫️ Smoke\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eData Annotation\u003c/h2\u003e\u003ca id=\"user-content-data-annotation\" class=\"anchor\" aria-label=\"Permalink: Data Annotation\" href=\"#data-annotation\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eImages were annotated using \u003cstrong\u003eLabelImg\u003c/strong\u003e.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eEach image was labeled with corresponding object classes and bounding boxes.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eModel Training\u003c/h2\u003e\u003ca id=\"user-content-model-training\" class=\"anchor\" aria-label=\"Permalink: Model Training\" href=\"#model-training\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eA custom \u003cstrong\u003eYOLOv7 Object Detection Model\u003c/strong\u003e was trained on the annotated dataset.\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eClasses Trained\u003c/h3\u003e\u003ca id=\"user-content-classes-trained\" class=\"anchor\" aria-label=\"Permalink: Classes Trained\" href=\"#classes-trained\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cmarkdown-accessiblity-table\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eClass ID\u003c/th\u003e\n\u003cth\u003eClass Name\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003e0\u003c/td\u003e\n\u003ctd\u003ePerson\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e1\u003c/td\u003e\n\u003ctd\u003eCar\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e2\u003c/td\u003e\n\u003ctd\u003eBike\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e3\u003c/td\u003e\n\u003ctd\u003eHelmet\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e4\u003c/td\u003e\n\u003ctd\u003eJacket\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e5\u003c/td\u003e\n\u003ctd\u003eFire\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003e6\u003c/td\u003e\n\u003ctd\u003eSmoke\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/markdown-accessiblity-table\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eOutput\u003c/h3\u003e\u003ca id=\"user-content-output\" class=\"anchor\" aria-label=\"Permalink: Output\" href=\"#output\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eAfter training:\u003c/p\u003e\n\u003cdiv class=\"highlight highlight-source-shell notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"best.pt\"\u003e\u003cpre\u003ebest.pt\u003c/pre\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003ewas generated and used for real-time inference.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🏗️ System Architecture\u003c/h1\u003e\u003ca id=\"user-content-️-system-architecture\" class=\"anchor\" aria-label=\"Permalink: 🏗️ System Architecture\" href=\"#️-system-architecture\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"                    Camera Configuration (JSON)\n                                 |\n                                 v\n                           Redis Cache\n                                 |\n                                 v\n                          Frame Producer\n                                 |\n                                 v\n                        RabbitMQ Exchange\n                                 |\n              ---------------------------------------\n              |                                     |\n              v                                     v\n\n       Person Queue                      Non-Person Queue\n              |                                     |\n              v                                     v\n\n  YOLOv7 Segmentation                    YOLOv7 Detection\n              |                                     |\n              ------------ Detection Exchange -------\n                                 |\n      --------------------------------------------------------\n      |                         |                           |\n      v                         v                           v\n\n Vehicle Queue          Fire-Smoke Queue         Helmet-Jacket Queue\n      |                         |                           |\n      v                         v                           v\n\n ROI Validation         ROI Validation            ROI Validation\n      |                         |                           |\n      v                         v                           v\n\n    Redis                     Redis                      Redis\"\u003e\u003cpre lang=\"text\" class=\"notranslate\"\u003e\u003ccode\u003e                    Camera Configuration (JSON)\n                                 |\n                                 v\n                           Redis Cache\n                                 |\n                                 v\n                          Frame Producer\n                                 |\n                                 v\n                        RabbitMQ Exchange\n                                 |\n              ---------------------------------------\n              |                                     |\n              v                                     v\n\n       Person Queue                      Non-Person Queue\n              |                                     |\n              v                                     v\n\n  YOLOv7 Segmentation                    YOLOv7 Detection\n              |                                     |\n              ------------ Detection Exchange -------\n                                 |\n      --------------------------------------------------------\n      |                         |                           |\n      v                         v                           v\n\n Vehicle Queue          Fire-Smoke Queue         Helmet-Jacket Queue\n      |                         |                           |\n      v                         v                           v\n\n ROI Validation         ROI Validation            ROI Validation\n      |                         |                           |\n      v                         v                           v\n\n    Redis                     Redis                      Redis\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🔄 Project Workflow\u003c/h1\u003e\u003ca id=\"user-content--project-workflow\" class=\"anchor\" aria-label=\"Permalink: 🔄 Project Workflow\" href=\"#-project-workflow\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStep 1: Camera Configuration\u003c/h2\u003e\u003ca id=\"user-content-step-1-camera-configuration\" class=\"anchor\" aria-label=\"Permalink: Step 1: Camera Configuration\" href=\"#step-1-camera-configuration\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eThe system starts by loading camera information from a JSON configuration file.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eEach camera entry contains:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eCamera ID\u003c/li\u003e\n\u003cli\u003eCamera IP Address\u003c/li\u003e\n\u003cli\u003eVideo Path / RTSP Stream\u003c/li\u003e\n\u003cli\u003eLabels\u003c/li\u003e\n\u003cli\u003eAdditional Metadata\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eExample\u003c/h3\u003e\u003ca id=\"user-content-example\" class=\"anchor\" aria-label=\"Permalink: Example\" href=\"#example\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"highlight highlight-source-json notranslate position-relative overflow-auto\" dir=\"auto\" data-snippet-clipboard-copy-content=\"{\n  \u0026quot;camera_1\u0026quot;: {\n    \u0026quot;ip_address\u0026quot;: \u0026quot;192.168.1.100\u0026quot;,\n    \u0026quot;video_path\u0026quot;: \u0026quot;video1.mp4\u0026quot;,\n    \u0026quot;labels\u0026quot;: [\u0026quot;car\u0026quot;, \u0026quot;bike\u0026quot;]\n  }\n}\"\u003e\u003cpre\u003e{\n  \u003cspan class=\"pl-ent\"\u003e\"camera_1\"\u003c/span\u003e: {\n    \u003cspan class=\"pl-ent\"\u003e\"ip_address\"\u003c/span\u003e: \u003cspan class=\"pl-s\"\u003e\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003e192.168.1.100\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003e\u003c/span\u003e,\n    \u003cspan class=\"pl-ent\"\u003e\"video_path\"\u003c/span\u003e: \u003cspan class=\"pl-s\"\u003e\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003evideo1.mp4\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003e\u003c/span\u003e,\n    \u003cspan class=\"pl-ent\"\u003e\"labels\"\u003c/span\u003e: [\u003cspan class=\"pl-s\"\u003e\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003ecar\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003e\u003c/span\u003e, \u003cspan class=\"pl-s\"\u003e\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003ebike\u003cspan class=\"pl-pds\"\u003e\"\u003c/span\u003e\u003c/span\u003e]\n  }\n}\u003c/pre\u003e\u003c/div\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStep 2: Redis Configuration Management\u003c/h2\u003e\u003ca id=\"user-content-step-2-redis-configuration-management\" class=\"anchor\" aria-label=\"Permalink: Step 2: Redis Configuration Management\" href=\"#step-2-redis-configuration-management\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eWhen the application starts:\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eCheck Redis\u003c/h3\u003e\u003ca id=\"user-content-check-redis\" class=\"anchor\" aria-label=\"Permalink: Check Redis\" href=\"#check-redis\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Configuration Available?\n        |\n   +----+----+\n   |         |\n  YES       NO\n   |         |\nLoad      Read JSON\nRedis         |\n              v\n        Store in Redis\n              |\n              v\n        Load Configuration\"\u003e\u003cpre lang=\"text\" class=\"notranslate\"\u003e\u003ccode\u003eConfiguration Available?\n        |\n   +----+----+\n   |         |\n  YES       NO\n   |         |\nLoad      Read JSON\nRedis         |\n              v\n        Store in Redis\n              |\n              v\n        Load Configuration\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eBenefits\u003c/h3\u003e\u003ca id=\"user-content-benefits\" class=\"anchor\" aria-label=\"Permalink: Benefits\" href=\"#benefits\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eFaster startup\u003c/li\u003e\n\u003cli\u003eReduced file access\u003c/li\u003e\n\u003cli\u003eCentralized configuration management\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStep 3: Multi-Camera Processing\u003c/h2\u003e\u003ca id=\"user-content-step-3-multi-camera-processing\" class=\"anchor\" aria-label=\"Permalink: Step 3: Multi-Camera Processing\" href=\"#step-3-multi-camera-processing\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eThe producer dynamically distributes cameras across processors and threads.\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eExample\u003c/h3\u003e\u003ca id=\"user-content-example-1\" class=\"anchor\" aria-label=\"Permalink: Example\" href=\"#example-1\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003e4 Cameras\u003c/p\u003e\n\u003cdiv class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Processor 1\n├── Thread 1 → Camera 1\n└── Thread 2 → Camera 2\n\nProcessor 2\n├── Thread 1 → Camera 3\n└── Thread 2 → Camera 4\"\u003e\u003cpre lang=\"text\" class=\"notranslate\"\u003e\u003ccode\u003eProcessor 1\n├── Thread 1 → Camera 1\n└── Thread 2 → Camera 2\n\nProcessor 2\n├── Thread 1 → Camera 3\n└── Thread 2 → Camera 4\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eEach thread continuously captures frames from its assigned camera.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStep 4: Frame Encoding \u0026amp; Publishing\u003c/h2\u003e\u003ca id=\"user-content-step-4-frame-encoding--publishing\" class=\"anchor\" aria-label=\"Permalink: Step 4: Frame Encoding \u0026amp; Publishing\" href=\"#step-4-frame-encoding--publishing\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eCaptured frames are encoded using Base64 before transmission.\u003c/p\u003e\n\u003cdiv class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Camera Frame\n      |\n      v\nBase64 Encoding\n      |\n      v\nRabbitMQ Exchange\"\u003e\u003cpre lang=\"text\" class=\"notranslate\"\u003e\u003ccode\u003eCamera Frame\n      |\n      v\nBase64 Encoding\n      |\n      v\nRabbitMQ Exchange\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eWhy Base64?\u003c/h3\u003e\u003ca id=\"user-content-why-base64\" class=\"anchor\" aria-label=\"Permalink: Why Base64?\" href=\"#why-base64\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eEasy serialization\u003c/li\u003e\n\u003cli\u003eBroker-friendly transmission\u003c/li\u003e\n\u003cli\u003eCross-service compatibility\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStep 5: Queue Separation\u003c/h2\u003e\u003ca id=\"user-content-step-5-queue-separation\" class=\"anchor\" aria-label=\"Permalink: Step 5: Queue Separation\" href=\"#step-5-queue-separation\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eFrames are divided into two primary queues.\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e👤 Person Queue\u003c/h3\u003e\u003ca id=\"user-content--person-queue\" class=\"anchor\" aria-label=\"Permalink: 👤 Person Queue\" href=\"#-person-queue\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eContains:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003ePerson-related frames\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003ePurpose:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003ePerson Segmentation\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🚗 Non-Person Queue\u003c/h3\u003e\u003ca id=\"user-content--non-person-queue\" class=\"anchor\" aria-label=\"Permalink: 🚗 Non-Person Queue\" href=\"#-non-person-queue\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eContains:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eCar\u003c/li\u003e\n\u003cli\u003eBike\u003c/li\u003e\n\u003cli\u003eHelmet\u003c/li\u003e\n\u003cli\u003eJacket\u003c/li\u003e\n\u003cli\u003eFire\u003c/li\u003e\n\u003cli\u003eSmoke\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003ePurpose:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eObject Detection\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🤖 YOLOv7 Detection Pipeline\u003c/h1\u003e\u003ca id=\"user-content--yolov7-detection-pipeline\" class=\"anchor\" aria-label=\"Permalink: 🤖 YOLOv7 Detection Pipeline\" href=\"#-yolov7-detection-pipeline\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eFrames received from the Non-Person Queue are:\u003c/p\u003e\n\u003col dir=\"auto\"\u003e\n\u003cli\u003eDecoded\u003c/li\u003e\n\u003cli\u003eSent to YOLOv7 Detection\u003c/li\u003e\n\u003cli\u003eProcessed for object detection\u003c/li\u003e\n\u003c/ol\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eSupported Detection Classes\u003c/h3\u003e\u003ca id=\"user-content-supported-detection-classes\" class=\"anchor\" aria-label=\"Permalink: Supported Detection Classes\" href=\"#supported-detection-classes\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cmarkdown-accessiblity-table\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eClass\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ePerson\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eCar\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eBike\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eHelmet\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eJacket\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eFire\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eSmoke\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/markdown-accessiblity-table\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eDetection Output\u003c/h3\u003e\u003ca id=\"user-content-detection-output\" class=\"anchor\" aria-label=\"Permalink: Detection Output\" href=\"#detection-output\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eBounding Box Coordinates\u003c/li\u003e\n\u003cli\u003eConfidence Score\u003c/li\u003e\n\u003cli\u003eClass Label\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e👤 YOLOv7 Segmentation Pipeline\u003c/h1\u003e\u003ca id=\"user-content--yolov7-segmentation-pipeline\" class=\"anchor\" aria-label=\"Permalink: 👤 YOLOv7 Segmentation Pipeline\" href=\"#-yolov7-segmentation-pipeline\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eFrames received from the Person Queue are:\u003c/p\u003e\n\u003col dir=\"auto\"\u003e\n\u003cli\u003eDecoded\u003c/li\u003e\n\u003cli\u003eSent to YOLOv7 Segmentation\u003c/li\u003e\n\u003cli\u003ePerson masks generated\u003c/li\u003e\n\u003c/ol\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eOutput\u003c/h3\u003e\u003ca id=\"user-content-output-1\" class=\"anchor\" aria-label=\"Permalink: Output\" href=\"#output-1\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003ePerson Mask\u003c/li\u003e\n\u003cli\u003eSegmented Person Region\u003c/li\u003e\n\u003cli\u003eReal-time Visualization\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🔀 Detection Routing\u003c/h1\u003e\u003ca id=\"user-content--detection-routing\" class=\"anchor\" aria-label=\"Permalink: 🔀 Detection Routing\" href=\"#-detection-routing\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eDetection results are routed to another RabbitMQ Exchange.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThe exchange creates dedicated queues based on detection type.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🚗 Vehicle Queue\u003c/h2\u003e\u003ca id=\"user-content--vehicle-queue\" class=\"anchor\" aria-label=\"Permalink: 🚗 Vehicle Queue\" href=\"#-vehicle-queue\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eProcesses:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eCar\u003c/li\u003e\n\u003cli\u003eBike\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003eUse Cases:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eVehicle Monitoring\u003c/li\u003e\n\u003cli\u003eTraffic Analytics\u003c/li\u003e\n\u003cli\u003eRestricted Zone Monitoring\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🔥 Fire-Smoke Queue\u003c/h2\u003e\u003ca id=\"user-content--fire-smoke-queue\" class=\"anchor\" aria-label=\"Permalink: 🔥 Fire-Smoke Queue\" href=\"#-fire-smoke-queue\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eProcesses:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eFire\u003c/li\u003e\n\u003cli\u003eSmoke\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003eUse Cases:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eFire Detection\u003c/li\u003e\n\u003cli\u003eIndustrial Safety Monitoring\u003c/li\u003e\n\u003cli\u003eEmergency Alerts\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch2 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🦺 Helmet-Jacket Queue\u003c/h2\u003e\u003ca id=\"user-content--helmet-jacket-queue\" class=\"anchor\" aria-label=\"Permalink: 🦺 Helmet-Jacket Queue\" href=\"#-helmet-jacket-queue\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eProcesses:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eHelmet\u003c/li\u003e\n\u003cli\u003eJacket\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003eUse Cases:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003ePPE Compliance Monitoring\u003c/li\u003e\n\u003cli\u003eWorkplace Safety\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e📍 ROI Validation\u003c/h1\u003e\u003ca id=\"user-content--roi-validation\" class=\"anchor\" aria-label=\"Permalink: 📍 ROI Validation\" href=\"#-roi-validation\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eROI (Region of Interest) filtering is applied before storing detections.\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eWorkflow\u003c/h3\u003e\u003ca id=\"user-content-workflow\" class=\"anchor\" aria-label=\"Permalink: Workflow\" href=\"#workflow\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"snippet-clipboard-content notranslate position-relative overflow-auto\" data-snippet-clipboard-copy-content=\"Object Detected\n       |\n       v\nCheck ROI\n       |\n   +---+---+\n   |       |\n Inside   Outside\n ROI      ROI\n   |       |\n   v       v\n\n Save    Ignore\n Event\"\u003e\u003cpre lang=\"text\" class=\"notranslate\"\u003e\u003ccode\u003eObject Detected\n       |\n       v\nCheck ROI\n       |\n   +---+---+\n   |       |\n Inside   Outside\n ROI      ROI\n   |       |\n   v       v\n\n Save    Ignore\n Event\n\u003c/code\u003e\u003c/pre\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eOnly detections inside the ROI are considered valid.\u003c/h1\u003e\u003ca id=\"user-content-only-detections-inside-the-roi-are-considered-valid\" class=\"anchor\" aria-label=\"Permalink: Only detections inside the ROI are considered valid.\" href=\"#only-detections-inside-the-roi-are-considered-valid\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eAdvantages\u003c/h3\u003e\u003ca id=\"user-content-advantages\" class=\"anchor\" aria-label=\"Permalink: Advantages\" href=\"#advantages\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003e✅ Reduced False Positives\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Focused Event Monitoring\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Lower Storage Usage\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Improved Analytics Accuracy\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e💾 Redis Event Storage\u003c/h1\u003e\u003ca id=\"user-content--redis-event-storage\" class=\"anchor\" aria-label=\"Permalink: 💾 Redis Event Storage\" href=\"#-redis-event-storage\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eValidated detections are stored in Redis.\u003c/p\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003eStored Information\u003c/h3\u003e\u003ca id=\"user-content-stored-information\" class=\"anchor\" aria-label=\"Permalink: Stored Information\" href=\"#stored-information\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eCamera ID\u003c/li\u003e\n\u003cli\u003eTimestamp\u003c/li\u003e\n\u003cli\u003eDetection Class\u003c/li\u003e\n\u003cli\u003eBounding Box Coordinates\u003c/li\u003e\n\u003cli\u003eConfidence Score\u003c/li\u003e\n\u003cli\u003eROI Status\u003c/li\u003e\n\u003cli\u003eEncoded Frame\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e📊 Supported Analytics\u003c/h1\u003e\u003ca id=\"user-content--supported-analytics\" class=\"anchor\" aria-label=\"Permalink: 📊 Supported Analytics\" href=\"#-supported-analytics\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cmarkdown-accessiblity-table\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eAnalytics Module\u003c/th\u003e\n\u003cth\u003eDescription\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003eVehicle Monitoring\u003c/td\u003e\n\u003ctd\u003eCar \u0026amp; Bike Detection\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eFire Monitoring\u003c/td\u003e\n\u003ctd\u003eFire \u0026amp; Smoke Detection\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003ePPE Monitoring\u003c/td\u003e\n\u003ctd\u003eHelmet \u0026amp; Jacket Detection\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eHuman Monitoring\u003c/td\u003e\n\u003ctd\u003ePerson Segmentation\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eROI Analytics\u003c/td\u003e\n\u003ctd\u003eZone-Based Event Detection\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/markdown-accessiblity-table\u003e\n\u003chr\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🎯 Key Features\u003c/h1\u003e\u003ca id=\"user-content--key-features\" class=\"anchor\" aria-label=\"Permalink: 🎯 Key Features\" href=\"#-key-features\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003e✅ Custom YOLOv7 Training\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Real-Time Object Detection\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Real-Time Person Segmentation\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ ROI-Based Filtering\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ RabbitMQ Distributed Architecture\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Redis-Based Event Storage\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Multi-Camera Processing\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Fire \u0026amp; Smoke Detection\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Vehicle Monitoring\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Helmet \u0026amp; Jacket Compliance Monitoring\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Multiprocessing \u0026amp; Multithreading\u003c/p\u003e\n\u003cp dir=\"auto\"\u003e✅ Scalable Producer-Consumer Architecture\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🛠️ Technologies Used\u003c/h1\u003e\u003ca id=\"user-content-️-technologies-used\" class=\"anchor\" aria-label=\"Permalink: 🛠️ Technologies Used\" href=\"#️-technologies-used\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cmarkdown-accessiblity-table\u003e\u003ctable\u003e\n\u003cthead\u003e\n\u003ctr\u003e\n\u003cth\u003eTechnology\u003c/th\u003e\n\u003cth\u003ePurpose\u003c/th\u003e\n\u003c/tr\u003e\n\u003c/thead\u003e\n\u003ctbody\u003e\n\u003ctr\u003e\n\u003ctd\u003ePython\u003c/td\u003e\n\u003ctd\u003eCore Development\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eOpenCV\u003c/td\u003e\n\u003ctd\u003eVideo Processing\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eYOLOv7\u003c/td\u003e\n\u003ctd\u003eObject Detection\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eYOLOv7 Segmentation\u003c/td\u003e\n\u003ctd\u003ePerson Segmentation\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eRabbitMQ\u003c/td\u003e\n\u003ctd\u003eMessage Broker\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eRedis\u003c/td\u003e\n\u003ctd\u003eCaching \u0026amp; Storage\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eLabelImg\u003c/td\u003e\n\u003ctd\u003eImage Annotation\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eMultiprocessing\u003c/td\u003e\n\u003ctd\u003eParallel Processing\u003c/td\u003e\n\u003c/tr\u003e\n\u003ctr\u003e\n\u003ctd\u003eMultithreading\u003c/td\u003e\n\u003ctd\u003eCamera Handling\u003c/td\u003e\n\u003c/tr\u003e\n\u003c/tbody\u003e\n\u003c/table\u003e\u003c/markdown-accessiblity-table\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🚀 Future Enhancements\u003c/h1\u003e\u003ca id=\"user-content--future-enhancements\" class=\"anchor\" aria-label=\"Permalink: 🚀 Future Enhancements\" href=\"#-future-enhancements\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eMulti-Object Tracking (DeepSORT)\u003c/li\u003e\n\u003cli\u003eVehicle Counting\u003c/li\u003e\n\u003cli\u003eIntrusion Detection\u003c/li\u003e\n\u003cli\u003eEmail Notifications\u003c/li\u003e\n\u003cli\u003eSMS Alerts\u003c/li\u003e\n\u003cli\u003eDashboard Visualization\u003c/li\u003e\n\u003cli\u003eGrafana Integration\u003c/li\u003e\n\u003cli\u003eDocker Deployment\u003c/li\u003e\n\u003cli\u003eKubernetes Deployment\u003c/li\u003e\n\u003cli\u003eCloud Deployment (AWS/Azure/GCP)\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🌍 Real-World Applications\u003c/h1\u003e\u003ca id=\"user-content--real-world-applications\" class=\"anchor\" aria-label=\"Permalink: 🌍 Real-World Applications\" href=\"#-real-world-applications\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🏭 Industrial Safety\u003c/h3\u003e\u003ca id=\"user-content--industrial-safety\" class=\"anchor\" aria-label=\"Permalink: 🏭 Industrial Safety\" href=\"#-industrial-safety\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eHelmet Detection\u003c/li\u003e\n\u003cli\u003eJacket Detection\u003c/li\u003e\n\u003cli\u003eWorker Monitoring\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🔥 Fire Safety\u003c/h3\u003e\u003ca id=\"user-content--fire-safety\" class=\"anchor\" aria-label=\"Permalink: 🔥 Fire Safety\" href=\"#-fire-safety\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eFire Detection\u003c/li\u003e\n\u003cli\u003eSmoke Detection\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🚗 Traffic Monitoring\u003c/h3\u003e\u003ca id=\"user-content--traffic-monitoring\" class=\"anchor\" aria-label=\"Permalink: 🚗 Traffic Monitoring\" href=\"#-traffic-monitoring\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eVehicle Detection\u003c/li\u003e\n\u003cli\u003eVehicle Analytics\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🎥 Smart Surveillance\u003c/h3\u003e\u003ca id=\"user-content--smart-surveillance\" class=\"anchor\" aria-label=\"Permalink: 🎥 Smart Surveillance\" href=\"#-smart-surveillance\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eRestricted Area Monitoring\u003c/li\u003e\n\u003cli\u003eIntelligent Security Systems\u003c/li\u003e\n\u003c/ul\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch3 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🏙️ Smart Cities\u003c/h3\u003e\u003ca id=\"user-content-️-smart-cities\" class=\"anchor\" aria-label=\"Permalink: 🏙️ Smart Cities\" href=\"#️-smart-cities\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003ePublic Safety Monitoring\u003c/li\u003e\n\u003cli\u003eAutomated Event Detection\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🏆 Project Achievements\u003c/h1\u003e\u003ca id=\"user-content--project-achievements\" class=\"anchor\" aria-label=\"Permalink: 🏆 Project Achievements\" href=\"#-project-achievements\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eBuilt a distributed real-time video analytics pipeline.\u003c/li\u003e\n\u003cli\u003eImplemented YOLOv7-based detection and segmentation.\u003c/li\u003e\n\u003cli\u003eDeveloped ROI-aware event filtering logic.\u003c/li\u003e\n\u003cli\u003eIntegrated Redis for high-speed event storage.\u003c/li\u003e\n\u003cli\u003eDesigned RabbitMQ-based asynchronous communication.\u003c/li\u003e\n\u003cli\u003eEnabled scalable processing of multiple camera streams.\u003c/li\u003e\n\u003c/ul\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e🎯 Conclusion\u003c/h1\u003e\u003ca id=\"user-content--conclusion\" class=\"anchor\" aria-label=\"Permalink: 🎯 Conclusion\" href=\"#-conclusion\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003eThis project demonstrates the development of a scalable and intelligent video analytics system capable of processing multiple camera streams in real-time. By integrating YOLOv7 Detection, YOLOv7 Segmentation, RabbitMQ, Redis, and ROI-based filtering, the system efficiently identifies and stores only relevant events.\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eThe distributed architecture ensures high performance, scalability, and modularity, making it suitable for applications such as:\u003c/p\u003e\n\u003cul dir=\"auto\"\u003e\n\u003cli\u003eSmart Surveillance\u003c/li\u003e\n\u003cli\u003eIndustrial Safety Monitoring\u003c/li\u003e\n\u003cli\u003eFire and Smoke Detection\u003c/li\u003e\n\u003cli\u003ePPE Compliance Monitoring\u003c/li\u003e\n\u003cli\u003eVehicle Monitoring and Analytics\u003c/li\u003e\n\u003c/ul\u003e\n\u003cp dir=\"auto\"\u003eThrough ROI-based validation and event-driven processing, the system significantly reduces false detections and unnecessary storage while improving the overall accuracy and efficiency of video analytics.\u003c/p\u003e\n\u003chr\u003e\n\u003cdiv class=\"markdown-heading\" dir=\"auto\"\u003e\u003ch1 tabindex=\"-1\" class=\"heading-element\" dir=\"auto\"\u003e👨‍💻 Author\u003c/h1\u003e\u003ca id=\"user-content-‍-author\" class=\"anchor\" aria-label=\"Permalink: 👨‍💻 Author\" href=\"#‍-author\"\u003e\u003csvg data-component=\"Octicon\" class=\"octicon octicon-link\" viewBox=\"0 0 16 16\" version=\"1.1\" width=\"16\" height=\"16\" aria-hidden=\"true\"\u003e\u003cpath d=\"m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z\"\u003e\u003c/path\u003e\u003c/svg\u003e\u003c/a\u003e\u003c/div\u003e\n\u003cp dir=\"auto\"\u003e\u003cstrong\u003eYerra Naga Uday Kiran\u003c/strong\u003e\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eData Science | AI/ML Engineer\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eGmail: \u003ca href=\"mailto:udaykiranyerranaga@gmail.com\"\u003eudaykiranyerranaga@gmail.com\u003c/a\u003e\u003c/p\u003e\n\u003cp dir=\"auto\"\u003eLinkedIn: \u003ca href=\"https://www.linkedin.com/in/mr-uday-kiran-42803a2b3/\" rel=\"nofollow\"\u003ehttps://www.linkedin.com/in/mr-uday-kiran-42803a2b3/\u003c/a\u003e\u003c/p\u003e\n\u003chr\u003e\n\u003c/article\u003e","loaded":true,"timedOut":false,"errorMessage":null,"headerInfo":{"toc":[{"level":1,"text":"🚀 ROI-Based Intelligent Video Analytics System","anchor":"-roi-based-intelligent-video-analytics-system","htmlText":"🚀 ROI-Based Intelligent Video Analytics System"},{"level":1,"text":"📖 Overview","anchor":"-overview","htmlText":"📖 Overview"},{"level":1,"text":"🎯 Problem Statement","anchor":"-problem-statement","htmlText":"🎯 Problem Statement"},{"level":1,"text":"🎯 Objectives","anchor":"-objectives","htmlText":"🎯 Objectives"},{"level":1,"text":"🧠 Deep Learning Model Development","anchor":"-deep-learning-model-development","htmlText":"🧠 Deep Learning Model Development"},{"level":2,"text":"Dataset Collection","anchor":"dataset-collection","htmlText":"Dataset Collection"},{"level":2,"text":"Data Annotation","anchor":"data-annotation","htmlText":"Data Annotation"},{"level":2,"text":"Model Training","anchor":"model-training","htmlText":"Model Training"},{"level":3,"text":"Classes Trained","anchor":"classes-trained","htmlText":"Classes Trained"},{"level":3,"text":"Output","anchor":"output","htmlText":"Output"},{"level":1,"text":"🏗️ System Architecture","anchor":"️-system-architecture","htmlText":"🏗️ System Architecture"},{"level":1,"text":"🔄 Project Workflow","anchor":"-project-workflow","htmlText":"🔄 Project Workflow"},{"level":2,"text":"Step 1: Camera Configuration","anchor":"step-1-camera-configuration","htmlText":"Step 1: Camera Configuration"},{"level":3,"text":"Example","anchor":"example","htmlText":"Example"},{"level":2,"text":"Step 2: Redis Configuration Management","anchor":"step-2-redis-configuration-management","htmlText":"Step 2: Redis Configuration Management"},{"level":3,"text":"Check Redis","anchor":"check-redis","htmlText":"Check Redis"},{"level":3,"text":"Benefits","anchor":"benefits","htmlText":"Benefits"},{"level":2,"text":"Step 3: Multi-Camera Processing","anchor":"step-3-multi-camera-processing","htmlText":"Step 3: Multi-Camera Processing"},{"level":3,"text":"Example","anchor":"example-1","htmlText":"Example"},{"level":2,"text":"Step 4: Frame Encoding \u0026 Publishing","anchor":"step-4-frame-encoding--publishing","htmlText":"Step 4: Frame Encoding \u0026amp; Publishing"},{"level":3,"text":"Why Base64?","anchor":"why-base64","htmlText":"Why Base64?"},{"level":2,"text":"Step 5: Queue Separation","anchor":"step-5-queue-separation","htmlText":"Step 5: Queue Separation"},{"level":3,"text":"👤 Person Queue","anchor":"-person-queue","htmlText":"👤 Person Queue"},{"level":3,"text":"🚗 Non-Person Queue","anchor":"-non-person-queue","htmlText":"🚗 Non-Person Queue"},{"level":1,"text":"🤖 YOLOv7 Detection Pipeline","anchor":"-yolov7-detection-pipeline","htmlText":"🤖 YOLOv7 Detection Pipeline"},{"level":3,"text":"Supported Detection Classes","anchor":"supported-detection-classes","htmlText":"Supported Detection Classes"},{"level":3,"text":"Detection Output","anchor":"detection-output","htmlText":"Detection Output"},{"level":1,"text":"👤 YOLOv7 Segmentation Pipeline","anchor":"-yolov7-segmentation-pipeline","htmlText":"👤 YOLOv7 Segmentation Pipeline"},{"level":3,"text":"Output","anchor":"output-1","htmlText":"Output"},{"level":1,"text":"🔀 Detection Routing","anchor":"-detection-routing","htmlText":"🔀 Detection Routing"},{"level":2,"text":"🚗 Vehicle Queue","anchor":"-vehicle-queue","htmlText":"🚗 Vehicle Queue"},{"level":2,"text":"🔥 Fire-Smoke Queue","anchor":"-fire-smoke-queue","htmlText":"🔥 Fire-Smoke Queue"},{"level":2,"text":"🦺 Helmet-Jacket Queue","anchor":"-helmet-jacket-queue","htmlText":"🦺 Helmet-Jacket Queue"},{"level":1,"text":"📍 ROI Validation","anchor":"-roi-validation","htmlText":"📍 ROI Validation"},{"level":3,"text":"Workflow","anchor":"workflow","htmlText":"Workflow"},{"level":1,"text":"Only detections inside the ROI are considered valid.","anchor":"only-detections-inside-the-roi-are-considered-valid","htmlText":"Only detections inside the ROI are considered valid."},{"level":3,"text":"Advantages","anchor":"advantages","htmlText":"Advantages"},{"level":1,"text":"💾 Redis Event Storage","anchor":"-redis-event-storage","htmlText":"💾 Redis Event Storage"},{"level":3,"text":"Stored Information","anchor":"stored-information","htmlText":"Stored Information"},{"level":1,"text":"📊 Supported Analytics","anchor":"-supported-analytics","htmlText":"📊 Supported Analytics"},{"level":1,"text":"🎯 Key Features","anchor":"-key-features","htmlText":"🎯 Key Features"},{"level":1,"text":"🛠️ Technologies Used","anchor":"️-technologies-used","htmlText":"🛠️ Technologies Used"},{"level":1,"text":"🚀 Future Enhancements","anchor":"-future-enhancements","htmlText":"🚀 Future Enhancements"},{"level":1,"text":"🌍 Real-World Applications","anchor":"-real-world-applications","htmlText":"🌍 Real-World Applications"},{"level":3,"text":"🏭 Industrial Safety","anchor":"-industrial-safety","htmlText":"🏭 Industrial Safety"},{"level":3,"text":"🔥 Fire Safety","anchor":"-fire-safety","htmlText":"🔥 Fire Safety"},{"level":3,"text":"🚗 Traffic Monitoring","anchor":"-traffic-monitoring","htmlText":"🚗 Traffic Monitoring"},{"level":3,"text":"🎥 Smart Surveillance","anchor":"-smart-surveillance","htmlText":"🎥 Smart Surveillance"},{"level":3,"text":"🏙️ Smart Cities","anchor":"️-smart-cities","htmlText":"🏙️ Smart Cities"},{"level":1,"text":"🏆 Project Achievements","anchor":"-project-achievements","htmlText":"🏆 Project Achievements"},{"level":1,"text":"🎯 Conclusion","anchor":"-conclusion","htmlText":"🎯 Conclusion"},{"level":1,"text":"👨‍💻 Author","anchor":"‍-author","htmlText":"👨‍💻 Author"}],"siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2FYNUDAYKIRAN%2FROI-Using-Computer-Vision-and-RabbitMQ"}}],"overviewFilesProcessingTime":0,"copilotSWEAgentEnabled":false,"createFromTemplatePath":"/new?template_name=ROI-Using-Computer-Vision-and-RabbitMQ\u0026template_owner=YNUDAYKIRAN"}},"codeViewLayoutRoute":{"repo":{"id":1282728933,"defaultBranch":"main","name":"ROI-Using-Computer-Vision-and-RabbitMQ","ownerLogin":"YNUDAYKIRAN","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2026-06-28T11:35:32.000+05:30","ownerAvatar":"https://avatars.githubusercontent.com/u/148639806?v=4","public":true,"private":false,"isOrgOwned":false},"currentUser":{"id":224766043,"login":"12NIKHI","userEmail":"nikhilatopalle@gmail.com"},"uploadToken":"1aulgRMjlTjKZxXHsYHcKzqnhQ2Z5ZSs6PW4RMdyBTrBA5sIF9Pq4AAG1XduqRCR1LAp5jgDfUK2Gsp6EKESKw","allShortcutsEnabled":true,"treeExpanded":false,"path":"/","symbolsExpanded":true,"refInfo":{"name":"main","listCacheKey":"v0:1782626733.0","canEdit":false,"currentOid":"1eaac111f15029335a24551cff4d7e891a1ed439"},"helpUrl":"https://docs.github.com","findFileWorkerPath":"/assets-cdn/worker/find-file-worker-3f8885dfc40104fe.js","findInFileWorkerPath":"/assets-cdn/worker/find-in-file-worker-9489200aec0b0876.js","githubDevUrl":"https://github.dev/"},"csrf_tokens":{"/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/branches":{"post":"ZT_PpJaCoFjIWmolqlZgpW58KK4jG4P64uKNDgg6dHQWeF-02gRnusjJLzNivqg6tuq9yF0AoAtP-eohDK8DkA"}}},"title":"YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","appPayload":{},"meta":{"title":"YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ"}}</script>
+  <div data-target="react-app.reactRoot"><meta name="github-code-view-meta-stats" id="github-code-view-meta-stats" data-hydrostats="publish"> <!-- --> <a hidden="" id="code-view-repo-link" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" data-discover="true"></a> <div class="d-none"></div><div><div class="prc-PageLayout-PageLayoutRoot--KH-d" data-component="PageLayout" style="--spacing: var(--spacing-none);"><div class="prc-PageLayout-PageLayoutWrapper-2BhU2" data-width="full"><div class="prc-PageLayout-PageLayoutContent-BneH9"><div data-component="PageLayout.Content" class="prc-PageLayout-ContentWrapper-gR9eG" data-is-hidden-narrow="false"><div class="prc-PageLayout-Content-xWL-A" data-width="full" style="--spacing: var(--spacing-none);"><div class="SharedPageLayout-module__content__IwGAp" data-selector="repos-split-pane-content" tabindex="0"><div class="prc-PageLayout-PageLayoutRoot--KH-d container-xl" data-component="PageLayout" style="--spacing: var(--spacing-none);"><div class="prc-PageLayout-PageLayoutWrapper-2BhU2" data-width="full"><header data-component="PageLayout.Header" data-hidden="false" class="prc-PageLayout-Header-0of-R tmp-px-3 tmp-px-lg-5" style="--spacing: var(--spacing-none);"><div class="prc-PageLayout-HeaderContent-gdFfN" style="--spacing: var(--spacing-none);"><rails-partial data-partial-name="codeViewRepoRoute.Header" class="RailsPartial-module__d-contents__G5m4w">
+
+  <div id="repository-container-header" class="tmp-pt-3 hide-full-screen" data-turbo-replace="">
+
+      <div class="d-flex flex-nowrap flex-justify-end tmp-mb-3" style="gap: 1rem;">
+
+        <div class="flex-auto min-width-0 width-fit">
+              <div id="repo-title-component" class=" d-flex flex-nowrap flex-items-center wb-break-word f3 text-normal">
+    <img class="avatar mr-2 d-none d-md-block avatar-user" alt="Owner avatar" src="./config_files/148639806" width="24" height="24">
+  
+
+  <strong itemprop="name" class="mr-2 flex-self-stretch d-none d-md-block no-wrap overflow-x-hidden">
+    <a data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame" class="d-block overflow-x-hidden color-fg-default" style="text-overflow: ellipsis;" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ">ROI-Using-Computer-Vision-and-RabbitMQ</a>
+  </strong>
+
+  <span></span><span class="Label Label--secondary v-align-middle mr-1 d-none d-md-block">Public</span>
+</div>
+
+<div class="d-none d-md-block">
+</div>
+
+
+        </div>
+
+        <div id="repository-details-container" class="flex-shrink-0" data-turbo-replace="" style="max-width: 70%;">
+            <ul class="pagehead-actions flex-shrink-0 d-none d-md-inline" style="padding: 2px 0;">
+    
+      
+
+  <li>
+              <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-react-css.89ed847d1a8f127f.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/notifications-subscriptions-menu.ecd5bfebe0d915a5.module.css">
+
+<react-partial partial-name="notifications-subscriptions-menu" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false" data-catalyst="" class="loaded">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"subscriptionType":"none","repositoryId":1282728933,"repositoryName":"YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","watchersCount":0,"subscribableThreadTypes":[{"name":"Issue","enabled":true,"subscribed":false},{"name":"PullRequest","enabled":true,"subscribed":false},{"name":"Release","enabled":true,"subscribed":false},{"name":"Discussion","enabled":false,"subscribed":false},{"name":"SecurityAlert","enabled":true,"subscribed":false}],"showLabelSubscriptions":false,"subscribedLabels":[]}}</script>
+  <div data-target="react-partial.reactRoot"><button data-component="ActionMenu.Button" type="button" data-testid="notifications-subscriptions-menu-button" aria-label="Watch: Participating in YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk NotificationsSubscriptionsMenu-module__ActionMenuButton__FVE3w" data-loading="false" data-size="small" data-variant="default" id="_r_jk_" style="anchor-name: --anchored-overlay-anchor-_r_jm_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-eye" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3">Watch</span><span data-component="trailingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><span aria-hidden="true" data-variant="secondary" data-component="CounterLabel" class="prc-CounterLabel-CounterLabel-X-kRU">0</span><span class="prc-VisuallyHidden-VisuallyHidden-Q0qSB">&nbsp;(0)</span></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button></div>
+</react-partial>
+
+
+
+
+  </li>
+
+  <li>
+        <div data-view-component="true" class="BtnGroup d-flex">
+        <a icon="repo-forked" id="fork-button" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/fork" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="866c636c347c5794c3ed068f2f14df3961046eba4f17f884771bc93d0d6b7229" data-ga-click="Repository, show fork modal, action:repositories/partials#header; text:Fork" data-view-component="true" class="btn-sm btn BtnGroup-item" aria-describedby="tooltip-a9a65c45-f4d3-4e03-8141-c6a753752dc5">    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2 tmp-mr-2">
+    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+</svg>Fork
+          <span id="repo-network-counter" data-pjax-replace="true" data-turbo-replace="true" title="0" data-view-component="true" class="Counter">0</span>
+          <tool-tip id="tooltip-a9a65c45-f4d3-4e03-8141-c6a753752dc5" for="fork-button" popover="manual" data-direction="s" data-type="description" data-view-component="true" class="sr-only position-absolute" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Fork your own copy of YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ</tool-tip>
+</a>
+      <details group_item="true" id="my-forks-menu-1282728933" data-view-component="true" class="details-reset details-overlay BtnGroup-parent d-inline-block position-relative">
+              <summary aria-label="See your forks of this repository" data-view-component="true" class="btn-sm btn BtnGroup-item px-2 tmp-px-2 float-none" aria-haspopup="menu" role="button">    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</summary>
+  <details-menu class="SelectMenu right-0" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/my_forks_menu_content?can_fork=true" role="menu">
+    <div class="SelectMenu-modal">
+        <button class="SelectMenu-closeButton position-absolute right-0 m-2" type="button" aria-label="Close menu" data-toggle-for="my-forks-menu-1282728933">
+          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+        </button>
+      <div id="filter-menu-55de4f" class="d-flex flex-column flex-1 overflow-hidden">
+        <div class="SelectMenu-list">
+
+            <include-fragment aria-label="Loading" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true" class="SelectMenu-loading"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+                <p data-show-on-error="" hidden="">
+                  Forks could not be loaded
+                </p>
+                <span data-hide-on-error="">
+                                  <span data-view-component="true">
+  <svg role="menuitem" style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" aria-hidden="true" data-view-component="true" class="anim-rotate">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"></circle>
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg>    <span class="sr-only">Loading</span>
+</span>
+
+                </span>
+
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment></div>        
+</div>    </div>
+</details-menu></details></div>
+  </li>
+
+  <li>
+        <template class="js-unstar-confirmation-dialog-template" aria-live="polite"></template>
+
+  <div data-view-component="true" class="js-toggler-container js-social-container starring-container starring-container--with-list-menu d-flex">
+    <div data-view-component="true" class="starred BtnGroup flex-1 ml-0 tmp-ml-0">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto js-deferred-toggler-target" data-turbo="false" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="6vOBlnEVq6_tB3K3vgTceGQzOHK0NpG_kHLB2QSpUjbV0B0Hk28Q2hqvKKMnmeQuy-55ng2ggUYjcWDs68R6tA" autocomplete="off">
+          <input type="hidden" value="J5RedpEnysOuKPB6OcQvNEwuV5_nLcovK04AcvjAw9QYt8Lnc11xtlmAqm6gWRdi4_MWc1672taYTaFHF63rVg" data-csrf="true" class="js-confirm-csrf-token">
+        <input type="hidden" name="context" value="repository">
+          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="ccc7f6d34eb3c2bb13b107c2798969972d25f5eab72a45c8ff4987c745c07aaa" data-ga-click="Repository, click unstar button, action:repositories/partials#header; text:Unstar" data-aria-prefix="Starred, click to unstar this repository" aria-label="Starred, click to unstar this repository (0)" type="submit" data-view-component="true" class="rounded-left-2 btn-with-aria-count btn-sm btn BtnGroup-item">    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill starred-button-icon d-inline-block mr-2 tmp-mr-2">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+</svg><span data-view-component="true" class="d-inline">
+              Starred
+</span>              <span id="repo-stars-counter-unstar" aria-label="0 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="0" data-view-component="true" class="Counter js-social-count">0</span>
+</button></form>        <user-list-menu data-controller="user-list-menu" data-repository-id="1282728933" data-update-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists">
+  <select-panel data-target="user-list-menu.selectPanel" data-select-variant="multiple" data-fetch-strategy="eventually_local" data-open-on-load="false" id="details-user-list-1282728933-starred" anchor-align="end" anchor-side="outside-bottom" data-view-component="true" class="BtnGroup-parent js-user-list-menu" data-catalyst="">
+  <dialog-helper>
+    <button group_item="true" id="details-user-list-1282728933-starred-button" aria-controls="details-user-list-1282728933-starred-dialog" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="tooltip-9ee78374-01fd-4568-9dec-b77945bd7c17" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small rounded-right-2 rounded-left-0 px-3 tmp-px-3">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down Button-visual">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</button><tool-tip id="tooltip-9ee78374-01fd-4568-9dec-b77945bd7c17" for="details-user-list-1282728933-starred-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Add this repository to a list</tool-tip>
+
+    <dialog id="details-user-list-1282728933-starred-dialog" aria-labelledby="details-user-list-1282728933-starred-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
+      <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="details-user-list-1282728933-starred-dialog-title">
+        Lists
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="details-user-list-1282728933-starred-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
+        <focus-group direction="vertical" mnemonics="" retain="">
+          <live-region data-target="select-panel.liveRegion"><template shadowrootmode="open">
+<style>
+:host {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+</style>
+<div id="polite" aria-live="polite" aria-atomic="true"></div>
+<div id="assertive" aria-live="assertive" aria-atomic="true"></div>
+</template></live-region>
+          <div data-fetch-strategy="eventually_local" data-target="select-panel.list" data-view-component="true">
+            <div id="details-user-list-1282728933-starred-body">
+                <include-fragment data-target="select-panel.includeFragment" loading="lazy" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists?experimental=1" accept="text/fragment+html" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+                  <div id="details-user-list-1282728933-starred-list" aria-disabled="true" aria-busy="true" data-view-component="true" class="SelectPanel-loadingPanel mt-2 tmp-mt-2 mb-2 tmp-mb-2 d-flex flex-items-start flex-justify-center text-center">
+                    <div data-hide-on-error="" class="pt-2">
+                      <span data-target="select-panel.bodySpinner" data-view-component="true">
+  <svg aria-label="Loading content..." style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" role="img" data-view-component="true" class="anim-rotate">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"></circle>
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg></span>
+                    </div>
+                    <div data-show-on-error="" hidden="" data-target="select-panel.fragmentErrorElement">
+                        <div class="pt-2 pb-2">
+                          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert color-fg-danger">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+                          <h2 class="f5 mt-2">Sorry, something went wrong.</h2>
+                        </div>
+                    </div>
+</div>
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>            </div>
+            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden="">
+              <h2 class="v-align-middle m-3 f5">You don't have any lists yet.</h2>
+            </div>
+</div>        </focus-group>
+</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">      <button data-repository-id="1282728933" type="button" data-view-component="true" class="js-user-lists-create-trigger Button--primary Button--medium Button Button--fullWidth">  <span class="Button-content">
+    <span class="Button-label"><svg data-component="Octicon" size="small" class="octicon octicon-plus" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg>
+        Create list</span>
+  </span>
+</button>
+</div>
+</dialog>  </dialog-helper>
+</select-panel></user-list-menu>
+<template class="js-user-list-create-dialog-template" data-label="Create list"></template>
+
+
+
+</div>
+    <div data-view-component="true" class="unstarred BtnGroup ml-0 tmp-ml-0 flex-1">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent flex-auto" data-turbo="false" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="CeBIrSqzu7Rua95c9OvjZ6mIs04hkfhqNtGhHIYMxWrYiXJsOkAXatI4s30rVDkD_O7_qqgySyjRLBx8H8Cs-w" autocomplete="off">
+        <input type="hidden" name="context" value="repository">
+          <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="0a405b843c5630c465cc51e56e7719f04323fa1e5aa9f0470a811573f1ae9094" data-ga-click="Repository, click star button, action:repositories/partials#header; text:Star" data-aria-prefix="Star this repository" aria-label="Star this repository (0)" type="submit" data-view-component="true" class="js-toggler-target rounded-left-2 btn-with-aria-count btn-sm btn BtnGroup-item">    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star d-inline-block mr-2 tmp-mr-2">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg><span data-view-component="true" class="d-inline">
+              Star
+</span>              <span id="repo-stars-counter-star" aria-label="0 users starred this repository" data-singular-suffix="user starred this repository" data-plural-suffix="users starred this repository" data-turbo-replace="true" title="0" data-view-component="true" class="Counter js-social-count">0</span>
+</button></form>        <user-list-menu data-controller="user-list-menu" data-repository-id="1282728933" data-update-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists">
+  <select-panel data-target="user-list-menu.selectPanel" data-select-variant="multiple" data-fetch-strategy="eventually_local" data-open-on-load="false" id="details-user-list-1282728933-unstarred" anchor-align="end" anchor-side="outside-bottom" data-view-component="true" class="BtnGroup-parent js-user-list-menu" data-catalyst="">
+  <dialog-helper>
+    <button group_item="true" id="details-user-list-1282728933-unstarred-button" aria-controls="details-user-list-1282728933-unstarred-dialog" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="tooltip-f5c7e29d-f312-4eee-a568-21658d06fad7" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small rounded-right-2 rounded-left-0 px-3 tmp-px-3">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down Button-visual">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</button><tool-tip id="tooltip-f5c7e29d-f312-4eee-a568-21658d06fad7" for="details-user-list-1282728933-unstarred-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Add this repository to a list</tool-tip>
+
+    <dialog id="details-user-list-1282728933-unstarred-dialog" aria-labelledby="details-user-list-1282728933-unstarred-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
+      <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="details-user-list-1282728933-unstarred-dialog-title">
+        Lists
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="details-user-list-1282728933-unstarred-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
+        <focus-group direction="vertical" mnemonics="" retain="">
+          <live-region data-target="select-panel.liveRegion"><template shadowrootmode="open">
+<style>
+:host {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+</style>
+<div id="polite" aria-live="polite" aria-atomic="true"></div>
+<div id="assertive" aria-live="assertive" aria-atomic="true"></div>
+</template></live-region>
+          <div data-fetch-strategy="eventually_local" data-target="select-panel.list" data-view-component="true">
+            <div id="details-user-list-1282728933-unstarred-body">
+                <include-fragment data-target="select-panel.includeFragment" loading="lazy" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists?experimental=1" accept="text/fragment+html" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+                  <div id="details-user-list-1282728933-unstarred-list" aria-disabled="true" aria-busy="true" data-view-component="true" class="SelectPanel-loadingPanel mt-2 tmp-mt-2 mb-2 tmp-mb-2 d-flex flex-items-start flex-justify-center text-center">
+                    <div data-hide-on-error="" class="pt-2">
+                      <span data-target="select-panel.bodySpinner" data-view-component="true">
+  <svg aria-label="Loading content..." style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" role="img" data-view-component="true" class="anim-rotate">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"></circle>
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg></span>
+                    </div>
+                    <div data-show-on-error="" hidden="" data-target="select-panel.fragmentErrorElement">
+                        <div class="pt-2 pb-2">
+                          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert color-fg-danger">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+                          <h2 class="f5 mt-2">Sorry, something went wrong.</h2>
+                        </div>
+                    </div>
+</div>
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>            </div>
+            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden="">
+              <h2 class="v-align-middle m-3 f5">You don't have any lists yet.</h2>
+            </div>
+</div>        </focus-group>
+</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">      <button data-repository-id="1282728933" type="button" data-view-component="true" class="js-user-lists-create-trigger Button--primary Button--medium Button Button--fullWidth">  <span class="Button-content">
+    <span class="Button-label"><svg data-component="Octicon" size="small" class="octicon octicon-plus" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg>
+        Create list</span>
+  </span>
+</button>
+</div>
+</dialog>  </dialog-helper>
+</select-panel></user-list-menu>
+<template class="js-user-list-create-dialog-template" data-label="Create list"></template>
+
+
+
+</div></div>
+  </li>
+
+</ul>
+
+        </div>
+      </div>
+
+        <div>
+          <div id="responsive-meta-container" data-turbo-replace="">
+      <div class="d-block d-md-none mb-2">
+        <div class="d-flex gap-2 tmp-mt-n3 tmp-mb-3 flex-wrap">
+          <div class="d-flex flex-row gap-2">
+                <link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/primer-react-css.89ed847d1a8f127f.module.css">
+<link crossorigin="anonymous" media="all" rel="stylesheet" href="./config_files/notifications-subscriptions-menu.ecd5bfebe0d915a5.module.css">
+
+<react-partial partial-name="notifications-subscriptions-menu" data-ssr="false" data-attempted-ssr="false" data-react-profiling="false" data-catalyst="" class="loaded">
+  
+  <script type="application/json" data-target="react-partial.embeddedData">{"props":{"subscriptionType":"none","repositoryId":1282728933,"repositoryName":"YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ","watchersCount":0,"subscribableThreadTypes":[{"name":"Issue","enabled":true,"subscribed":false},{"name":"PullRequest","enabled":true,"subscribed":false},{"name":"Release","enabled":true,"subscribed":false},{"name":"Discussion","enabled":false,"subscribed":false},{"name":"SecurityAlert","enabled":true,"subscribed":false}],"showLabelSubscriptions":false,"subscribedLabels":[]}}</script>
+  <div data-target="react-partial.reactRoot"><button data-component="ActionMenu.Button" type="button" data-testid="notifications-subscriptions-menu-button" aria-label="Watch: Participating in YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk NotificationsSubscriptionsMenu-module__ActionMenuButton__FVE3w" data-loading="false" data-size="small" data-variant="default" id="_r_jf_" style="anchor-name: --anchored-overlay-anchor-_r_jh_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-eye" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3">Watch</span><span data-component="trailingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><span aria-hidden="true" data-variant="secondary" data-component="CounterLabel" class="prc-CounterLabel-CounterLabel-X-kRU">0</span><span class="prc-VisuallyHidden-VisuallyHidden-Q0qSB">&nbsp;(0)</span></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button></div>
+</react-partial>
+
+
+
+              <div data-view-component="true" class="BtnGroup d-flex">
+      <a id="fork-icon-button" variant="small" group_item="true" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/fork" data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;FORK_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="866c636c347c5794c3ed068f2f14df3961046eba4f17f884771bc93d0d6b7229" data-ga-click="Repository, show fork modal, action:repositories/partials#header; text:Fork" aria-labelledby="tooltip-a0910ba5-953a-4083-b5e4-2cb4a77d2b82" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked Button-visual">
+    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+</svg>
+</a><tool-tip id="tooltip-a0910ba5-953a-4083-b5e4-2cb4a77d2b82" for="fork-icon-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Fork your own copy of YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ</tool-tip>
+
+</div>
+              <style>
+  /*
+    This is kind of gross but let me explain.
+    The triangle-down icon in the user lists menu component needs to be larger on small screens
+    but Primer doesn't accept a responsive value for size.
+    So instead we use CSS to override the size on small screens only, to match the ⭐ button beside it.
+    The selector is written this way to avoid affecting other buttons inside the lists dropdown.
+  */
+  @media (max-width: 767px) {
+    .icon-button-group .BtnGroup-parent > * > button:first-child {
+      height: var(--control-medium-size);
+      width: var(--control-medium-size);
+      min-width: var(--control-medium-size);
+    }
+  }
+
+  /* No idea what this is though. It was like this when I got here. */
+  @media (min-width: 544px) {
+    .icon-button-group .SelectMenu {
+      right: auto !important;
+      left: 0 !important;
+    }
+  }
+</style>
+  <div data-view-component="true" class="js-toggler-container starring-container">
+    <div data-view-component="true" class="starred BtnGroup icon-button-group flex-1 ml-0 tmp-ml-0">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent" data-turbo="false" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/unstar" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="yE2gxM0GIIgtllYevKkKBTB8MPkr8lqZxoAtr2_rTDH3bjxVL3yb_do-DAolNDJTn6FxFZJkSmB1g4yagIZksw" autocomplete="off">
+        <input type="hidden" name="context" value="repository">
+        <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;UNSTAR_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="ccc7f6d34eb3c2bb13b107c2798969972d25f5eab72a45c8ff4987c745c07aaa" data-ga-click="Repository, click unstar button, action:repositories/partials#header; text:Unstar" id="icon-button-7cebf891-a522-486b-a76f-f78ceb09a56a" aria-labelledby="tooltip-af58f3fb-a41a-4a41-8ce2-f20c34416bf8" type="submit" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium js-toggler-target starred-button-icon BtnGroup-item rounded-left-2">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star-fill Button-visual">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path>
+</svg>
+</button><tool-tip id="tooltip-af58f3fb-a41a-4a41-8ce2-f20c34416bf8" for="icon-button-7cebf891-a522-486b-a76f-f78ceb09a56a" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Unstar this repository</tool-tip>
+
+</form>        <user-list-menu data-controller="user-list-menu" data-repository-id="1282728933" data-update-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists">
+  <select-panel data-target="user-list-menu.selectPanel" data-select-variant="multiple" data-fetch-strategy="eventually_local" data-open-on-load="false" id="details-user-list-1282728933" anchor-align="end" anchor-side="outside-bottom" data-view-component="true" class="BtnGroup-parent js-user-list-menu" data-catalyst="">
+  <dialog-helper>
+    <button group_item="true" id="details-user-list-1282728933-button" aria-controls="details-user-list-1282728933-dialog" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="tooltip-1b0f28c6-5c07-450e-956d-cd4a4d254436 tooltip-08f1611b-77dd-42b5-ad2b-fa8d58821e21" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small rounded-right-2 rounded-left-0 px-3 tmp-px-3">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down Button-visual">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</button><tool-tip id="tooltip-1b0f28c6-5c07-450e-956d-cd4a4d254436" for="details-user-list-1282728933-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Add this repository to a list</tool-tip>
+
+    <dialog id="details-user-list-1282728933-dialog" aria-labelledby="details-user-list-1282728933-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
+      <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="details-user-list-1282728933-dialog-title">
+        Lists
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="details-user-list-1282728933-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
+        <focus-group direction="vertical" mnemonics="" retain="">
+          <live-region data-target="select-panel.liveRegion"><template shadowrootmode="open">
+<style>
+:host {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+</style>
+<div id="polite" aria-live="polite" aria-atomic="true"></div>
+<div id="assertive" aria-live="assertive" aria-atomic="true"></div>
+</template></live-region>
+          <div data-fetch-strategy="eventually_local" data-target="select-panel.list" data-view-component="true">
+            <div id="details-user-list-1282728933-body">
+                <include-fragment data-target="select-panel.includeFragment" loading="lazy" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists?experimental=1" accept="text/fragment+html" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+                  <div id="details-user-list-1282728933-list" aria-disabled="true" aria-busy="true" data-view-component="true" class="SelectPanel-loadingPanel mt-2 tmp-mt-2 mb-2 tmp-mb-2 d-flex flex-items-start flex-justify-center text-center">
+                    <div data-hide-on-error="" class="pt-2">
+                      <span data-target="select-panel.bodySpinner" data-view-component="true">
+  <svg aria-label="Loading content..." style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" role="img" data-view-component="true" class="anim-rotate">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"></circle>
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg></span>
+                    </div>
+                    <div data-show-on-error="" hidden="" data-target="select-panel.fragmentErrorElement">
+                        <div class="pt-2 pb-2">
+                          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert color-fg-danger">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+                          <h2 class="f5 mt-2">Sorry, something went wrong.</h2>
+                        </div>
+                    </div>
+</div>
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>            </div>
+            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden="">
+              <h2 class="v-align-middle m-3 f5">You don't have any lists yet.</h2>
+            </div>
+</div>        </focus-group>
+</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">      <button data-repository-id="1282728933" type="button" data-view-component="true" class="js-user-lists-create-trigger Button--primary Button--medium Button Button--fullWidth">  <span class="Button-content">
+    <span class="Button-label"><svg data-component="Octicon" size="small" class="octicon octicon-plus" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg>
+        Create list</span>
+  </span>
+</button>
+</div>
+</dialog>  </dialog-helper>
+</select-panel></user-list-menu>
+<template class="js-user-list-create-dialog-template" data-label="Create list"></template>
+
+
+
+</div>
+    <div data-view-component="true" class="unstarred BtnGroup icon-button-group flex-1 ml-0 tmp-ml-0">
+      <!-- '"` --><!-- </textarea></xmp> --><form class="js-social-form BtnGroup-parent" data-turbo="false" action="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/star" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="cr_2fdEAMJzFvp-xvjKuy24R-74-mYxCrCvq9rSXrRKj1sy8wfOcQnnt8pBhjXSvO3e3Wrc6PwBL1leWLVvEgw" autocomplete="off">
+        <input type="hidden" name="context" value="repository">
+        <button data-hydro-click="{&quot;event_type&quot;:&quot;repository.click&quot;,&quot;payload&quot;:{&quot;target&quot;:&quot;STAR_BUTTON&quot;,&quot;repository_id&quot;:1282728933,&quot;originating_url&quot;:&quot;https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/partials/header&quot;,&quot;user_id&quot;:224766043}}" data-hydro-click-hmac="0a405b843c5630c465cc51e56e7719f04323fa1e5aa9f0470a811573f1ae9094" data-ga-click="Repository, click star button, action:repositories/partials#header; text:Star" id="icon-button-e66b4b3d-259f-428a-a5ec-bf30d5b44cf3" aria-labelledby="tooltip-21b8237b-6638-4209-af0b-f6eaf03a20e5" type="submit" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--medium js-toggler-target BtnGroup-item rounded-left-2">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star Button-visual">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg>
+</button><tool-tip id="tooltip-21b8237b-6638-4209-af0b-f6eaf03a20e5" for="icon-button-e66b4b3d-259f-428a-a5ec-bf30d5b44cf3" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Star this repository</tool-tip>
+
+</form>        <user-list-menu data-controller="user-list-menu" data-repository-id="1282728933" data-update-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists">
+  <select-panel data-target="user-list-menu.selectPanel" data-select-variant="multiple" data-fetch-strategy="eventually_local" data-open-on-load="false" id="details-user-list-1282728933" anchor-align="end" anchor-side="outside-bottom" data-view-component="true" class="BtnGroup-parent js-user-list-menu" data-catalyst="">
+  <dialog-helper>
+    <button group_item="true" id="details-user-list-1282728933-button" aria-controls="details-user-list-1282728933-dialog" aria-haspopup="dialog" aria-expanded="false" aria-labelledby="tooltip-08f1611b-77dd-42b5-ad2b-fa8d58821e21" type="button" data-view-component="true" class="Button Button--iconOnly Button--secondary Button--small rounded-right-2 rounded-left-0 px-3 tmp-px-3">  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-triangle-down Button-visual">
+    <path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path>
+</svg>
+</button><tool-tip id="tooltip-08f1611b-77dd-42b5-ad2b-fa8d58821e21" for="details-user-list-1282728933-button" popover="manual" data-direction="s" data-type="label" data-view-component="true" class="sr-only position-absolute" aria-hidden="true" role="tooltip"><template shadowrootmode="open"><style>
+      :host {
+        --tooltip-top: var(--tool-tip-position-top, 0);
+        --tooltip-left: var(--tool-tip-position-left, 0);
+        padding: var(--overlay-paddingBlock-condensed) var(--overlay-padding-condensed) !important;
+        font: var(--text-body-shorthand-small);
+        color: var(--tooltip-fgColor, var(--fgColor-onEmphasis)) !important;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: none;
+        text-transform: none;
+        letter-spacing: normal;
+        word-wrap: break-word;
+        white-space: pre;
+        background: var(--tooltip-bgColor, var(--bgColor-emphasis)) !important;
+        border-radius: var(--borderRadius-medium);
+        border: 0 !important;
+        opacity: 0;
+        max-width: min(var(--overlay-width-small), 100vw);
+        word-wrap: break-word;
+        white-space: normal;
+        width: max-content !important;
+        inset: var(--tooltip-top) auto auto var(--tooltip-left) !important;
+        overflow: visible !important;
+        text-wrap: balance;
+      }
+
+      :host(:is(.tooltip-n, .tooltip-nw, .tooltip-ne)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) - var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(:is(.tooltip-s, .tooltip-sw, .tooltip-se)) {
+        --tooltip-top: calc(var(--tool-tip-position-top, 0) + var(--overlay-offset, 0.25rem));
+        --tooltip-left: var(--tool-tip-position-left);
+      }
+
+      :host(.tooltip-w) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) - var(--overlay-offset, 0.25rem));
+      }
+
+      :host(.tooltip-e) {
+        --tooltip-top: var(--tool-tip-position-top);
+        --tooltip-left: calc(var(--tool-tip-position-left, 0) + var(--overlay-offset, 0.25rem));
+      }
+
+      :host:after{
+        position: absolute;
+        display: block;
+        right: 0;
+        left: 0;
+        height: var(--overlay-offset, 0.25rem);
+        content: "";
+      }
+
+      :host(.tooltip-s):after,
+      :host(.tooltip-se):after,
+      :host(.tooltip-sw):after {
+        bottom: 100%
+      }
+
+      :host(.tooltip-n):after,
+      :host(.tooltip-ne):after,
+      :host(.tooltip-nw):after {
+        top: 100%;
+      }
+
+      @keyframes tooltip-appear {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      :host(:popover-open),
+      :host(:popover-open):before {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      :host(.\:popover-open) {
+        animation-name: tooltip-appear;
+        animation-duration: .1s;
+        animation-fill-mode: forwards;
+        animation-timing-function: ease-in;
+      }
+
+      @media (forced-colors: active) {
+        :host {
+          outline: solid 1px transparent;
+        }
+
+        :host:before {
+          display: none;
+        }
+      }
+    </style><slot></slot></template>Add this repository to a list</tool-tip>
+
+    <dialog id="details-user-list-1282728933-dialog" aria-labelledby="details-user-list-1282728933-dialog-title" data-target="select-panel.dialog" style="position: absolute;" data-view-component="true" class="Overlay Overlay-whenNarrow Overlay--size-small-portrait">
+      <div data-view-component="true" class="Overlay-header">
+  <div class="Overlay-headerContentWrap">
+    <div class="Overlay-titleWrap">
+      <h1 class="Overlay-title " id="details-user-list-1282728933-dialog-title">
+        Lists
+      </h1>
+        
+    </div>
+    <div class="Overlay-actionWrap">
+      <button data-close-dialog-id="details-user-list-1282728933-dialog" aria-label="Close" type="button" data-view-component="true" class="close-button Overlay-closeButton"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg></button>
+    </div>
+  </div>
+  
+</div>      <div data-view-component="true" class="Overlay-body p-0 tmp-p-0">
+        <focus-group direction="vertical" mnemonics="" retain="">
+          <live-region data-target="select-panel.liveRegion"><template shadowrootmode="open">
+<style>
+:host {
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+</style>
+<div id="polite" aria-live="polite" aria-atomic="true"></div>
+<div id="assertive" aria-live="assertive" aria-atomic="true"></div>
+</template></live-region>
+          <div data-fetch-strategy="eventually_local" data-target="select-panel.list" data-view-component="true">
+            <div id="details-user-list-1282728933-body">
+                <include-fragment data-target="select-panel.includeFragment" loading="lazy" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/lists?experimental=1" accept="text/fragment+html" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+                  <div id="details-user-list-1282728933-list" aria-disabled="true" aria-busy="true" data-view-component="true" class="SelectPanel-loadingPanel mt-2 tmp-mt-2 mb-2 tmp-mb-2 d-flex flex-items-start flex-justify-center text-center">
+                    <div data-hide-on-error="" class="pt-2">
+                      <span data-target="select-panel.bodySpinner" data-view-component="true">
+  <svg aria-label="Loading content..." style="box-sizing: content-box; color: var(--color-icon-primary);" width="32" height="32" viewBox="0 0 16 16" fill="none" role="img" data-view-component="true" class="anim-rotate">
+    <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-opacity="0.25" stroke-width="2" vector-effect="non-scaling-stroke" fill="none"></circle>
+    <path d="M15 8a7.002 7.002 0 00-7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke"></path>
+</svg></span>
+                    </div>
+                    <div data-show-on-error="" hidden="" data-target="select-panel.fragmentErrorElement">
+                        <div class="pt-2 pb-2">
+                          <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert color-fg-danger">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+                          <h2 class="f5 mt-2">Sorry, something went wrong.</h2>
+                        </div>
+                    </div>
+</div>
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>            </div>
+            <div data-target="select-panel.noResults" class="SelectPanel-emptyPanel" hidden="">
+              <h2 class="v-align-middle m-3 f5">You don't have any lists yet.</h2>
+            </div>
+</div>        </focus-group>
+</div>      <div data-view-component="true" class="Overlay-footer Overlay-footer--alignEnd">      <button data-repository-id="1282728933" type="button" data-view-component="true" class="js-user-lists-create-trigger Button--primary Button--medium Button Button--fullWidth">  <span class="Button-content">
+    <span class="Button-label"><svg data-component="Octicon" size="small" class="octicon octicon-plus" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg>
+        Create list</span>
+  </span>
+</button>
+</div>
+</dialog>  </dialog-helper>
+</select-panel></user-list-menu>
+<template class="js-user-list-create-dialog-template" data-label="Create list"></template>
+
+
+
+</div></div>
+          </div>
+          <div class="d-flex flex-row gap-2">
+            
+
+          </div>
+        </div>
+
+    
+
+    <div class="tmp-mb-3">
+        
+
+
+<ul class="d-flex flex-wrap mb-2 gap-2" aria-label="Repository details">
+  <a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/stargazers">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-1 tmp-mr-1">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg>
+    <span class="text-bold color-fg-default">0</span>
+    stars
+</a>  <a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/forks">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-1 tmp-mr-1">
+    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+</svg>
+    <span class="text-bold color-fg-default">0</span>
+    forks
+</a>  <a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/watchers">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye mr-1 tmp-mr-1">
+    <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+</svg>
+    <span class="text-bold color-fg-default">0</span>
+    watching
+</a>  <include-fragment loading="lazy" src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/branch-and-tag-count" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+    <a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/branches">
+  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-git-branch mr-1 tmp-mr-1">
+    <path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path>
+</svg>
+    <span class="color-fg-muted">Branches</span>
+</a><a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/tags">
+  <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-tag mr-1 tmp-mr-1">
+    <path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path>
+</svg>
+    <span class="color-fg-muted">Tags</span>
+</a>
+
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>  <a class="Link--secondary no-underline d-block mr-2" role="listitem" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/activity">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pulse mr-1 tmp-mr-1">
+    <path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path>
+</svg>
+    <span>Activity</span>
+</a>
+</ul>
+
+<div class="mb-2 d-flex color-fg-muted">
+  <div class="d-flex flex-items-center" style="height: 21px">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-globe flex-shrink-0 mr-2 tmp-mr-2">
+    <path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM5.78 8.75a9.64 9.64 0 0 0 1.363 4.177c.255.426.542.832.857 1.215.245-.296.551-.705.857-1.215A9.64 9.64 0 0 0 10.22 8.75Zm4.44-1.5a9.64 9.64 0 0 0-1.363-4.177c-.307-.51-.612-.919-.857-1.215a9.927 9.927 0 0 0-.857 1.215A9.64 9.64 0 0 0 5.78 7.25Zm-5.944 1.5H1.543a6.507 6.507 0 0 0 4.666 5.5c-.123-.181-.24-.365-.352-.552-.715-1.192-1.437-2.874-1.581-4.948Zm-2.733-1.5h2.733c.144-2.074.866-3.756 1.58-4.948.12-.197.237-.381.353-.552a6.507 6.507 0 0 0-4.666 5.5Zm10.181 1.5c-.144 2.074-.866 3.756-1.58 4.948-.12.197-.237.381-.353.552a6.507 6.507 0 0 0 4.666-5.5Zm2.733-1.5a6.507 6.507 0 0 0-4.666-5.5c.123.181.24.365.353.552.714 1.192 1.436 2.874 1.58 4.948Z"></path>
+</svg>
+  </div>
+  <span class="flex-auto min-width-0 width-fit">
+    Public repository
+  </span>
+</div>
+
+    </div>
+  </div>
+
+</div>
+
+          <div class="border-bottom"></div>
+        </div>
+
+  </div>
+
+<template class="js-user-list-create-dialog-template" data-label="Create list"></template>
+
+
+<h1 class="sr-only">YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ</h1>
+
+
+<input type="hidden" value="ZXXEECTyZ5lNZMfnAyc7XqnVZUEJIrVLuqtkhf_xopSj611JjnPqGkJOOALIxIOPHAkitmtRtULsMqlaAUjAgA" data-csrf="true" id="react-codespace-csrf">
+</rails-partial></div><div class="prc-PageLayout-HorizontalDivider-JLVqp prc-PageLayout-HeaderHorizontalDivider-odAHl" data-component="PageLayout.HorizontalDivider" data-variant="none" style="--spacing-divider: var(--spacing-none); --spacing: var(--spacing-none);"></div></header><div class="prc-PageLayout-PageLayoutContent-BneH9"><div data-component="PageLayout.Content" class="prc-PageLayout-ContentWrapper-gR9eG" data-is-hidden="false"><div class="prc-PageLayout-Content-xWL-A" data-width="large" style="--spacing: var(--spacing-condensed);"><div class="OverviewContent-module__Box__PF75K tmp-pl-lg-3 mt-0"><div class="OverviewHeader-module__Box__cC1RH"></div><div class="OverviewContent-module__Box_1__MPS0U"><div class="OverviewContent-module__Box_2__Di8Pb"><div class="OverviewContent-module__Box_3__wzlJx"><button data-component="Button" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-label="main branch" data-testid="anchor-button" data-icv-name="Switch branches/tags" class="prc-Button-ButtonBase-9n-Xk overview-ref-selector width-full RefSelectorAnchoredOverlay-module__RefSelectorOverlayBtn__a3WK3" data-loading="false" data-size="medium" data-variant="default" id="ref-picker-repos-header-ref-selector" style="min-width: 0px; anchor-name: --anchored-overlay-anchor-_r_hv_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="text" class="prc-Button-Label-FWkx3"><div class="RefSelectorAnchoredOverlay-module__RefSelectorOverlayContainer__yaf4p"><div class="RefSelectorAnchoredOverlay-module__RefSelectorOverlayHeader__XtXRG"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-git-branch" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path></svg></div><div class="ref-selector-button-text-container RefSelectorAnchoredOverlay-module__RefSelectorBtnTextContainer__Di3rk"><span class="RefSelectorAnchoredOverlay-module__RefSelectorText__w_fmP">&nbsp;main</span></div></div></span><span data-component="trailingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></span></button><div class="d-none"></div></div><div class="OverviewContent-module__Box_4__qf73o"><a data-component="Button" type="button" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/branches" class="prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button___Uotu" data-loading="false" data-size="medium" data-variant="invisible"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-git-branch" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3"><span><strong class="color-fg-default">1 </strong>Branch</span></span></span></a><a data-component="Button" type="button" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/tags" class="prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button___Uotu" data-loading="false" data-size="medium" data-variant="invisible"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-tag" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3"><span><strong class="color-fg-default">0 </strong>Tags</span></span></span></a></div><div class="OverviewContent-module__Box_5__Zc3i7"><a data-component="Button" type="button" aria-label="Go to Branches page" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/branches" class="prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button_1__vmS6D" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-git-branch" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M9.5 3.25a2.25 2.25 0 1 1 3 2.122V6A2.5 2.5 0 0 1 10 8.5H6a1 1 0 0 0-1 1v1.128a2.251 2.251 0 1 1-1.5 0V5.372a2.25 2.25 0 1 1 1.5 0v1.836A2.493 2.493 0 0 1 6 7h4a1 1 0 0 0 1-1v-.628A2.25 2.25 0 0 1 9.5 3.25Zm-6 0a.75.75 0 1 0 1.5 0 .75.75 0 0 0-1.5 0Zm8.25-.75a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5ZM4.25 12a.75.75 0 1 0 0 1.5.75.75 0 0 0 0-1.5Z"></path></svg></a><a data-component="Button" type="button" aria-label="Go to Tags page" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/tags" class="prc-Button-ButtonBase-9n-Xk OverviewContent-module__Button_1__vmS6D" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="invisible"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-tag" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M1 7.775V2.75C1 1.784 1.784 1 2.75 1h5.025c.464 0 .91.184 1.238.513l6.25 6.25a1.75 1.75 0 0 1 0 2.474l-5.026 5.026a1.75 1.75 0 0 1-2.474 0l-6.25-6.25A1.752 1.752 0 0 1 1 7.775Zm1.5 0c0 .066.026.13.073.177l6.25 6.25a.25.25 0 0 0 .354 0l5.025-5.025a.25.25 0 0 0 0-.354l-6.25-6.25a.25.25 0 0 0-.177-.073H2.75a.25.25 0 0 0-.25.25ZM6 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2Z"></path></svg></a></div></div><div class="OverviewContent-module__Box_6__Y_Yb_"><div class="OverviewContent-module__Box_7__JuRXo"><div class="d-none"></div><div class="OverviewContent-module__Box_8__UZCZh"><div class="OverviewContent-module__FileResultsList__EjrTH"><span class="d-flex FileResultsList-module__FilesSearchBox__ivVkc TextInput-wrapper prc-components-TextInputWrapper-Hpdqi prc-components-TextInputBaseWrapper-wY-n0" data-no-trailing-action="true" data-component="TextInput" data-leading-visual="true" data-trailing-visual="true" aria-busy="false"><span class="TextInput-icon" id="_r_i7_" aria-hidden="true" data-component="TextInput.LeadingVisual"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-search" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg></span><input aria-label="Go to file" role="combobox" aria-controls="file-results-list" aria-expanded="false" aria-haspopup="dialog" autocorrect="off" spellcheck="false" placeholder="Go to file" aria-describedby="_r_i7_ _r_i8_" data-component="input" class="prc-components-Input-IwWrt" type="text" value=""><span class="TextInput-icon" id="_r_i8_" aria-hidden="true" data-component="TextInput.TrailingVisual"><kbd class="prc-KeybindingHint-KeybindingHint-qpYIs prc-Text-Text-9mHv3" data-testid="keybinding-hint" data-component="KeybindingHint"><span class="prc-components-Chord-DdhWN prc-components-ChordNormal-Ov9XG prc-Text-Text-9mHv3" data-kbd-chord="true"> <span class="prc-src-InternalVisuallyHidden-2YaI6">t</span><span aria-hidden="true">T</span></span></kbd></span></span></div></div><div class="OverviewContent-module__Box_9__bqMPw"><button data-component="Button" type="button" class="prc-Button-ButtonBase-9n-Xk" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="text" class="prc-Button-Label-FWkx3">Go to file</span></span></button></div><div><h2 class="sr-only ScreenReaderHeading-module__userSelectNone__rwWIk prc-Heading-Heading-MtWFE" data-component="Heading" data-testid="screen-reader-heading">Add file</h2><button data-component="Button" type="button" aria-label="Add file" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default" id="_r_if_"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="text" class="prc-Button-Label-FWkx3"><span class="AddFileDropdownButton-module__addFileButton__yGbg0">Add file<svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-plus AddFileDropdownButton-module__addFileIcon__Wg5eJ" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M7.75 2a.75.75 0 0 1 .75.75V7h4.25a.75.75 0 0 1 0 1.5H8.5v4.25a.75.75 0 0 1-1.5 0V8.5H2.75a.75.75 0 0 1 0-1.5H7V2.75A.75.75 0 0 1 7.75 2Z"></path></svg></span></span></button></div></div><button data-component="Button" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk" data-loading="false" data-size="medium" data-variant="primary" id="_r_ij_" style="anchor-name: --anchored-overlay-anchor-_r_ik_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-code hide-sm" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m11.28 3.22 4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.749.749 0 0 1-1.275-.326.749.749 0 0 1 .215-.734L13.94 8l-3.72-3.72a.749.749 0 0 1 .326-1.275.749.749 0 0 1 .734.215Zm-6.56 0a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042L2.06 8l3.72 3.72a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L.47 8.53a.75.75 0 0 1 0-1.06Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3">Code</span><span data-component="trailingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></span></button><div class="OverviewContent-module__Box_10__mGSb4"><button data-component="IconButton" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="medium" data-variant="default" aria-labelledby="_r_ip_" id="_r_im_" style="anchor-name: --anchored-overlay-anchor-_r_io_;"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-kebab-horizontal" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M8 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3ZM1.5 9a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Zm13 0a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path></svg></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="n" data-component="Tooltip" aria-hidden="true" id="_r_ip_" popover="auto">Open more actions menu</span></div></div></div><div class="OverviewContent-module__Box_11__F19kY"><div data-hpc="true" containertiming="hpc"><div class="d-none"></div><h2 class="sr-only ScreenReaderHeading-module__userSelectNone__rwWIk prc-Heading-Heading-MtWFE" data-component="Heading" data-testid="screen-reader-heading" id="folders-and-files">Folders and files</h2><table class="Table-module__Box__HZKiQ" aria-labelledby="folders-and-files"><thead class="DirectoryContent-module__OverviewHeaderRow__hOrKy Table-module__Box_1__VacXC"><tr class="Table-module__Box_2__PBp9s"><th colspan="2" class="DirectoryContent-module__Box__iC_5e"><span class="text-bold">Name</span></th><th colspan="1" class="DirectoryContent-module__Box_1__fuSBO"><span class="text-bold">Name</span></th><th class="hide-sm"><div class="width-fit prc-Truncate-Truncate-2G1eo" data-inline="true" title="Last commit message" style="--truncate-max-width: 125px;"><span class="text-bold">Last commit message</span></div></th><th colspan="1" class="DirectoryContent-module__Box_2__Ccrx7"><div class="width-fit prc-Truncate-Truncate-2G1eo" data-inline="true" title="Last commit date" style="--truncate-max-width: 125px;"><span class="text-bold">Last commit date</span></div></th></tr></thead><tbody><tr class="DirectoryContent-module__Box_3__gl6dE"><td colspan="3" class="bgColor-muted p-1 rounded-top-2"><div class="LatestCommit-module__Box__B25ZT"><h2 class="sr-only ScreenReaderHeading-module__userSelectNone__rwWIk prc-Heading-Heading-MtWFE" data-component="Heading" data-testid="screen-reader-heading">Latest commit</h2><div data-testid="latest-commit" class="LatestCommit-module__Box_1__YkEgg"><div class="CommitAttribution-module__CommitAttributionContainer__I_rfs"><div data-testid="author-avatar" class="AuthorAvatar-module__AuthorAvatarContainer__n0MVc"><a class="prc-Link-Link-9ZwDx" data-component="Link" href="https://github.com/YNUDAYKIRAN" data-testid="avatar-icon-link" data-hovercard-url="/users/YNUDAYKIRAN/hovercard" data-hovercard-type="user" octo-click="hovercard-link-click" octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp"><img data-component="Avatar" class="AuthorAvatar-module__authorAvatarImage__a3R8x prc-Avatar-Avatar-0xaUi" alt="YNUDAYKIRAN" width="20" height="20" data-testid="github-avatar" aria-label="YNUDAYKIRAN" src="./config_files/148639806(1)" style="--avatarSize-regular: 20px;"></a><a class="AuthorAvatar-module__authorHoverableLink__MHTT8 prc-Link-Link-9ZwDx" data-component="Link" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commits?author=YNUDAYKIRAN" aria-label="commits by YNUDAYKIRAN" data-hovercard-url="/users/YNUDAYKIRAN/hovercard" data-hovercard-type="user" octo-click="hovercard-link-click" octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp" style="--author-font-weight: var(--base-text-weight-semibold); --author-font-color: var(--fgColor-default);">YNUDAYKIRAN</a></div><span class=""></span></div><div class="d-none d-sm-flex LatestCommit-module__Box_2__pSPKJ"><div class="Truncate flex-items-center f5"><span class="Truncate-text prc-Text-Text-9mHv3" data-testid="latest-commit-html"><a data-hovercard-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/1eaac111f15029335a24551cff4d7e891a1ed439/hovercard" data-pjax="true" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/1eaac111f15029335a24551cff4d7e891a1ed439" aria-keyshortcuts="Alt+ArrowUp">Update author information in README.md</a></span></div></div><span class="d-flex d-sm-none fgColor-muted f6"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:15:14.000Z" title="Jun 28, 2026, 11:45 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></span></div><div class="d-flex flex-shrink-0 gap-2"><div data-testid="latest-commit-details" class="d-none d-sm-flex flex-items-center"><span class="d-flex flex-nowrap fgColor-muted f6"><a class="Link--secondary prc-Link-Link-9ZwDx" data-component="Link" aria-label="Commit 1eaac11" data-hovercard-url="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/1eaac111f15029335a24551cff4d7e891a1ed439/hovercard" data-hovercard-type="commit" octo-click="hovercard-link-click" octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/1eaac111f15029335a24551cff4d7e891a1ed439" data-discover="true">1eaac11</a>&nbsp;·&nbsp;<relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:15:14.000Z" title="Jun 28, 2026, 11:45 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></span></div><div class="d-flex gap-2"><h2 class="sr-only ScreenReaderHeading-module__userSelectNone__rwWIk prc-Heading-Heading-MtWFE" data-component="Heading" data-testid="screen-reader-heading">History</h2><a data-component="LinkButton" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commits/main/" class="prc-Button-ButtonBase-9n-Xk d-none d-lg-flex LinkButton-module__linkButton__nFnov flex-items-center fgColor-default" data-loading="false" data-size="small" data-variant="invisible"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-history" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path></svg></span><span data-component="text" class="prc-Button-Label-FWkx3"><span class="fgColor-default">6 Commits</span></span></span></a><div class="d-sm-none"><button data-component="IconButton" type="button" aria-pressed="false" aria-expanded="false" data-testid="latest-commit-details-toggle" class="prc-Button-ButtonBase-9n-Xk LatestCommit-module__IconButton__mkJr_ prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="small" data-variant="invisible" aria-labelledby="_r_it_"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-ellipsis" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M0 5.75C0 4.784.784 4 1.75 4h12.5c.966 0 1.75.784 1.75 1.75v4.5A1.75 1.75 0 0 1 14.25 12H1.75A1.75 1.75 0 0 1 0 10.25ZM12 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2ZM7 8a1 1 0 1 0 2 0 1 1 0 0 0-2 0ZM4 7a1 1 0 1 0 0 2 1 1 0 0 0 0-2Z"></path></svg></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_r_it_" popover="auto">Open commit details</span></div><div class="d-flex d-lg-none"><a data-component="LinkButton" aria-label="View commit history for this file." href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commits/main/" class="prc-Button-ButtonBase-9n-Xk LinkButton-module__linkButton__nFnov flex-items-center fgColor-default" data-loading="false" data-size="small" data-variant="invisible" aria-describedby="_r_iv_"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="leadingVisual" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-history" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m.427 1.927 1.215 1.215a8.002 8.002 0 1 1-1.6 5.685.75.75 0 1 1 1.493-.154 6.5 6.5 0 1 0 1.18-4.458l1.358 1.358A.25.25 0 0 1 3.896 6H.25A.25.25 0 0 1 0 5.75V2.104a.25.25 0 0 1 .427-.177ZM7.75 4a.75.75 0 0 1 .75.75v2.992l2.028.812a.75.75 0 0 1-.557 1.392l-2.5-1A.751.751 0 0 1 7 8.25v-3.5A.75.75 0 0 1 7.75 4Z"></path></svg></span></span></a><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" role="tooltip" aria-hidden="true" id="_r_iv_" popover="auto">6 Commits</span></div></div></div></div></td></tr><tr class="react-directory-row undefined" id="folder-row-0"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file-directory-fill icon-directory" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="logs" aria-label="logs, (Directory)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/tree/main/logs" data-discover="true">logs</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file-directory-fill icon-directory" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M1.75 1A1.75 1.75 0 0 0 0 2.75v10.5C0 14.216.784 15 1.75 15h12.5A1.75 1.75 0 0 0 16 13.25v-8.5A1.75 1.75 0 0 0 14.25 3H7.5a.25.25 0 0 1-.2-.1l-.9-1.2C6.07 1.26 5.55 1 5 1H1.75Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="logs" aria-label="logs, (Directory)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/tree/main/logs" data-discover="true">logs</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-1"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="README.md" aria-label="README.md, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/README.md" data-discover="true">README.md</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="README.md" aria-label="README.md, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/README.md" data-discover="true">README.md</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Update author information in README.md" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/1eaac111f15029335a24551cff4d7e891a1ed439">Update author information in README.md</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:15:14.000Z" title="Jun 28, 2026, 11:45 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-2"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera.json" aria-label="camera.json, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera.json" data-discover="true">camera.json</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera.json" aria-label="camera.json, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera.json" data-discover="true">camera.json</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-3"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera_manager.py" aria-label="camera_manager.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera_manager.py" data-discover="true">camera_manager.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera_manager.py" aria-label="camera_manager.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera_manager.py" data-discover="true">camera_manager.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-4"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera_worker.py" aria-label="camera_worker.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera_worker.py" data-discover="true">camera_worker.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="camera_worker.py" aria-label="camera_worker.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/camera_worker.py" data-discover="true">camera_worker.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-5"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="config.py" aria-label="config.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/config.py" data-discover="true">config.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="config.py" aria-label="config.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/config.py" data-discover="true">config.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-6"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="detection_subscriber.py" aria-label="detection_subscriber.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/detection_subscriber.py" data-discover="true">detection_subscriber.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="detection_subscriber.py" aria-label="detection_subscriber.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/detection_subscriber.py" data-discover="true">detection_subscriber.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-7"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="logging_code.py" aria-label="logging_code.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/logging_code.py" data-discover="true">logging_code.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="logging_code.py" aria-label="logging_code.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/logging_code.py" data-discover="true">logging_code.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-8"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="mainn.py" aria-label="mainn.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/mainn.py" data-discover="true">mainn.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="mainn.py" aria-label="mainn.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/mainn.py" data-discover="true">mainn.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row undefined" id="folder-row-9"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="processor_manager.py" aria-label="processor_manager.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/processor_manager.py" data-discover="true">processor_manager.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="processor_manager.py" aria-label="processor_manager.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/processor_manager.py" data-discover="true">processor_manager.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row truncate-for-mobile" id="folder-row-10"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="redis_server.py" aria-label="redis_server.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/redis_server.py" data-discover="true">redis_server.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="redis_server.py" aria-label="redis_server.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/redis_server.py" data-discover="true">redis_server.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row truncate-for-mobile" id="folder-row-11"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="requirements.txt" aria-label="requirements.txt, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/requirements.txt" data-discover="true">requirements.txt</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="requirements.txt" aria-label="requirements.txt, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/requirements.txt" data-discover="true">requirements.txt</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row truncate-for-mobile" id="folder-row-12"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="roi.py" aria-label="roi.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/roi.py" data-discover="true">roi.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="roi.py" aria-label="roi.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/roi.py" data-discover="true">roi.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="react-directory-row truncate-for-mobile" id="folder-row-13"><td class="react-directory-row-name-cell-small-screen" colspan="2"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="segmentation_subscriber.py" aria-label="segmentation_subscriber.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/segmentation_subscriber.py" data-discover="true">segmentation_subscriber.py</a></div></div></div></div></td><td class="react-directory-row-name-cell-large-screen" colspan="1"><div class="react-directory-filename-column"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-file color-fg-muted" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M2 1.75C2 .784 2.784 0 3.75 0h6.586c.464 0 .909.184 1.237.513l2.914 2.914c.329.328.513.773.513 1.237v9.586A1.75 1.75 0 0 1 13.25 16h-9.5A1.75 1.75 0 0 1 2 14.25Zm1.75-.25a.25.25 0 0 0-.25.25v12.5c0 .138.112.25.25.25h9.5a.25.25 0 0 0 .25-.25V6h-2.75A1.75 1.75 0 0 1 9 4.25V1.5Zm6.75.062V4.25c0 .138.112.25.25.25h2.688l-.011-.013-2.914-2.914-.013-.011Z"></path></svg><div class="overflow-hidden"><div class="react-directory-filename-cell"><div class="react-directory-truncate"><a title="segmentation_subscriber.py" aria-label="segmentation_subscriber.py, (File)" class="Link--primary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/blob/main/segmentation_subscriber.py" data-discover="true">segmentation_subscriber.py</a></div></div></div></div></td><td class="react-directory-row-commit-cell"><div><div class="react-directory-commit-message"><a data-pjax="true" title="Add files via upload" class="Link--secondary" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/commit/e8222f0bc5adaf453f12e4f0d586bfaf7ca58c3d">Add files via upload</a></div></div></td><td><div class="react-directory-commit-age"><relative-time data-component="RelativeTime" tense="past" datetime="2026-06-28T06:07:21.000Z" title="Jun 28, 2026, 11:37 AM GMT+5:30"><template shadowrootmode="open"><span part="root">3 days ago</span></template>Jun 28, 2026</relative-time></div></td></tr><tr class="show-for-mobile DirectoryContent-module__Box_4__RhIsE" data-testid="view-all-files-row"><td colspan="3" class="DirectoryContent-module__Box_5__GaE8N"><div><button class="prc-Link-Link-9ZwDx" data-component="Link">View all files</button></div></td></tr></tbody></table></div><div class="OverviewRepoFiles-module__Box_1__OXeac"><div class="OverviewRepoFiles-module__Box_2__zsLGk"><div itemscope="" itemtype="https://schema.org/abstract" class="OverviewRepoFiles-module__Box_3__bBU1C"><h2 class="prc-src-InternalVisuallyHidden-2YaI6">Repository files navigation</h2><nav class="prc-components-UnderlineWrapper-eT-Yj prc-UnderlineNav-UnderlineWrapper-GWONT OverviewRepoFiles-module__UnderlineNav__QbWWv" aria-label="Repository files" data-variant="inset" data-overflow-mode="wrap"><ul class="prc-UnderlineNav-ItemsList-oj8gN prc-components-UnderlineItemList-xKlKC" role="list"><li class="prc-UnderlineNav-UnderlineNavItem-syRjR"><a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#" aria-current="page" class="prc-components-UnderlineItem-7fP-n"><span data-component="icon"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-book" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg></span><span data-component="text" data-content="README">README</span></a></li></ul><div class="prc-UnderlineNav-MoreButtonContainer-Dnrq6"><div class="prc-UnderlineNav-MoreButtonDivider-dN0a-"></div><button data-component="overflow-menu-button" type="button" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk prc-UnderlineNav-MoreButton-Y8soj" data-loading="false" data-size="medium" data-variant="invisible" id="_r_j2_" style="anchor-name: --anchored-overlay-anchor-_r_j4_;"><span data-component="buttonContent" data-align="center" class="prc-Button-ButtonContent-Iohp5"><span data-component="text" class="prc-Button-Label-FWkx3"><span>More<span class="prc-src-InternalVisuallyHidden-2YaI6"> items</span></span></span></span><span data-component="trailingAction" class="prc-Button-Visual-YNt2F prc-Button-VisualWrap-E4cnq"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-triangle-down" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="m4.427 7.427 3.396 3.396a.25.25 0 0 0 .354 0l3.396-3.396A.25.25 0 0 0 11.396 7H4.604a.25.25 0 0 0-.177.427Z"></path></svg></span></button></div></nav><div class="d-none"></div><button data-component="IconButton" type="button" class="prc-Button-ButtonBase-9n-Xk OverviewRepoFiles-module__editButton__NMrlF prc-Button-IconButton-fyge7" data-loading="false" data-no-visuals="true" data-size="small" data-variant="invisible" aria-labelledby="_r_j7_"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-pencil" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M11.013 1.427a1.75 1.75 0 0 1 2.474 0l1.086 1.086a1.75 1.75 0 0 1 0 2.474l-8.61 8.61c-.21.21-.47.364-.756.445l-3.251.93a.75.75 0 0 1-.927-.928l.929-3.25c.081-.286.235-.547.445-.758l8.61-8.61Zm.176 4.823L9.75 4.81l-6.286 6.287a.253.253 0 0 0-.064.108l-.558 1.953 1.953-.558a.253.253 0 0 0 .108-.064Zm1.238-3.763a.25.25 0 0 0-.354 0L10.811 3.75l1.439 1.44 1.263-1.263a.25.25 0 0 0 0-.354Z"></path></svg></button><span class="prc-TooltipV2-Tooltip-tLeuB" data-direction="s" data-component="Tooltip" aria-hidden="true" id="_r_j7_" popover="auto">Edit file</span><button data-component="ActionMenu.Button" type="button" aria-label="Outline" aria-haspopup="true" aria-expanded="false" tabindex="0" class="prc-Button-ButtonBase-9n-Xk OverviewRepoFiles-module__ActionMenu_Button__OKDYV" data-loading="false" data-size="medium" data-variant="invisible" id="_r_j9_" style="anchor-name: --anchored-overlay-anchor-_r_jb_;"><svg data-component="Octicon" aria-hidden="true" focusable="false" class="octicon octicon-list-unordered" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" display="inline-block" overflow="visible" style="vertical-align: text-bottom;"><path d="M5.75 2.5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5Zm0 5h8.5a.75.75 0 0 1 0 1.5h-8.5a.75.75 0 0 1 0-1.5ZM2 14a1 1 0 1 1 0-2 1 1 0 0 1 0 2Zm1-6a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM2 4a1 1 0 1 1 0-2 1 1 0 0 1 0 2Z"></path></svg></button></div><div class="js-snippet-clipboard-copy-unpositioned DirectoryRichtextContent-module__SharedMarkdownContent__hHXUL" data-hpc="true" containertiming="hpc"><article class="markdown-body entry-content container-lg" itemprop="text"><div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🚀 ROI-Based Intelligent Video Analytics System</h1><a id="user-content--roi-based-intelligent-video-analytics-system" class="anchor" aria-label="Permalink: 🚀 ROI-Based Intelligent Video Analytics System" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-roi-based-intelligent-video-analytics-system"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<blockquote>
+<p dir="auto">A scalable real-time video analytics platform built using <strong>YOLOv7</strong>, <strong>YOLOv7 Segmentation</strong>, <strong>RabbitMQ</strong>, <strong>Redis</strong>, <strong>OpenCV</strong>, and <strong>Python</strong> for intelligent surveillance and safety monitoring.</p>
+</blockquote>
+<p dir="auto"><a target="_blank" rel="noopener noreferrer nofollow" href="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e782d626c7565"><img src="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f507974686f6e2d332e782d626c7565" alt="Python" data-canonical-src="https://img.shields.io/badge/Python-3.x-blue" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f594f4c4f76372d446574656374696f6e2d677265656e"><img src="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f594f4c4f76372d446574656374696f6e2d677265656e" alt="YOLOv7" data-canonical-src="https://img.shields.io/badge/YOLOv7-Detection-green" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5261626269744d512d4d65737361676542726f6b65722d6f72616e6765"><img src="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f5261626269744d512d4d65737361676542726f6b65722d6f72616e6765" alt="RabbitMQ" data-canonical-src="https://img.shields.io/badge/RabbitMQ-MessageBroker-orange" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656469732d43616368652d726564"><img src="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f52656469732d43616368652d726564" alt="Redis" data-canonical-src="https://img.shields.io/badge/Redis-Cache-red" style="max-width: 100%;"></a>
+<a target="_blank" rel="noopener noreferrer nofollow" href="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4f70656e43562d436f6d7075746572566973696f6e2d626c756576696f6c6574"><img src="./config_files/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f4f70656e43562d436f6d7075746572566973696f6e2d626c756576696f6c6574" alt="OpenCV" data-canonical-src="https://img.shields.io/badge/OpenCV-ComputerVision-blueviolet" style="max-width: 100%;"></a></p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">📖 Overview</h1><a id="user-content--overview" class="anchor" aria-label="Permalink: 📖 Overview" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-overview"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">This project is a <strong>Region of Interest (ROI) Based Intelligent Video Analytics System</strong> designed to process multiple surveillance camera streams in real-time.</p>
+<p dir="auto">The system leverages <strong>RabbitMQ</strong> for distributed communication, <strong>Redis</strong> for configuration management and event storage, <strong>YOLOv7 Detection</strong> for object detection, and <strong>YOLOv7 Segmentation</strong> for person segmentation.</p>
+<p dir="auto">Instead of processing every detected object, the system applies <strong>ROI validation</strong>, ensuring that only detections occurring within predefined regions are considered valid and stored.</p>
+<p dir="auto">This significantly reduces:</p>
+<ul dir="auto">
+<li>False detections</li>
+<li>Storage requirements</li>
+<li>Unnecessary event processing</li>
+<li>System overhead</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🎯 Problem Statement</h1><a id="user-content--problem-statement" class="anchor" aria-label="Permalink: 🎯 Problem Statement" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-problem-statement"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Traditional surveillance systems process every detection regardless of its location.</p>
+<p dir="auto">This often results in:</p>
+<p dir="auto">❌ High computational load</p>
+<p dir="auto">❌ Unnecessary event generation</p>
+<p dir="auto">❌ Increased storage usage</p>
+<p dir="auto">❌ False alarms</p>
+<p dir="auto">To overcome these challenges, this project introduces an <strong>ROI-Based Detection Pipeline</strong> where only objects detected within user-defined regions are processed and stored.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🎯 Objectives</h1><a id="user-content--objectives" class="anchor" aria-label="Permalink: 🎯 Objectives" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-objectives"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Process multiple camera streams simultaneously.</li>
+<li>Detect objects using a custom-trained YOLOv7 model.</li>
+<li>Perform person segmentation using YOLOv7 Segmentation.</li>
+<li>Apply ROI-based filtering.</li>
+<li>Store only valid events.</li>
+<li>Build a scalable distributed architecture using RabbitMQ and Redis.</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🧠 Deep Learning Model Development</h1><a id="user-content--deep-learning-model-development" class="anchor" aria-label="Permalink: 🧠 Deep Learning Model Development" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-deep-learning-model-development"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Dataset Collection</h2><a id="user-content-dataset-collection" class="anchor" aria-label="Permalink: Dataset Collection" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#dataset-collection"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Collected and prepared a custom dataset containing:</p>
+<ul dir="auto">
+<li>🚶 Person</li>
+<li>🚗 Car</li>
+<li>🏍️ Bike</li>
+<li>🦺 Helmet</li>
+<li>👕 Jacket</li>
+<li>🔥 Fire</li>
+<li>🌫️ Smoke</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Data Annotation</h2><a id="user-content-data-annotation" class="anchor" aria-label="Permalink: Data Annotation" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#data-annotation"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Images were annotated using <strong>LabelImg</strong>.</p>
+<p dir="auto">Each image was labeled with corresponding object classes and bounding boxes.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Model Training</h2><a id="user-content-model-training" class="anchor" aria-label="Permalink: Model Training" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#model-training"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">A custom <strong>YOLOv7 Object Detection Model</strong> was trained on the annotated dataset.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Classes Trained</h3><a id="user-content-classes-trained" class="anchor" aria-label="Permalink: Classes Trained" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#classes-trained"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th>Class ID</th>
+<th>Class Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Person</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Car</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Bike</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Helmet</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Jacket</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Fire</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Smoke</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Output</h3><a id="user-content-output" class="anchor" aria-label="Permalink: Output" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#output"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">After training:</p>
+<div class="highlight highlight-source-shell notranslate position-relative overflow-auto" dir="auto"><pre>best.pt</pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="best.pt" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">was generated and used for real-time inference.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🏗️ System Architecture</h1><a id="user-content-️-system-architecture" class="anchor" aria-label="Permalink: 🏗️ System Architecture" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#%EF%B8%8F-system-architecture"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>                    Camera Configuration (JSON)
+                                 |
+                                 v
+                           Redis Cache
+                                 |
+                                 v
+                          Frame Producer
+                                 |
+                                 v
+                        RabbitMQ Exchange
+                                 |
+              ---------------------------------------
+              |                                     |
+              v                                     v
+
+       Person Queue                      Non-Person Queue
+              |                                     |
+              v                                     v
+
+  YOLOv7 Segmentation                    YOLOv7 Detection
+              |                                     |
+              ------------ Detection Exchange -------
+                                 |
+      --------------------------------------------------------
+      |                         |                           |
+      v                         v                           v
+
+ Vehicle Queue          Fire-Smoke Queue         Helmet-Jacket Queue
+      |                         |                           |
+      v                         v                           v
+
+ ROI Validation         ROI Validation            ROI Validation
+      |                         |                           |
+      v                         v                           v
+
+    Redis                     Redis                      Redis
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="                    Camera Configuration (JSON)
+                                 |
+                                 v
+                           Redis Cache
+                                 |
+                                 v
+                          Frame Producer
+                                 |
+                                 v
+                        RabbitMQ Exchange
+                                 |
+              ---------------------------------------
+              |                                     |
+              v                                     v
+
+       Person Queue                      Non-Person Queue
+              |                                     |
+              v                                     v
+
+  YOLOv7 Segmentation                    YOLOv7 Detection
+              |                                     |
+              ------------ Detection Exchange -------
+                                 |
+      --------------------------------------------------------
+      |                         |                           |
+      v                         v                           v
+
+ Vehicle Queue          Fire-Smoke Queue         Helmet-Jacket Queue
+      |                         |                           |
+      v                         v                           v
+
+ ROI Validation         ROI Validation            ROI Validation
+      |                         |                           |
+      v                         v                           v
+
+    Redis                     Redis                      Redis" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🔄 Project Workflow</h1><a id="user-content--project-workflow" class="anchor" aria-label="Permalink: 🔄 Project Workflow" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-project-workflow"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Step 1: Camera Configuration</h2><a id="user-content-step-1-camera-configuration" class="anchor" aria-label="Permalink: Step 1: Camera Configuration" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#step-1-camera-configuration"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">The system starts by loading camera information from a JSON configuration file.</p>
+<p dir="auto">Each camera entry contains:</p>
+<ul dir="auto">
+<li>Camera ID</li>
+<li>Camera IP Address</li>
+<li>Video Path / RTSP Stream</li>
+<li>Labels</li>
+<li>Additional Metadata</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Example</h3><a id="user-content-example" class="anchor" aria-label="Permalink: Example" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#example"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="highlight highlight-source-json notranslate position-relative overflow-auto" dir="auto"><pre>{
+  <span class="pl-ent">"camera_1"</span>: {
+    <span class="pl-ent">"ip_address"</span>: <span class="pl-s"><span class="pl-pds">"</span>192.168.1.100<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"video_path"</span>: <span class="pl-s"><span class="pl-pds">"</span>video1.mp4<span class="pl-pds">"</span></span>,
+    <span class="pl-ent">"labels"</span>: [<span class="pl-s"><span class="pl-pds">"</span>car<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>bike<span class="pl-pds">"</span></span>]
+  }
+}</pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="{
+  &quot;camera_1&quot;: {
+    &quot;ip_address&quot;: &quot;192.168.1.100&quot;,
+    &quot;video_path&quot;: &quot;video1.mp4&quot;,
+    &quot;labels&quot;: [&quot;car&quot;, &quot;bike&quot;]
+  }
+}" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Step 2: Redis Configuration Management</h2><a id="user-content-step-2-redis-configuration-management" class="anchor" aria-label="Permalink: Step 2: Redis Configuration Management" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#step-2-redis-configuration-management"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">When the application starts:</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Check Redis</h3><a id="user-content-check-redis" class="anchor" aria-label="Permalink: Check Redis" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#check-redis"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>Configuration Available?
+        |
+   +----+----+
+   |         |
+  YES       NO
+   |         |
+Load      Read JSON
+Redis         |
+              v
+        Store in Redis
+              |
+              v
+        Load Configuration
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Configuration Available?
+        |
+   +----+----+
+   |         |
+  YES       NO
+   |         |
+Load      Read JSON
+Redis         |
+              v
+        Store in Redis
+              |
+              v
+        Load Configuration" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Benefits</h3><a id="user-content-benefits" class="anchor" aria-label="Permalink: Benefits" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#benefits"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Faster startup</li>
+<li>Reduced file access</li>
+<li>Centralized configuration management</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Step 3: Multi-Camera Processing</h2><a id="user-content-step-3-multi-camera-processing" class="anchor" aria-label="Permalink: Step 3: Multi-Camera Processing" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#step-3-multi-camera-processing"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">The producer dynamically distributes cameras across processors and threads.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Example</h3><a id="user-content-example-1" class="anchor" aria-label="Permalink: Example" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#example-1"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">4 Cameras</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>Processor 1
+├── Thread 1 → Camera 1
+└── Thread 2 → Camera 2
+
+Processor 2
+├── Thread 1 → Camera 3
+└── Thread 2 → Camera 4
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Processor 1
+├── Thread 1 → Camera 1
+└── Thread 2 → Camera 2
+
+Processor 2
+├── Thread 1 → Camera 3
+└── Thread 2 → Camera 4" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<p dir="auto">Each thread continuously captures frames from its assigned camera.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Step 4: Frame Encoding &amp; Publishing</h2><a id="user-content-step-4-frame-encoding--publishing" class="anchor" aria-label="Permalink: Step 4: Frame Encoding &amp; Publishing" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#step-4-frame-encoding--publishing"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Captured frames are encoded using Base64 before transmission.</p>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>Camera Frame
+      |
+      v
+Base64 Encoding
+      |
+      v
+RabbitMQ Exchange
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Camera Frame
+      |
+      v
+Base64 Encoding
+      |
+      v
+RabbitMQ Exchange" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Why Base64?</h3><a id="user-content-why-base64" class="anchor" aria-label="Permalink: Why Base64?" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#why-base64"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Easy serialization</li>
+<li>Broker-friendly transmission</li>
+<li>Cross-service compatibility</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">Step 5: Queue Separation</h2><a id="user-content-step-5-queue-separation" class="anchor" aria-label="Permalink: Step 5: Queue Separation" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#step-5-queue-separation"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Frames are divided into two primary queues.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">👤 Person Queue</h3><a id="user-content--person-queue" class="anchor" aria-label="Permalink: 👤 Person Queue" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-person-queue"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Contains:</p>
+<ul dir="auto">
+<li>Person-related frames</li>
+</ul>
+<p dir="auto">Purpose:</p>
+<ul dir="auto">
+<li>Person Segmentation</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🚗 Non-Person Queue</h3><a id="user-content--non-person-queue" class="anchor" aria-label="Permalink: 🚗 Non-Person Queue" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-non-person-queue"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Contains:</p>
+<ul dir="auto">
+<li>Car</li>
+<li>Bike</li>
+<li>Helmet</li>
+<li>Jacket</li>
+<li>Fire</li>
+<li>Smoke</li>
+</ul>
+<p dir="auto">Purpose:</p>
+<ul dir="auto">
+<li>Object Detection</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🤖 YOLOv7 Detection Pipeline</h1><a id="user-content--yolov7-detection-pipeline" class="anchor" aria-label="Permalink: 🤖 YOLOv7 Detection Pipeline" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-yolov7-detection-pipeline"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Frames received from the Non-Person Queue are:</p>
+<ol dir="auto">
+<li>Decoded</li>
+<li>Sent to YOLOv7 Detection</li>
+<li>Processed for object detection</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Supported Detection Classes</h3><a id="user-content-supported-detection-classes" class="anchor" aria-label="Permalink: Supported Detection Classes" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#supported-detection-classes"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Person</td>
+</tr>
+<tr>
+<td>Car</td>
+</tr>
+<tr>
+<td>Bike</td>
+</tr>
+<tr>
+<td>Helmet</td>
+</tr>
+<tr>
+<td>Jacket</td>
+</tr>
+<tr>
+<td>Fire</td>
+</tr>
+<tr>
+<td>Smoke</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Detection Output</h3><a id="user-content-detection-output" class="anchor" aria-label="Permalink: Detection Output" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#detection-output"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Bounding Box Coordinates</li>
+<li>Confidence Score</li>
+<li>Class Label</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">👤 YOLOv7 Segmentation Pipeline</h1><a id="user-content--yolov7-segmentation-pipeline" class="anchor" aria-label="Permalink: 👤 YOLOv7 Segmentation Pipeline" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-yolov7-segmentation-pipeline"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Frames received from the Person Queue are:</p>
+<ol dir="auto">
+<li>Decoded</li>
+<li>Sent to YOLOv7 Segmentation</li>
+<li>Person masks generated</li>
+</ol>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Output</h3><a id="user-content-output-1" class="anchor" aria-label="Permalink: Output" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#output-1"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Person Mask</li>
+<li>Segmented Person Region</li>
+<li>Real-time Visualization</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🔀 Detection Routing</h1><a id="user-content--detection-routing" class="anchor" aria-label="Permalink: 🔀 Detection Routing" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-detection-routing"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Detection results are routed to another RabbitMQ Exchange.</p>
+<p dir="auto">The exchange creates dedicated queues based on detection type.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">🚗 Vehicle Queue</h2><a id="user-content--vehicle-queue" class="anchor" aria-label="Permalink: 🚗 Vehicle Queue" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-vehicle-queue"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Processes:</p>
+<ul dir="auto">
+<li>Car</li>
+<li>Bike</li>
+</ul>
+<p dir="auto">Use Cases:</p>
+<ul dir="auto">
+<li>Vehicle Monitoring</li>
+<li>Traffic Analytics</li>
+<li>Restricted Zone Monitoring</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">🔥 Fire-Smoke Queue</h2><a id="user-content--fire-smoke-queue" class="anchor" aria-label="Permalink: 🔥 Fire-Smoke Queue" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-fire-smoke-queue"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Processes:</p>
+<ul dir="auto">
+<li>Fire</li>
+<li>Smoke</li>
+</ul>
+<p dir="auto">Use Cases:</p>
+<ul dir="auto">
+<li>Fire Detection</li>
+<li>Industrial Safety Monitoring</li>
+<li>Emergency Alerts</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h2 tabindex="-1" class="heading-element" dir="auto">🦺 Helmet-Jacket Queue</h2><a id="user-content--helmet-jacket-queue" class="anchor" aria-label="Permalink: 🦺 Helmet-Jacket Queue" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-helmet-jacket-queue"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Processes:</p>
+<ul dir="auto">
+<li>Helmet</li>
+<li>Jacket</li>
+</ul>
+<p dir="auto">Use Cases:</p>
+<ul dir="auto">
+<li>PPE Compliance Monitoring</li>
+<li>Workplace Safety</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">📍 ROI Validation</h1><a id="user-content--roi-validation" class="anchor" aria-label="Permalink: 📍 ROI Validation" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-roi-validation"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">ROI (Region of Interest) filtering is applied before storing detections.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Workflow</h3><a id="user-content-workflow" class="anchor" aria-label="Permalink: Workflow" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#workflow"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="snippet-clipboard-content notranslate position-relative overflow-auto"><pre lang="text" class="notranslate"><code>Object Detected
+       |
+       v
+Check ROI
+       |
+   +---+---+
+   |       |
+ Inside   Outside
+ ROI      ROI
+   |       |
+   v       v
+
+ Save    Ignore
+ Event
+</code></pre><div class="zeroclipboard-container">
+    <clipboard-copy aria-label="Copy code to clipboard" class="ClipboardButton btn btn-invisible js-clipboard-copy m-2 p-0 d-flex flex-justify-center flex-items-center" data-copy-feedback="Copied!" data-tooltip-direction="w" value="Object Detected
+       |
+       v
+Check ROI
+       |
+   +---+---+
+   |       |
+ Inside   Outside
+ ROI      ROI
+   |       |
+   v       v
+
+ Save    Ignore
+ Event" tabindex="0" role="button">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-copy js-clipboard-copy-icon">
+    <path d="M0 6.75C0 5.784.784 5 1.75 5h1.5a.75.75 0 0 1 0 1.5h-1.5a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-1.5a.75.75 0 0 1 1.5 0v1.5A1.75 1.75 0 0 1 9.25 16h-7.5A1.75 1.75 0 0 1 0 14.25Z"></path><path d="M5 1.75C5 .784 5.784 0 6.75 0h7.5C15.216 0 16 .784 16 1.75v7.5A1.75 1.75 0 0 1 14.25 11h-7.5A1.75 1.75 0 0 1 5 9.25Zm1.75-.25a.25.25 0 0 0-.25.25v7.5c0 .138.112.25.25.25h7.5a.25.25 0 0 0 .25-.25v-7.5a.25.25 0 0 0-.25-.25Z"></path>
+</svg>
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-check js-clipboard-check-icon color-fg-success d-none">
+    <path d="M13.78 4.22a.75.75 0 0 1 0 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.22 9.28a.751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018L6 10.94l6.72-6.72a.75.75 0 0 1 1.06 0Z"></path>
+</svg>
+    </clipboard-copy>
+  </div></div>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">Only detections inside the ROI are considered valid.</h1><a id="user-content-only-detections-inside-the-roi-are-considered-valid" class="anchor" aria-label="Permalink: Only detections inside the ROI are considered valid." href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#only-detections-inside-the-roi-are-considered-valid"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Advantages</h3><a id="user-content-advantages" class="anchor" aria-label="Permalink: Advantages" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#advantages"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">✅ Reduced False Positives</p>
+<p dir="auto">✅ Focused Event Monitoring</p>
+<p dir="auto">✅ Lower Storage Usage</p>
+<p dir="auto">✅ Improved Analytics Accuracy</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">💾 Redis Event Storage</h1><a id="user-content--redis-event-storage" class="anchor" aria-label="Permalink: 💾 Redis Event Storage" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-redis-event-storage"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">Validated detections are stored in Redis.</p>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">Stored Information</h3><a id="user-content-stored-information" class="anchor" aria-label="Permalink: Stored Information" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#stored-information"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Camera ID</li>
+<li>Timestamp</li>
+<li>Detection Class</li>
+<li>Bounding Box Coordinates</li>
+<li>Confidence Score</li>
+<li>ROI Status</li>
+<li>Encoded Frame</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">📊 Supported Analytics</h1><a id="user-content--supported-analytics" class="anchor" aria-label="Permalink: 📊 Supported Analytics" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-supported-analytics"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th>Analytics Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vehicle Monitoring</td>
+<td>Car &amp; Bike Detection</td>
+</tr>
+<tr>
+<td>Fire Monitoring</td>
+<td>Fire &amp; Smoke Detection</td>
+</tr>
+<tr>
+<td>PPE Monitoring</td>
+<td>Helmet &amp; Jacket Detection</td>
+</tr>
+<tr>
+<td>Human Monitoring</td>
+<td>Person Segmentation</td>
+</tr>
+<tr>
+<td>ROI Analytics</td>
+<td>Zone-Based Event Detection</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🎯 Key Features</h1><a id="user-content--key-features" class="anchor" aria-label="Permalink: 🎯 Key Features" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-key-features"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">✅ Custom YOLOv7 Training</p>
+<p dir="auto">✅ Real-Time Object Detection</p>
+<p dir="auto">✅ Real-Time Person Segmentation</p>
+<p dir="auto">✅ ROI-Based Filtering</p>
+<p dir="auto">✅ RabbitMQ Distributed Architecture</p>
+<p dir="auto">✅ Redis-Based Event Storage</p>
+<p dir="auto">✅ Multi-Camera Processing</p>
+<p dir="auto">✅ Fire &amp; Smoke Detection</p>
+<p dir="auto">✅ Vehicle Monitoring</p>
+<p dir="auto">✅ Helmet &amp; Jacket Compliance Monitoring</p>
+<p dir="auto">✅ Multiprocessing &amp; Multithreading</p>
+<p dir="auto">✅ Scalable Producer-Consumer Architecture</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🛠️ Technologies Used</h1><a id="user-content-️-technologies-used" class="anchor" aria-label="Permalink: 🛠️ Technologies Used" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#%EF%B8%8F-technologies-used"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<markdown-accessiblity-table data-catalyst=""><table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Python</td>
+<td>Core Development</td>
+</tr>
+<tr>
+<td>OpenCV</td>
+<td>Video Processing</td>
+</tr>
+<tr>
+<td>YOLOv7</td>
+<td>Object Detection</td>
+</tr>
+<tr>
+<td>YOLOv7 Segmentation</td>
+<td>Person Segmentation</td>
+</tr>
+<tr>
+<td>RabbitMQ</td>
+<td>Message Broker</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>Caching &amp; Storage</td>
+</tr>
+<tr>
+<td>LabelImg</td>
+<td>Image Annotation</td>
+</tr>
+<tr>
+<td>Multiprocessing</td>
+<td>Parallel Processing</td>
+</tr>
+<tr>
+<td>Multithreading</td>
+<td>Camera Handling</td>
+</tr>
+</tbody>
+</table></markdown-accessiblity-table>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🚀 Future Enhancements</h1><a id="user-content--future-enhancements" class="anchor" aria-label="Permalink: 🚀 Future Enhancements" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-future-enhancements"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Multi-Object Tracking (DeepSORT)</li>
+<li>Vehicle Counting</li>
+<li>Intrusion Detection</li>
+<li>Email Notifications</li>
+<li>SMS Alerts</li>
+<li>Dashboard Visualization</li>
+<li>Grafana Integration</li>
+<li>Docker Deployment</li>
+<li>Kubernetes Deployment</li>
+<li>Cloud Deployment (AWS/Azure/GCP)</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🌍 Real-World Applications</h1><a id="user-content--real-world-applications" class="anchor" aria-label="Permalink: 🌍 Real-World Applications" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-real-world-applications"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🏭 Industrial Safety</h3><a id="user-content--industrial-safety" class="anchor" aria-label="Permalink: 🏭 Industrial Safety" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-industrial-safety"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Helmet Detection</li>
+<li>Jacket Detection</li>
+<li>Worker Monitoring</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🔥 Fire Safety</h3><a id="user-content--fire-safety" class="anchor" aria-label="Permalink: 🔥 Fire Safety" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-fire-safety"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Fire Detection</li>
+<li>Smoke Detection</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🚗 Traffic Monitoring</h3><a id="user-content--traffic-monitoring" class="anchor" aria-label="Permalink: 🚗 Traffic Monitoring" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-traffic-monitoring"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Vehicle Detection</li>
+<li>Vehicle Analytics</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🎥 Smart Surveillance</h3><a id="user-content--smart-surveillance" class="anchor" aria-label="Permalink: 🎥 Smart Surveillance" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-smart-surveillance"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Restricted Area Monitoring</li>
+<li>Intelligent Security Systems</li>
+</ul>
+<div class="markdown-heading" dir="auto"><h3 tabindex="-1" class="heading-element" dir="auto">🏙️ Smart Cities</h3><a id="user-content-️-smart-cities" class="anchor" aria-label="Permalink: 🏙️ Smart Cities" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#%EF%B8%8F-smart-cities"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Public Safety Monitoring</li>
+<li>Automated Event Detection</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🏆 Project Achievements</h1><a id="user-content--project-achievements" class="anchor" aria-label="Permalink: 🏆 Project Achievements" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-project-achievements"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<ul dir="auto">
+<li>Built a distributed real-time video analytics pipeline.</li>
+<li>Implemented YOLOv7-based detection and segmentation.</li>
+<li>Developed ROI-aware event filtering logic.</li>
+<li>Integrated Redis for high-speed event storage.</li>
+<li>Designed RabbitMQ-based asynchronous communication.</li>
+<li>Enabled scalable processing of multiple camera streams.</li>
+</ul>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">🎯 Conclusion</h1><a id="user-content--conclusion" class="anchor" aria-label="Permalink: 🎯 Conclusion" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#-conclusion"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto">This project demonstrates the development of a scalable and intelligent video analytics system capable of processing multiple camera streams in real-time. By integrating YOLOv7 Detection, YOLOv7 Segmentation, RabbitMQ, Redis, and ROI-based filtering, the system efficiently identifies and stores only relevant events.</p>
+<p dir="auto">The distributed architecture ensures high performance, scalability, and modularity, making it suitable for applications such as:</p>
+<ul dir="auto">
+<li>Smart Surveillance</li>
+<li>Industrial Safety Monitoring</li>
+<li>Fire and Smoke Detection</li>
+<li>PPE Compliance Monitoring</li>
+<li>Vehicle Monitoring and Analytics</li>
+</ul>
+<p dir="auto">Through ROI-based validation and event-driven processing, the system significantly reduces false detections and unnecessary storage while improving the overall accuracy and efficiency of video analytics.</p>
+<hr>
+<div class="markdown-heading" dir="auto"><h1 tabindex="-1" class="heading-element" dir="auto">👨‍💻 Author</h1><a id="user-content-‍-author" class="anchor" aria-label="Permalink: 👨‍💻 Author" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#%E2%80%8D-author"><svg data-component="Octicon" class="octicon octicon-link" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a1.998 1.998 0 0 0 0 2.83Z"></path></svg></a></div>
+<p dir="auto"><strong>Yerra Naga Uday Kiran</strong></p>
+<p dir="auto">Data Science | AI/ML Engineer</p>
+<p dir="auto">Gmail: <a href="mailto:udaykiranyerranaga@gmail.com">udaykiranyerranaga@gmail.com</a></p>
+<p dir="auto">LinkedIn: <a href="https://www.linkedin.com/in/mr-uday-kiran-42803a2b3/" rel="nofollow">https://www.linkedin.com/in/mr-uday-kiran-42803a2b3/</a></p>
+<hr>
+</article></div></div></div></div></div></div></div><div class="prc-PageLayout-PaneWrapper-pHPop pr-2" data-is-hidden="false" data-position="end" style="--offset-header: 0px; --spacing-row: var(--spacing-none); --spacing-column: var(--spacing-none);"><div class="prc-PageLayout-HorizontalDivider-JLVqp prc-PageLayout-PaneHorizontalDivider-9tbnE" data-component="PageLayout.HorizontalDivider" data-variant-narrow="none" data-variant-regular="none" data-position="end" style="--spacing-divider: var(--spacing-none); --spacing: var(--spacing-none);"></div><div class="prc-PageLayout-Pane-AyzHK" data-component="PageLayout.Pane" style="--spacing: var(--spacing-normal); --pane-min-width: 256px; --pane-max-width: calc(100vw - var(--pane-max-width-diff)); --pane-width-size: var(--pane-width-large); --pane-width: 320px;"><rails-partial data-partial-name="codeViewRepoRoute.Sidebar" class="RailsPartial-module__d-contents__G5m4w">
+
+<div class="BorderGrid ">
+  <div class="BorderGrid-row">
+    <div class="BorderGrid-cell">
+      <div class="hide-sm hide-md">
+  <h2 class="tmp-mb-3 h4">About</h2>
+
+      <div class="f4 tmp-my-3 color-fg-muted text-italic">
+        No description, website, or topics provided.
+      </div>
+
+
+    <h3 class="sr-only">Resources</h3>
+    <div class="mt-2">
+      <a class="Link--muted" data-analytics-event="{&quot;category&quot;:&quot;Repository Overview&quot;,&quot;action&quot;:&quot;click&quot;,&quot;label&quot;:&quot;location:sidebar;file:readme&quot;}" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ#readme-ov-file">
+        <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-book mr-2 tmp-mr-2">
+    <path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path>
+</svg>
+        Readme
+</a>    </div>
+
+  
+
+
+
+
+
+  <include-fragment src="/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/hovercards/citation/sidebar_partial?tree_name=main" data-nonce="v2:a4b8b0f6-214f-5bf1-19e5-7cd81894a568" data-view-component="true" class="is-error"><template shadowrootmode="open"><style>:host {display: block;}</style><slot></slot></template>
+  
+
+  <div data-show-on-forbidden-error="" hidden="">
+    <div class="Box">
+  <div class="blankslate-container">
+    <div data-view-component="true" class="blankslate blankslate-spacious color-bg-default rounded-2">
+      
+
+      <h3 data-view-component="true" class="blankslate-heading">        Uh oh!
+</h3>
+      <p data-view-component="true" class="blankslate-description">        </p><p class="color-fg-muted my-2 mb-2 ws-normal">There was an error while loading. <a class="Link--inTextBlock" data-turbo="false" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ" aria-label="Please reload this page">Please reload this page</a>.</p>
+<p></p>
+
+</div>  </div>
+</div>  </div>
+</include-fragment>
+    <div class="mt-2">
+      <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/activity" data-view-component="true" class="Link Link--muted"><svg text="gray" aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-pulse mr-2 tmp-mr-2">
+    <path d="M6 2c.306 0 .582.187.696.471L10 10.731l1.304-3.26A.751.751 0 0 1 12 7h3.25a.75.75 0 0 1 0 1.5h-2.742l-1.812 4.528a.751.751 0 0 1-1.392 0L6 4.77 4.696 8.03A.75.75 0 0 1 4 8.5H.75a.75.75 0 0 1 0-1.5h2.742l1.812-4.529A.751.751 0 0 1 6 2Z"></path>
+</svg>
+        <span class="color-fg-muted">Activity</span></a>    </div>
+
+
+    <h3 class="sr-only">Stars</h3>
+    <div class="mt-2">
+        <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/stargazers" data-view-component="true" class="Link Link--muted"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-star mr-2 tmp-mr-2">
+    <path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Zm0 2.445L6.615 5.5a.75.75 0 0 1-.564.41l-3.097.45 2.24 2.184a.75.75 0 0 1 .216.664l-.528 3.084 2.769-1.456a.75.75 0 0 1 .698 0l2.77 1.456-.53-3.084a.75.75 0 0 1 .216-.664l2.24-2.183-3.096-.45a.75.75 0 0 1-.564-.41L8 2.694Z"></path>
+</svg>
+          <strong>0</strong>
+          stars</a>    </div>
+
+    <h3 class="sr-only">Watchers</h3>
+    <div class="mt-2">
+        <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/watchers" data-view-component="true" class="Link Link--muted"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-eye mr-2 tmp-mr-2">
+    <path d="M8 2c1.981 0 3.671.992 4.933 2.078 1.27 1.091 2.187 2.345 2.637 3.023a1.62 1.62 0 0 1 0 1.798c-.45.678-1.367 1.932-2.637 3.023C11.67 13.008 9.981 14 8 14c-1.981 0-3.671-.992-4.933-2.078C1.797 10.83.88 9.576.43 8.898a1.62 1.62 0 0 1 0-1.798c.45-.677 1.367-1.931 2.637-3.022C4.33 2.992 6.019 2 8 2ZM1.679 7.932a.12.12 0 0 0 0 .136c.411.622 1.241 1.75 2.366 2.717C5.176 11.758 6.527 12.5 8 12.5c1.473 0 2.825-.742 3.955-1.715 1.124-.967 1.954-2.096 2.366-2.717a.12.12 0 0 0 0-.136c-.412-.621-1.242-1.75-2.366-2.717C10.824 4.242 9.473 3.5 8 3.5c-1.473 0-2.825.742-3.955 1.715-1.124.967-1.954 2.096-2.366 2.717ZM8 10a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 10Z"></path>
+</svg>
+          <strong>0</strong>
+          watching</a>    </div>
+
+    <h3 class="sr-only">Forks</h3>
+    <div class="mt-2">
+      <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/forks" data-view-component="true" class="Link Link--muted"><svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-repo-forked mr-2 tmp-mr-2">
+    <path d="M5 5.372v.878c0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75v-.878a2.25 2.25 0 1 1 1.5 0v.878a2.25 2.25 0 0 1-2.25 2.25h-1.5v2.128a2.251 2.251 0 1 1-1.5 0V8.5h-1.5A2.25 2.25 0 0 1 3.5 6.25v-.878a2.25 2.25 0 1 1 1.5 0ZM5 3.25a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Zm6.75.75a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm-3 8.75a.75.75 0 1 0-1.5 0 .75.75 0 0 0 1.5 0Z"></path>
+</svg>
+        <strong>0</strong>
+        forks</a>    </div>
+
+
+    <div class="mt-2">
+      <a class="Link--muted" href="https://github.com/contact/report-content?content_url=https%3A%2F%2Fgithub.com%2FYNUDAYKIRAN%2FROI-Using-Computer-Vision-and-RabbitMQ&amp;report=YNUDAYKIRAN+%28user%29">
+          Report repository
+</a>    </div>
+</div>
+
+    </div>
+  </div>
+
+  
+      <div class="BorderGrid-row">
+        <div class="BorderGrid-cell">
+          <h2 class="h4 tmp-mb-3" data-pjax="#repo-content-pjax-container" data-turbo-frame="repo-content-turbo-frame">
+  <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/releases" data-view-component="true" class="Link--primary no-underline Link" data-turbo-frame="repo-content-turbo-frame">Releases</a></h2>
+
+    <div class="text-small color-fg-muted">No releases published</div>
+
+        </div>
+      </div>
+
+  
+  
+  
+      <div class="BorderGrid-row">
+        <div class="BorderGrid-cell">
+          
+<h2 class="h4 tmp-mb-3">
+  <a href="https://github.com/users/YNUDAYKIRAN/packages?repo_name=ROI-Using-Computer-Vision-and-RabbitMQ" data-view-component="true" class="Link--primary no-underline Link d-flex flex-items-center">Packages
+      <span title="0" hidden="hidden" data-view-component="true" class="Counter ml-1 tmp-ml-1">0</span></a></h2>
+
+
+
+      <div class="text-small color-fg-muted">
+        No packages published <br>
+      </div>
+
+
+
+        </div>
+      </div>
+
+  
+  
+    <div class="BorderGrid-row">
+      <div class="BorderGrid-cell">
+        
+  <h2 class="h4 tmp-mb-3">
+  <a href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/graphs/contributors" data-view-component="true" class="Link--primary no-underline Link d-flex flex-items-center">Contributors
+      <span title="1" data-view-component="true" class="Counter ml-1 tmp-ml-1">1</span></a></h2>
+
+
+      
+  <ul class="list-style-none ">
+    <li class="mb-2 d-flex">
+      <a href="https://github.com/YNUDAYKIRAN" class="mr-2" data-hovercard-type="user" data-hovercard-url="/users/YNUDAYKIRAN/hovercard" data-octo-click="hovercard-link-click" data-octo-dimensions="link_type:self" aria-keyshortcuts="Alt+ArrowUp">
+        <img src="./config_files/148639806(2)" alt="@YNUDAYKIRAN" size="32" height="32" width="32" data-view-component="true" class="avatar circle">
+      </a>
+      <span data-view-component="true" class="flex-self-center min-width-0 css-truncate css-truncate-overflow width-fit flex-auto">
+        <a href="https://github.com/YNUDAYKIRAN" class="Link--primary no-underline flex-self-center">
+          <strong>YNUDAYKIRAN</strong>
+          <span class="color-fg-muted">Uday_kiran</span>
+        </a>
+</span>    </li>
+</ul>
+
+
+
+
+
+
+      </div>
+    </div>
+
+  
+      <div class="BorderGrid-row">
+        <div class="BorderGrid-cell">
+          <h2 class="h4 tmp-mb-3">Languages</h2>
+<div class="mb-2">
+  <span data-view-component="true" class="Progress">
+    <span style="background-color:#3572A5 !important;;width: 100.0%;" itemprop="keywords" data-view-component="true" class="Progress-item color-bg-success-emphasis"></span>
+</span></div>
+<ul class="list-style-none">
+    <li class="d-inline">
+        <a class="d-inline-flex flex-items-center flex-nowrap Link--secondary no-underline text-small tmp-mr-3" href="https://github.com/YNUDAYKIRAN/ROI-Using-Computer-Vision-and-RabbitMQ/search?l=python" data-ga-click="Repository, language stats search click, location:repo overview">
+          <svg style="color:#3572A5;" aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-dot-fill mr-2 tmp-mr-2">
+    <path d="M8 4a4 4 0 1 1 0 8 4 4 0 0 1 0-8Z"></path>
+</svg>
+          <span class="color-fg-default text-bold mr-1">Python</span>
+          <span>100.0%</span>
+        </a>
+    </li>
+</ul>
+
+        </div>
+      </div>
+
+  
+  </div>
+</rails-partial></div><div class="prc-PageLayout-VerticalDivider-9QRmK prc-PageLayout-PaneVerticalDivider-le57g" data-component="PageLayout.VerticalDivider" data-variant-narrow="none" data-variant-regular="none" data-position="end" style="--spacing: var(--spacing-none);"></div></div></div></div></div></div></div></div></div></div></div><div class="ScrollMarksContainer-module__scrollMarksContainer__Eu7uU" id="find-result-marks-container"></div><div class="d-none"></div><div class="d-none"></div></div> <!-- --> <!-- --> </div>
+</react-app>
+
+
+
+
+  </div>
+
+</turbo-frame>
+
+    </main>
+  </div>
+
+  </div>
+
+          <footer class="footer tmp-pt-7 tmp-pb-6 f6 color-fg-muted color-border-subtle p-responsive" role="contentinfo">
+  <h2 class="sr-only">Footer</h2>
+
+  
+
+
+  <div class="d-flex flex-justify-center flex-items-center flex-column-reverse flex-lg-row flex-wrap flex-lg-nowrap">
+    <div class="d-flex flex-items-center flex-shrink-0 mx-2">
+      <a aria-label="GitHub Homepage" class="footer-octicon mr-2" href="https://github.com/">
+        <svg aria-hidden="true" data-component="Octicon" height="24" viewBox="0 0 24 24" version="1.1" width="24" data-view-component="true" class="octicon octicon-mark-github">
+    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
+</svg>
+</a>
+      <span>
+        © 2026 GitHub,&nbsp;Inc.
+      </span>
+    </div>
+
+    <nav aria-label="Footer">
+      <h3 class="sr-only" id="sr-footer-heading">Footer navigation</h3>
+
+      <ul class="list-style-none d-flex flex-justify-center flex-wrap mb-2 mb-lg-0" aria-labelledby="sr-footer-heading">
+
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to Terms&quot;,&quot;label&quot;:&quot;text:terms&quot;}" href="https://docs.github.com/site-policy/github-terms/github-terms-of-service" data-view-component="true" class="Link--secondary Link">Terms</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to privacy&quot;,&quot;label&quot;:&quot;text:privacy&quot;}" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" data-view-component="true" class="Link--secondary Link">Privacy</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to security&quot;,&quot;label&quot;:&quot;text:security&quot;}" href="https://github.com/security" data-view-component="true" class="Link--secondary Link">Security</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to status&quot;,&quot;label&quot;:&quot;text:status&quot;}" href="https://www.githubstatus.com/" data-view-component="true" class="Link--secondary Link">Status</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to community&quot;,&quot;label&quot;:&quot;text:community&quot;}" href="https://github.community/" data-view-component="true" class="Link--secondary Link">Community</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to docs&quot;,&quot;label&quot;:&quot;text:docs&quot;}" href="https://docs.github.com/" data-view-component="true" class="Link--secondary Link">Docs</a>
+          </li>
+
+          <li class="mx-2">
+            <a data-analytics-event="{&quot;category&quot;:&quot;Footer&quot;,&quot;action&quot;:&quot;go to contact&quot;,&quot;label&quot;:&quot;text:contact&quot;}" href="https://support.github.com/?tags=dotcom-footer" data-view-component="true" class="Link--secondary Link">Contact</a>
+          </li>
+
+          <li class="mx-2">
+  <cookie-consent-link data-catalyst="">
+    <button type="button" class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent" data-action="click:cookie-consent-link#showConsentManagement" data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;cookies&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;cookies_link_subfooter_footer&quot;}">
+       Manage cookies
+    </button>
+  </cookie-consent-link>
+</li>
+
+<li class="mx-2">
+  <cookie-consent-link data-catalyst="">
+    <button type="button" class="Link--secondary underline-on-hover border-0 p-0 color-bg-transparent text-left" data-action="click:cookie-consent-link#showConsentManagement" data-analytics-event="{&quot;location&quot;:&quot;footer&quot;,&quot;action&quot;:&quot;dont_share_info&quot;,&quot;context&quot;:&quot;subfooter&quot;,&quot;tag&quot;:&quot;link&quot;,&quot;label&quot;:&quot;dont_share_info_link_subfooter_footer&quot;}">
+      Do not share my personal information
+    </button>
+  </cookie-consent-link>
+</li>
+
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+
+
+    <ghcc-consent id="ghcc" class="position-fixed bottom-0 left-0" style="z-index: 999999" data-locale="en" data-initial-cookie-consent-allowed="" data-cookie-consent-required="false" data-catalyst=""></ghcc-consent>
+
+
+
+
+  <div id="ajax-error-message" class="ajax-error-message flash flash-error" hidden="">
+    <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-alert">
+    <path d="M6.457 1.047c.659-1.234 2.427-1.234 3.086 0l6.082 11.378A1.75 1.75 0 0 1 14.082 15H1.918a1.75 1.75 0 0 1-1.543-2.575Zm1.763.707a.25.25 0 0 0-.44 0L1.698 13.132a.25.25 0 0 0 .22.368h12.164a.25.25 0 0 0 .22-.368Zm.53 3.996v2.5a.75.75 0 0 1-1.5 0v-2.5a.75.75 0 0 1 1.5 0ZM9 11a1 1 0 1 1-2 0 1 1 0 0 1 2 0Z"></path>
+</svg>
+    <button type="button" class="flash-close js-ajax-error-dismiss" aria-label="Dismiss error">
+      <svg aria-hidden="true" data-component="Octicon" height="16" viewBox="0 0 16 16" version="1.1" width="16" data-view-component="true" class="octicon octicon-x">
+    <path d="M3.72 3.72a.75.75 0 0 1 1.06 0L8 6.94l3.22-3.22a.749.749 0 0 1 1.275.326.749.749 0 0 1-.215.734L9.06 8l3.22 3.22a.749.749 0 0 1-.326 1.275.749.749 0 0 1-.734-.215L8 9.06l-3.22 3.22a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042L6.94 8 3.72 4.78a.75.75 0 0 1 0-1.06Z"></path>
+</svg>
+    </button>
+    You can’t perform that action at this time.
+  </div>
+
+    <template id="site-details-dialog"></template>
+
+    <div class="Popover js-hovercard-content position-absolute" style="display: none; outline: none;">
+  <div class="Popover-message Popover-message--bottom-left Popover-message--large Box color-shadow-large" style="width:360px;"></div>
+</div>
+
+    <template id="snippet-clipboard-copy-button"></template>
+<template id="snippet-clipboard-copy-button-unpositioned"></template>
+
+
+    <style>
+      .user-mention[href$="/12NIKHI"] {
+        color: var(--color-user-mention-fg);
+        background-color: var(--bgColor-attention-muted, var(--color-attention-subtle));
+        border-radius: 2px;
+        margin-left: -2px;
+        margin-right: -2px;
+      }
+      .user-mention[href$="/12NIKHI"]:before,
+      .user-mention[href$="/12NIKHI"]:after {
+        content: '';
+        display: inline-block;
+        width: 2px;
+      }
+    </style>
+
+
+    </div>
+    <div id="js-global-screen-reader-notice" class="sr-only mt-n1" aria-live="polite" aria-atomic="true"></div>
+    <div id="js-global-screen-reader-notice-assertive" class="sr-only mt-n1" aria-live="assertive" aria-atomic="true"></div>
+  
+
+
+<div class="sr-only mt-n1" id="screenReaderAnnouncementDiv" role="alert" data-testid="screenReaderAnnouncement" aria-live="assertive">&nbsp;</div></body></html>
